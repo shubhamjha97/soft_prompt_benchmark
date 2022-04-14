@@ -60,11 +60,11 @@ if __name__ == '__main__':
     parser.add_argument('--distill', type=str, default='no', help='')
     parser.add_argument('--finetuned_model_path', type=str,
                         default='/u/scr/xlisali/contrast_LM/transformers/examples/full/full/webnlgfinetune_n_20_act_ca'
-                                't_b=6-e=10_d=0.0_u=no_lr=1e-05_w=0.0_s=101_r=n_m=512_earlystop', help='')
+                                't_b=6-e=10_d=0.0_u=no_lr=1e-05_w=0.0_s=101_r=n_m=512_earlystop', help='')  # TODO: sjha download dataset
     parser.add_argument('--matching_objective', type=str, default='kl', help='kl or logits')
 
     # Added by MX
-    parser.add_argument('--cache_dir', type=str, default='/u/scr/xlisali/contrast_LM/transformers/examples/control', help='cache dir')
+    parser.add_argument('--cache_dir', type=str, default='/tmp/prefix_tuning_cache', help='cache dir')
     parser.add_argument('--use_custom_teacher_dropout', type=str, default='no', help='')
 
 
@@ -178,27 +178,27 @@ if __name__ == '__main__':
 
 
     elif args.mode == 'triples':
-        TRAIN_FILE = "/u/scr/xlisali/DART/dart/data/v1.1.1/dart-v1.1.1-full-train.json"
-        TEST_FILE = "/u/scr/xlisali/DART/dart/data/v1.1.1/dart-v1.1.1-full-dev.json"
-        folder_name = "triples_models/"
+        TRAIN_FILE = "../data/dart/dart-v1.1.1-full-train.json"
+        TEST_FILE = "../data/dart/dart-v1.1.1-full-dev.json"
+        folder_name = "triples_models/" # TODO: sjha figure this out
 
 
     elif args.mode == 'webnlg':
         # 2017 Challeng Version.
-        TRAIN_FILE = "/u/scr/xlisali/WebNLG/webnlg-dataset/webnlg_challenge_2017/train.json"
-        TEST_FILE = "/u/scr/xlisali/WebNLG/webnlg-dataset/webnlg_challenge_2017/dev.json"
+        TRAIN_FILE = "../data/webnlg_challenge_2017/train.json"
+        TEST_FILE = "../data/webnlg_challenge_2017/dev.json"
 
         # v2
         # TRAIN_FILE = "/u/scr/xlisali/WebNLG/webnlg-dataset/release_v2/json/webnlg_release_v2_train.json"
         # TEST_FILE =  "/u/scr/xlisali/WebNLG/webnlg-dataset/release_v2/json/webnlg_release_v2_dev.json"
         folder_name = "webnlg_models/"
 
-    elif args.mode == 'writingPrompts':
+    elif args.mode == 'writingPrompts': # TODO: sjha download dataset
         TRAIN_FILE = "/juice/u/xlisali/WritingPrompts/writingPrompts/train_small.txt"
         TEST_FILE = "/juice/u/xlisali/WritingPrompts/writingPrompts/valid_small.txt"
         folder_name = "wp_models/"
 
-    elif args.mode == 'cnndm':
+    elif args.mode == 'cnndm': # TODO: sjha download dataset
         TRAIN_FILE = '/u/scr/xlisali/contrast_LM/transformers/examples/seq2seq/cnn_dm/train.source'
         TEST_FILE = '/u/scr/xlisali/contrast_LM/transformers/examples/seq2seq/cnn_dm/val.source'
 
@@ -214,7 +214,7 @@ if __name__ == '__main__':
         folder_name = "cnndm_models/"
         assert args.optim_prefix == 'yes'
 
-    elif args.mode == 'xsum':
+    elif args.mode == 'xsum':  # TODO: sjha download dataset
         TRAIN_FILE = "/u/scr/xlisali/contrast_LM/transformers/examples/seq2seq/xsum/train.source"
         TEST_FILE = "/u/scr/xlisali/contrast_LM/transformers/examples/seq2seq/xsum/val.source"
 
