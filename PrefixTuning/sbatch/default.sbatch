@@ -1,0 +1,17 @@
+#!/bin/bash
+#SBATCH --job-name=default
+#SBATCH --open-mode=append
+#SBATCH --output=/scratch/sj3549/slurm_logs/%j_%x.out
+#SBATCH --error=/scratch/sj3549/slurm_logs/%j_%x.err
+#SBATCH --export=ALL
+#SBATCH --time=04:00:00
+#SBATCH --gres=gpu:1
+#SBATCH --mem=16G
+#SBATCH -c 4
+
+singularity exec --nv --bind /scratch --overlay /scratch/sj3549/nlu-overlay.ext3:ro /scratch/sj3549/cuda11.3.0-cudnn8-devel-ubuntu20.04.sif /bin/bash -c '
+source /ext3/miniconda3/bin/activate
+conda activate project_env
+cd /scratch/sj3549/soft_prompt_benchmark/PrefixTuning/gpt2
+python3 -u train_e2e.py --optim_prefix yes --preseqlen 5 --epoch 5 --learning_rate 0.00005 --mode webnlg --bsz 5 --seed 101
+'
