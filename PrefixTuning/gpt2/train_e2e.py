@@ -335,7 +335,7 @@ if __name__ == '__main__':
 
     controlprefix = ('yes' if args.tuning_mode == 'prefixtune' else 'no')
 
-    COMMANDLINE="python run_language_modeling.py \
+    COMMANDLINE="python3 run_language_modeling.py \
         --output_dir={} \
         --model_type=gpt2 \
         --model_name_or_path={} \
