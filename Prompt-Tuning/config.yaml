@@ -2,6 +2,9 @@ task_name: boolq
 method: prompt_tuning
 plm: t5-base
 
+logging_steps: 50
+eval_steps: 300
+
 boolq:
   prompt_tuning:
     gpt2:

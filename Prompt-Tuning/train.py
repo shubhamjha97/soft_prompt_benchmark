@@ -53,8 +53,8 @@ def train(tokenizer, model, train_dataset, val_dataset, config, metrics):
     training_args = TrainingArguments(
         output_dir="test_trainer",
         evaluation_strategy="steps",
-        logging_steps=1, # TODO: 50
-        eval_steps=1, # TODO: 300
+        logging_steps=config.logging_steps,
+        eval_steps=config.eval_steps,
         eval_accumulation_steps=5,
         prediction_loss_only=False # TODO: Debug
     )
@@ -135,6 +135,8 @@ def main(cfg):
     config.tokenizer_name = task_cfg.tokenizer_name
     config.model_name = plm
     config.dataset = task_name
+    config.logging_steps = cfg.logging_steps
+    config.eval_steps = cfg.eval_steps
     # TODO: Add other params like learning rate
 
     tokenizer = get_tokenizer(config.tokenizer_name)
