@@ -41,7 +41,7 @@ def train(tokenizer, model, train_dataset, val_dataset, config, metrics):
         logging_steps=50,
         eval_steps=300,
         eval_accumulation_steps=5,
-        prediction_loss_only=True
+        prediction_loss_only=False # TODO: Debug
     )
 
     # Only update soft prompt'weights for prompt-tuning. ie, all weights in LM are set as `require_grad=False`.
@@ -95,9 +95,17 @@ def get_model(model_name="gpt2", n_prompt_tokens=20, init_from_vocab=True):
             n_tokens=n_prompt_tokens,
             initialize_from_vocab=init_from_vocab)
     elif model_name.startswith("t5"):
-        model = T5PromptTuningLM.from_pretrained(model_name)
+        model = T5PromptTuningLM.from_pretrained(
+            model_name,
+            n_tokens=n_prompt_tokens,
+            initialize_from_vocab=init_from_vocab
+        )
     elif model_name.startswith("roberta"):
-        model = RobertaPromptTuningLM.from_pretrained(model_name)
+        model = RobertaPromptTuningLM.from_pretrained(
+            model_name,
+            n_tokens=n_prompt_tokens,
+            initialize_from_vocab=init_from_vocab
+        )
     else:
         raise ValueError("Tokenizer not supported")
     return model
@@ -110,8 +118,9 @@ def main(cfg):
 
     config = Config()
     config.tokenizer_name = task_cfg.tokenizer_name
-    config.model_name = task_cfg.model_name
+    config.model_name = plm
     config.dataset = task_name
+    # TODO: Add other params like learning rate
 
     tokenizer = get_tokenizer(config.tokenizer_name)
     model = get_model(config.model_name, config.n_prompt_tokens, config.init_from_vocab)
