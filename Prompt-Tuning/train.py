@@ -126,7 +126,7 @@ def main(cfg):
     model = get_model(config.model_name, config.n_prompt_tokens, config.init_from_vocab)
     metrics = METRIC_LOADERS[task_name]()
 
-    train_dataset, val_dataset = DATASET_LOADERS[task_name](tokenizer)
+    train_dataset, val_dataset = DATASET_LOADERS[task_name](tokenizer, config.n_prompt_tokens)
     train(tokenizer, model, train_dataset, val_dataset, config, metrics)
 
 

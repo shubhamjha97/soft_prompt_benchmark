@@ -8,7 +8,8 @@ boolq:
       tokenizer_name: gpt2
       learning_rate: 0.01
     t5-base:
-      learning_rate: 0.001
       tokenizer_name: t5-base
-    roberta:
+      learning_rate: 0.001
+    roberta-base:
+      tokenizer_name: roberta-base
       learning_rate: 0.001

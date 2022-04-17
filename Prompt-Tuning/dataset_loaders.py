@@ -12,7 +12,7 @@ def tokenize_dataset(dataset, tokenizer, max_source_length, max_target_length, p
 def boolq_metric_loader():
     return load_metric('super_glue', 'boolq')
 
-def boolq_loader(tokenizer):
+def boolq_loader(tokenizer, soft_prompt_length=0):
 
     def boolq_preprocessor(x, eval=False):
         src_texts = ["question:", x["question"], "passage:", x["passage"]]
@@ -30,10 +30,10 @@ def boolq_loader(tokenizer):
     val_dataset = val_dataset.map(lambda x: boolq_preprocessor(x), batched=False)
 
     # Tokenize dataset
-    train_dataset = tokenize_dataset(train_dataset, tokenizer, 512, 512, 'max_length', eval=False)
+    train_dataset = tokenize_dataset(train_dataset, tokenizer, 512 - soft_prompt_length, 512 - soft_prompt_length, 'max_length', eval=False)
     train_dataset.set_format(type='torch', columns=['input_ids', 'attention_mask', 'labels'])
 
-    val_dataset = tokenize_dataset(val_dataset, tokenizer, 512, 512, 'max_length', eval=False)
+    val_dataset = tokenize_dataset(val_dataset, tokenizer, 512 - soft_prompt_length, 512 - soft_prompt_length, 'max_length', eval=False)
     val_dataset.set_format(type='torch', columns=['input_ids', 'attention_mask', 'labels'])
 
     return train_dataset, val_dataset

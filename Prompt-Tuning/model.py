@@ -69,7 +69,7 @@ class BasePromptTuningMixin:
     ) -> None:
         self.n_tokens = n_tokens
         if initialize_from_vocab:
-            init_prompt_value = self._get_embedding_layer().weight[:n_tokens].clone().detach() # TODO: this becomed shared for T5
+            init_prompt_value = self._get_embedding_layer().weight[:n_tokens].clone().detach()
         else:
             init_prompt_value = torch.FloatTensor(2, 10).uniform_(
                 -random_range, random_range
@@ -311,10 +311,10 @@ class T5PromptTuningMixin(BasePromptTuningMixin):
 
 class RobertaPromptTuningMixin(BasePromptTuningMixin):
     def _get_embedding_layer(self):
-        return self.embeddings.word_embeddings
+        return self.base_model.embeddings.word_embeddings
 
     def _set_embedding_layer(self, embedding):
-        self.embeddings.word_embeddings = embedding
+        self.base_model.embeddings.word_embeddings = embedding
 
     def _initialize_embedding_size(self):
         self.embedding_dim = self.config.hidden_size
