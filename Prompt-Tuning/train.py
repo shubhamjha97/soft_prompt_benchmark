@@ -41,7 +41,7 @@ class Config:
 
 def train(tokenizer, model, train_dataset, val_dataset, config, metrics):
     model.train()
-    training_args = TrainingArguments(output_dir="test_trainer", evaluation_strategy="epoch")
+    training_args = TrainingArguments(output_dir="test_trainer", evaluation_strategy="steps", logging_steps=1, eval_steps=1) # TODO: increase logging steps
 
     # Only update soft prompt'weights for prompt-tuning. ie, all weights in LM are set as `require_grad=False`.
     optimizer_grouped_parameters = [{
@@ -116,7 +116,7 @@ def main(cfg):
     model = get_model(config.model_name, config.n_prompt_tokens, config.init_from_vocab)
     metrics = METRIC_LOADERS[task_name]()
 
-    train_dataset, val_dataset = DATASET_LOADERS[task_name](tokenizer, batch_size=32, shuffle=True)
+    train_dataset, val_dataset = DATASET_LOADERS[task_name](tokenizer)
     train(tokenizer, model, train_dataset, val_dataset, config, metrics)
 
 

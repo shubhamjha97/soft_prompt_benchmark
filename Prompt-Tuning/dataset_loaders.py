@@ -1,19 +1,18 @@
 from datasets import load_dataset, load_metric
-from transformers import default_data_collator
 
 
-def tokenize_dataset(dataset, tokenizer, max_source_length,max_target_length, padding, eval=False):
+def tokenize_dataset(dataset, tokenizer, max_source_length, max_target_length, padding, eval=False):
     model_inputs = dataset.map(lambda x: tokenizer(x['source'], max_length=max_source_length, truncation=True, padding=padding))
     if not eval:
         with tokenizer.as_target_tokenizer():
-            model_inputs = model_inputs.map(lambda x: {'labels': tokenizer(x['target'], max_length=max_source_length, truncation=True, padding=padding)['input_ids']})
+            model_inputs = model_inputs.map(lambda x: {'labels': tokenizer(x['target'], max_length=max_target_length, truncation=True, padding=padding)['input_ids']})
     return model_inputs
 
 
 def boolq_metric_loader():
     return load_metric('super_glue', 'boolq')
 
-def boolq_loader(tokenizer, batch_size=32, shuffle=True):
+def boolq_loader(tokenizer):
 
     def boolq_preprocessor(x, eval=False):
         src_texts = ["question:", x["question"], "passage:", x["passage"]]
@@ -36,8 +35,6 @@ def boolq_loader(tokenizer, batch_size=32, shuffle=True):
 
     val_dataset = tokenize_dataset(val_dataset, tokenizer, 512, 512, 'max_length', eval=False)
     val_dataset.set_format(type='torch', columns=['input_ids', 'attention_mask', 'labels'])
-
-    data_collator = default_data_collator
 
     return train_dataset, val_dataset
 
