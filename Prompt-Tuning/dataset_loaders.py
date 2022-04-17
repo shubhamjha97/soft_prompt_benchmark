@@ -22,8 +22,9 @@ def boolq_loader(tokenizer, soft_prompt_length=0):
             x['target'] = ' '.join(tgt_texts)
         return x
 
-    raw_dataset = load_dataset('super_glue', 'boolq')
-    train_dataset, val_dataset = raw_dataset["train"], raw_dataset["validation"]
+    raw_dataset = load_dataset('super_glue', 'boolq', split=['train', 'validation[0:1000]']) # TODO: remove slicing on val
+    # train_dataset, val_dataset = raw_dataset["train"], raw_dataset["validation"]
+    train_dataset, val_dataset = raw_dataset[0], raw_dataset[1]
 
     # Preprocess dataset
     train_dataset = train_dataset.map(lambda x: boolq_preprocessor(x), batched=False)

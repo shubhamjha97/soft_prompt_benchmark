@@ -9,10 +9,11 @@ from transformers import (
     TrainingArguments,
     default_data_collator
 )
-
+from functools import partial
 from dataset_loaders import DATASET_LOADERS, METRIC_LOADERS
 from model import GPT2PromptTuningLM, T5PromptTuningLM, RobertaPromptTuningLM
 
+import numpy as np
 
 class Config:
     # Same default parameters as run_clm_no_trainer.py in tranformers
@@ -33,13 +34,27 @@ class Config:
     # random_range = 0.5
 
 
+def cast_to_int(str):
+    try:
+        return int(str)
+    except:
+        return 0
+
+def compute_metrics(data, metric, tokenizer):
+    predictions_ids = np.argmax(data.predictions, axis=2)
+    decoded_predictions = tokenizer.batch_decode(predictions_ids, skip_special_tokens=True)
+    decoded_labels = tokenizer.batch_decode(data.label_ids, skip_special_tokens=True)
+    predictions = [cast_to_int(x) for x in decoded_predictions]
+    labels = [cast_to_int(x) for x in decoded_labels]
+    return metric.compute(predictions=predictions, references=labels)
+
 def train(tokenizer, model, train_dataset, val_dataset, config, metrics):
     model.train()
     training_args = TrainingArguments(
         output_dir="test_trainer",
         evaluation_strategy="steps",
-        logging_steps=50,
-        eval_steps=300,
+        logging_steps=1, # TODO: 50
+        eval_steps=1, # TODO: 300
         eval_accumulation_steps=5,
         prediction_loss_only=False # TODO: Debug
     )
@@ -62,7 +77,7 @@ def train(tokenizer, model, train_dataset, val_dataset, config, metrics):
         args=training_args,
         train_dataset=train_dataset,
         eval_dataset=val_dataset,
-        compute_metrics=metrics,
+        compute_metrics=partial(compute_metrics, metric=metrics, tokenizer=tokenizer),
         tokenizer=tokenizer,
         data_collator=default_data_collator,
         optimizers=(optimizer, lr_scheduler)
