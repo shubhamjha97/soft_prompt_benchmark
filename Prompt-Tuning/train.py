@@ -46,7 +46,8 @@ def train(tokenizer, model, train_dataset, val_dataset, config, metrics):
         evaluation_strategy="steps",
         logging_steps=1,
         eval_steps=1,
-        eval_accumulation_steps=5
+        eval_accumulation_steps=5,
+        prediction_loss_only=True
     ) # TODO: increase logging steps
 
     # Only update soft prompt'weights for prompt-tuning. ie, all weights in LM are set as `require_grad=False`.
