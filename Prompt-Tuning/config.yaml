@@ -1,0 +1,16 @@
+task_name: boolq
+method: prompt_tuning
+plm: gpt2
+
+boolq:
+  prompt_tuning:
+    gpt2:
+      tokenizer_name: gpt2
+      model_name: gpt2
+      src_field_key: source
+      tgt_field_key: target
+      learning_rate: 0.001
+    t5:
+      learning_rate: 0.001
+    roberta:
+      learning_rate: 0.001

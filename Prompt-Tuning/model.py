@@ -155,3 +155,11 @@ class GPT2PromptTuningLM(GPTPromptTuningMixin, GPT2LMHeadModel):
 class GPTNeoPromptTuningLM(GPTPromptTuningMixin, GPTNeoForCausalLM):
     def __init__(self, config):
         super().__init__(config)
+
+class RobertaPromptTuningLM():
+    # TODO: implement
+    pass
+
+class T5PromptTuningLM():
+    # TODO: implement
+    pass
