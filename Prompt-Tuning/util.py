@@ -10,10 +10,7 @@ def cast_to_int(str):
 
 
 def predictions_to_labels(data, tokenizer):
-    try:
-        data_predictions = data.predictions[0]
-    except:
-        data_predictions = data.predictions
+    data_predictions = data.predictions[0] if isinstance(data.predictions, tuple) else data.predictions
     predictions_ids = np.argmax(data_predictions, axis=2)
     decoded_predictions = tokenizer.batch_decode(predictions_ids, skip_special_tokens=True)
     decoded_labels = tokenizer.batch_decode(data.label_ids, skip_special_tokens=True)
