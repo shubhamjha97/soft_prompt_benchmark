@@ -141,7 +141,8 @@ def main(cfg):
     config.dataset = task_name
     config.logging_steps = cfg.logging_steps
     config.eval_steps = cfg.eval_steps
-    # TODO: Add other params like learning rate
+    config.learning_rate = task_cfg.learning_rate
+    # TODO: Add other hyperparams
 
     tokenizer = get_tokenizer(config.tokenizer_name)
     model = get_model(config.model_name, config.n_prompt_tokens, config.init_from_vocab)
