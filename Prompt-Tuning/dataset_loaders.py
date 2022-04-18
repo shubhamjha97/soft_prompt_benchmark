@@ -1,5 +1,5 @@
 from datasets import load_dataset, load_metric
-
+import uuid
 
 def tokenize_dataset(dataset, tokenizer, max_source_length, max_target_length, padding, eval=False):
     model_inputs = dataset.map(lambda x: tokenizer(x['source'], max_length=max_source_length, truncation=True, padding=padding))
@@ -10,7 +10,7 @@ def tokenize_dataset(dataset, tokenizer, max_source_length, max_target_length, p
 
 
 def boolq_metric_loader():
-    return load_metric('super_glue', 'boolq')
+    return load_metric('super_glue', 'boolq', experiment_id=str(uuid.uuid1()))
 
 def boolq_loader(tokenizer, soft_prompt_length=0, max_seq_length=128):
 
