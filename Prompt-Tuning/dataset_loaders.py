@@ -24,7 +24,7 @@ def boolq_loader(tokenizer, soft_prompt_length=0, max_seq_length=128):
 
     # TODO: uncomment
     # raw_dataset = load_dataset('super_glue', 'boolq', split=['train', 'validation'])
-    raw_dataset = load_dataset('super_glue', 'boolq', split=['train[0:8]', 'validation[0:8]'])
+    raw_dataset = load_dataset('super_glue', 'boolq', split=['train', 'validation'])
     # train_dataset, val_dataset = raw_dataset["train"], raw_dataset["validation"]
     train_dataset, val_dataset = raw_dataset[0], raw_dataset[1]
 
