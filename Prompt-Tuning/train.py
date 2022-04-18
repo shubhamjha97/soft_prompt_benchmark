@@ -5,6 +5,7 @@ from transformers import (
     RobertaTokenizer,
     AdamW,
     get_scheduler,
+    get_constant_schedule,
     Trainer,
     TrainingArguments,
     default_data_collator
@@ -51,12 +52,14 @@ def train(tokenizer, model, train_dataset, val_dataset, config, metrics):
             "weight_decay": config.weight_decay,
     }]
     optimizer = AdamW(optimizer_grouped_parameters, lr=config.learning_rate)
-    lr_scheduler = get_scheduler(
-        name=config.lr_scheduler_type,
-        optimizer=optimizer,
-        num_warmup_steps=config.num_warmup_steps,
-        num_training_steps=config.max_train_steps,
-    )
+    # TODO: Check
+    # lr_scheduler = get_scheduler(
+    #     name=config.lr_scheduler_type,
+    #     optimizer=optimizer,
+    #     num_warmup_steps=config.num_warmup_steps,
+    #     num_training_steps=config.max_train_steps,
+    # )
+    lr_scheduler = get_constant_schedule(optimizer=optimizer)
 
     trainer = Trainer(
         model=model,
