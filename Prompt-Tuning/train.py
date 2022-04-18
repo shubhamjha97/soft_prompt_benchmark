@@ -9,16 +9,14 @@ from transformers import (
     TrainingArguments,
     default_data_collator
 )
-from functools import partial
+
 from dataset_loaders import DATASET_LOADERS, METRIC_LOADERS
 from model import GPT2PromptTuningLM, T5PromptTuningLM, RobertaPromptTuningLM
 
 from util import compute_metric_batched
 
-import numpy as np
-
 class Config:
-    # Same default parameters as run_clm_no_trainer.py in tranformers
+    # Same default parameters as run_clm_no_trainer.py in transformers
     # https://github.com/huggingface/transformers/blob/master/examples/pytorch/language-modeling/run_clm_no_trainer.py
     num_train_epochs = 3
     weight_decay = 0.01
@@ -35,38 +33,19 @@ class Config:
     init_from_vocab = True
     # random_range = 0.5
 
-
-def cast_to_int(str):
-    try:
-        return int(str)
-    except:
-        return 0
-
-def compute_metrics(data, metric, tokenizer, config):
-    if config.model_name.startswith("t5"):
-        data_predictions = data.predictions[0]
-    else:
-        data_predictions = data.predictions
-    predictions_ids = np.argmax(data_predictions, axis=2)
-    decoded_predictions = tokenizer.batch_decode(predictions_ids, skip_special_tokens=True)
-    decoded_labels = tokenizer.batch_decode(data.label_ids, skip_special_tokens=True)
-    predictions = [cast_to_int(x) for x in decoded_predictions]
-    labels = [cast_to_int(x) for x in decoded_labels]
-    return metric.compute(predictions=predictions, references=labels)
-
 def train(tokenizer, model, train_dataset, val_dataset, config, metrics):
     model.train()
     training_args = TrainingArguments(
         output_dir="test_trainer",
-        evaluation_strategy="no", # TODO:
+        evaluation_strategy="no",
         logging_steps=config.logging_steps,
         eval_steps=config.eval_steps,
         eval_accumulation_steps=5,
         num_train_epochs=1,
-        prediction_loss_only=False # TODO: Debug
+        prediction_loss_only=False
     )
 
-    # Only update soft prompt'weights for prompt-tuning. ie, all weights in LM are set as `require_grad=False`.
+    # Only update soft prompt weights for prompt-tuning. ie, all weights in LM are set as `require_grad=False`.
     optimizer_grouped_parameters = [{
             "params": [p for n, p in model.named_parameters() if n == "soft_prompt.weight"],
             "weight_decay": config.weight_decay,
@@ -84,7 +63,7 @@ def train(tokenizer, model, train_dataset, val_dataset, config, metrics):
         args=training_args,
         train_dataset=train_dataset,
         eval_dataset=val_dataset,
-        compute_metrics=partial(compute_metrics, metric=metrics, tokenizer=tokenizer, config=config),
+        compute_metrics=None, #partial(compute_metrics, metric=metrics, tokenizer=tokenizer, config=config),
         tokenizer=tokenizer,
         data_collator=default_data_collator,
         optimizers=(optimizer, lr_scheduler)
@@ -92,7 +71,7 @@ def train(tokenizer, model, train_dataset, val_dataset, config, metrics):
 
     for epoch in range(config.num_train_epochs):
         trainer.train(resume_from_checkpoint=None) # TODO: sjha add ability to resume from checkpoint
-        computed_metrics = compute_metric_batched(trainer, metrics, tokenizer, val_dataset)
+        computed_metrics = compute_metric_batched(trainer, metrics, tokenizer, val_dataset, eval_batch_size=config.eval_batch_size)
         print(f'epoch: {epoch}, eval_metrics: {computed_metrics}')
 
     # TODO: save model every n iterations
@@ -137,26 +116,41 @@ def get_model(model_name="gpt2", n_prompt_tokens=20, init_from_vocab=True):
     return model
 
 
-@hydra.main(config_name='config')
-def main(cfg):
+def get_config(cfg):
+    config = Config()
+
     task_name, method, plm = cfg.task_name, cfg.method, cfg.plm
     task_cfg = cfg[task_name][method][plm]
 
-    config = Config()
-    config.tokenizer_name = task_cfg.tokenizer_name
     config.model_name = plm
     config.dataset = task_name
+    config.task_name = task_name
+    config.tokenizer_name = task_cfg.tokenizer_name
     config.logging_steps = cfg.logging_steps
     config.eval_steps = cfg.eval_steps
     config.learning_rate = task_cfg.learning_rate
     config.num_train_epochs = task_cfg.num_train_epochs
-    # TODO: Add other hyperparams
+    config.n_prompt_tokens = task_cfg.n_prompt_tokens
+    config.max_seq_length = task_cfg.max_seq_length
+    config.init_from_vocab = task_cfg.init_from_vocab
+    config.random_range = task_cfg.random_range
+    config.eval_batch_size = cfg.eval_batch_size
 
+    return config
+
+
+@hydra.main(config_name='config')
+def main(cfg):
+    config = get_config(cfg)
     tokenizer = get_tokenizer(config.tokenizer_name)
     model = get_model(config.model_name, config.n_prompt_tokens, config.init_from_vocab)
-    metrics = METRIC_LOADERS[task_name]()
+    metrics = METRIC_LOADERS[config.task_name]()
 
-    train_dataset, val_dataset = DATASET_LOADERS[task_name](tokenizer, config.n_prompt_tokens)
+    train_dataset, val_dataset = DATASET_LOADERS[config.task_name](
+        tokenizer,
+        soft_prompt_length=config.n_prompt_tokens,
+        max_seq_length=config.max_seq_length
+    )
     train(tokenizer, model, train_dataset, val_dataset, config, metrics)
 
 

@@ -12,7 +12,7 @@ def tokenize_dataset(dataset, tokenizer, max_source_length, max_target_length, p
 def boolq_metric_loader():
     return load_metric('super_glue', 'boolq')
 
-def boolq_loader(tokenizer, soft_prompt_length=0):
+def boolq_loader(tokenizer, soft_prompt_length=0, max_seq_length=128):
 
     def boolq_preprocessor(x, eval=False):
         src_texts = ["question:", x["question"], "passage:", x["passage"]]
@@ -22,9 +22,7 @@ def boolq_loader(tokenizer, soft_prompt_length=0):
             x['target'] = ' '.join(tgt_texts)
         return x
 
-    max_seq_length = 128 # TODO: make a param
-
-    raw_dataset = load_dataset('super_glue', 'boolq', split=['train', 'validation']) # TODO: remove slicing on val
+    raw_dataset = load_dataset('super_glue', 'boolq', split=['train', 'validation'])
     # train_dataset, val_dataset = raw_dataset["train"], raw_dataset["validation"]
     train_dataset, val_dataset = raw_dataset[0], raw_dataset[1]
 
