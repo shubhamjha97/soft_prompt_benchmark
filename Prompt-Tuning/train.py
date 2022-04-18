@@ -13,7 +13,7 @@ from functools import partial
 from dataset_loaders import DATASET_LOADERS, METRIC_LOADERS
 from model import GPT2PromptTuningLM, T5PromptTuningLM, RobertaPromptTuningLM
 
-from .util import compute_metric_batched
+from util import compute_metric_batched
 
 import numpy as np
 
