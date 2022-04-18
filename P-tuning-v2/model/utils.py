@@ -12,7 +12,8 @@ from model.sequence_classification import (
     BertPromptForSequenceClassification,
     RobertaPrefixForSequenceClassification,
     RobertaPromptForSequenceClassification,
-    DebertaPrefixForSequenceClassification
+    DebertaPrefixForSequenceClassification,
+    T5BasePrefixForSequenceClassification
 )
 
 from model.question_answering import (
@@ -65,6 +66,12 @@ PREFIX_MODELS = {
     "deberta-v2": {
         TaskType.TOKEN_CLASSIFICATION: DebertaV2PrefixForTokenClassification,
         TaskType.SEQUENCE_CLASSIFICATION: None,
+        TaskType.QUESTION_ANSWERING: None,
+        TaskType.MULTIPLE_CHOICE: None,
+    },
+    "t5": {
+        TaskType.TOKEN_CLASSIFICATION: None,
+        TaskType.SEQUENCE_CLASSIFICATION: T5BasePrefixForSequenceClassification,
         TaskType.QUESTION_ANSWERING: None,
         TaskType.MULTIPLE_CHOICE: None,
     }
