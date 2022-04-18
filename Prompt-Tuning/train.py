@@ -13,6 +13,8 @@ from functools import partial
 from dataset_loaders import DATASET_LOADERS, METRIC_LOADERS
 from model import GPT2PromptTuningLM, T5PromptTuningLM, RobertaPromptTuningLM
 
+from .util import compute_metric_batched
+
 import numpy as np
 
 class Config:
@@ -56,10 +58,11 @@ def train(tokenizer, model, train_dataset, val_dataset, config, metrics):
     model.train()
     training_args = TrainingArguments(
         output_dir="test_trainer",
-        evaluation_strategy="steps",
+        evaluation_strategy="no", # TODO:
         logging_steps=config.logging_steps,
         eval_steps=config.eval_steps,
         eval_accumulation_steps=5,
+        num_train_epochs=1,
         prediction_loss_only=False # TODO: Debug
     )
 
@@ -86,7 +89,11 @@ def train(tokenizer, model, train_dataset, val_dataset, config, metrics):
         data_collator=default_data_collator,
         optimizers=(optimizer, lr_scheduler)
     )
-    trainer.train(resume_from_checkpoint=None) # TODO: sjha add ability to resume from checkpoint
+
+    for epoch in range(config.num_train_epochs):
+        trainer.train(resume_from_checkpoint=None) # TODO: sjha add ability to resume from checkpoint
+        metrics = compute_metric_batched(trainer, metrics, tokenizer, val_dataset)
+        print(f'epoch: {epoch}, metrics: {metrics}')
 
     # TODO: save model every n iterations
     save_dir_path = "."
@@ -142,6 +149,7 @@ def main(cfg):
     config.logging_steps = cfg.logging_steps
     config.eval_steps = cfg.eval_steps
     config.learning_rate = task_cfg.learning_rate
+    config.num_train_epochs = task_cfg.num_train_epochs
     # TODO: Add other hyperparams
 
     tokenizer = get_tokenizer(config.tokenizer_name)

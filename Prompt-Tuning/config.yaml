@@ -10,9 +10,12 @@ boolq:
     gpt2:
       tokenizer_name: gpt2
       learning_rate: 0.01
+      num_train_epochs: 100
     t5-base:
       tokenizer_name: t5-base
       learning_rate: 0.001
+      num_train_epochs: 100
     roberta-base:
       tokenizer_name: roberta-base
       learning_rate: 0.001
+      num_train_epochs: 100
