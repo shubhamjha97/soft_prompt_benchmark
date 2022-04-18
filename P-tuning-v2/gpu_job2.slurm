@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=P-Tuning-v2-boolq
+#SBATCH --job-name=P-Tuning-v2-rte-t5
 #SBATCH --open-mode=append
 #SBATCH --output=/scratch/ask9126/%j_%x.out
 #SBATCH --error=/scratch/ask9126/%j_%x.err
@@ -22,5 +22,6 @@ conda create -n pt2 python=3.8.5
 conda activate pt2
 conda install -n pt2 pytorch==1.7.1 torchvision==0.8.2 torchaudio==0.7.2 cudatoolkit=11.0 -c pytorch
 pip install -r requirements.txt
-bash run_script/run_boolq_roberta.sh
+bash run_script/run_rte_t5.sh
 "
+
