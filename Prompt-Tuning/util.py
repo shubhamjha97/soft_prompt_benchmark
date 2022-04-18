@@ -24,7 +24,7 @@ def predictions_to_labels(data, tokenizer):
 
 def compute_metric_batched(trainer, metric, tokenizer, test_data):
     all_preds, all_labels = [], []
-    eval_batch_size = 256
+    eval_batch_size = 512
     for ix in range(0, len(test_data), eval_batch_size):
         test_batch = Dataset.from_dict(test_data[ix:ix+eval_batch_size])
         pred_data = trainer.predict(test_batch)
