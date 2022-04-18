@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=t5_boolq_prompt
+#SBATCH --job-name=t5_roberta_prompt
 #SBATCH --open-mode=append
 #SBATCH --output=/scratch/sj3549/slurm_logs/%j_%x.out
 #SBATCH --error=/scratch/sj3549/slurm_logs/%j_%x.err
