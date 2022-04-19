@@ -13,7 +13,10 @@ from model.sequence_classification import (
     RobertaPrefixForSequenceClassification,
     RobertaPromptForSequenceClassification,
     DebertaPrefixForSequenceClassification,
-    T5BasePrefixForSequenceClassification
+    T5BasePrefixForSequenceClassification,
+    GPT2BasePrefixForSequenceClassification,
+
+
 )
 
 from model.question_answering import (
@@ -72,6 +75,12 @@ PREFIX_MODELS = {
     "t5": {
         TaskType.TOKEN_CLASSIFICATION: None,
         TaskType.SEQUENCE_CLASSIFICATION: T5BasePrefixForSequenceClassification,
+        TaskType.QUESTION_ANSWERING: None,
+        TaskType.MULTIPLE_CHOICE: None,
+    },
+    "gpt2": {
+        TaskType.TOKEN_CLASSIFICATION: None,
+        TaskType.SEQUENCE_CLASSIFICATION: GPT2BasePrefixForSequenceClassification,
         TaskType.QUESTION_ANSWERING: None,
         TaskType.MULTIPLE_CHOICE: None,
     }

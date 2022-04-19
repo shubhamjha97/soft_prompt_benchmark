@@ -27,6 +27,7 @@ class SuperGlueDataset():
     def __init__(self, tokenizer: AutoTokenizer, data_args, training_args) -> None:
         super().__init__()
         raw_datasets = load_dataset("super_glue", data_args.dataset_name)
+        tokenizer.pad_token = '<pad>'
         self.tokenizer = tokenizer
         self.data_args = data_args
 
