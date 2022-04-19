@@ -11,7 +11,7 @@ boolq:
     gpt2:
       tokenizer_name: gpt2
       learning_rate: 0.01
-      num_train_epochs: 100
+      num_train_epochs: 1000
       max_seq_length: 128
       n_prompt_tokens: 20
       init_from_vocab: true
@@ -19,15 +19,23 @@ boolq:
     t5-base:
       tokenizer_name: t5-base
       learning_rate: 0.001
-      num_train_epochs: 100
+      num_train_epochs: 1000
       max_seq_length: 128
       n_prompt_tokens: 20
-      init_from_vocab: true
+      init_from_vocab: false
       random_range: 0.5
     roberta-base:
       tokenizer_name: roberta-base
       learning_rate: 0.001
-      num_train_epochs: 100
+      num_train_epochs: 1000
+      max_seq_length: 128
+      n_prompt_tokens: 20
+      init_from_vocab: true
+      random_range: 0.5
+    t5-large:
+      tokenizer_name: t5-base
+      learning_rate: 0.001
+      num_train_epochs: 1000
       max_seq_length: 128
       n_prompt_tokens: 20
       init_from_vocab: true

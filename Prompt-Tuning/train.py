@@ -66,7 +66,7 @@ def train(tokenizer, model, train_dataset, val_dataset, config, metrics):
         args=training_args,
         train_dataset=train_dataset,
         eval_dataset=val_dataset,
-        compute_metrics=None, #partial(compute_metrics, metric=metrics, tokenizer=tokenizer, config=config),
+        compute_metrics=None,
         tokenizer=tokenizer,
         data_collator=default_data_collator,
         optimizers=(optimizer, lr_scheduler)
@@ -74,7 +74,8 @@ def train(tokenizer, model, train_dataset, val_dataset, config, metrics):
 
     for epoch in range(config.num_train_epochs):
         trainer.train(resume_from_checkpoint=None) # TODO: sjha add ability to resume from checkpoint
-        computed_metrics = compute_metric_batched(trainer, metrics, tokenizer, val_dataset, eval_batch_size=config.eval_batch_size)
+        computed_metrics = compute_metric_batched(trainer, metrics, tokenizer, val_dataset,
+                                                  eval_batch_size=config.eval_batch_size, config=config)
         print(f'epoch: {epoch}, eval_metrics: {computed_metrics}')
 
     # TODO: save model every n iterations

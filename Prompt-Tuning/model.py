@@ -71,7 +71,7 @@ class BasePromptTuningMixin:
         if initialize_from_vocab:
             init_prompt_value = self._get_embedding_layer().weight[:n_tokens].clone().detach()
         else:
-            init_prompt_value = torch.FloatTensor(2, 10).uniform_(
+            init_prompt_value = torch.FloatTensor(self.n_tokens, self._get_embedding_layer().weight.shape[1]).uniform_(
                 -random_range, random_range
             )
         self.soft_prompt = nn.Embedding(n_tokens, self.embedding_dim)
@@ -243,6 +243,7 @@ class GPTPromptTuningMixin:
             ],
             dim=1,
         )
+
 
     def _extend_attention_mask(self, attention_mask):
 
