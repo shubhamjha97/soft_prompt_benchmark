@@ -1,0 +1,143 @@
+WARNING: A conda environment already exists at '/home/ask9126/.conda/envs/pt2'
+Remove existing environment (y/[n])? 
+Collecting package metadata (current_repodata.json): ...working... done
+Solving environment: ...working... done
+
+# All requested packages already installed.
+
+Requirement already satisfied: datasets==1.15.1 in /scratch/ask9126/.conda/envs/pt2/lib/python3.8/site-packages (from -r requirements.txt (line 1)) (1.15.1)
+Requirement already satisfied: numpy==1.19.2 in /scratch/ask9126/.conda/envs/pt2/lib/python3.8/site-packages (from -r requirements.txt (line 2)) (1.19.2)
+Requirement already satisfied: tqdm==4.62.3 in /scratch/ask9126/.conda/envs/pt2/lib/python3.8/site-packages (from -r requirements.txt (line 3)) (4.62.3)
+Requirement already satisfied: transformers==4.11.3 in /scratch/ask9126/.conda/envs/pt2/lib/python3.8/site-packages (from -r requirements.txt (line 4)) (4.11.3)
+Requirement already satisfied: seqeval==1.2.2 in /scratch/ask9126/.conda/envs/pt2/lib/python3.8/site-packages (from -r requirements.txt (line 5)) (1.2.2)
+Requirement already satisfied: dill in /home/ask9126/.local/lib/python3.8/site-packages (from datasets==1.15.1->-r requirements.txt (line 1)) (0.3.4)
+Requirement already satisfied: pandas in /scratch/ask9126/.conda/envs/pt2/lib/python3.8/site-packages (from datasets==1.15.1->-r requirements.txt (line 1)) (1.4.2)
+Requirement already satisfied: xxhash in /home/ask9126/.local/lib/python3.8/site-packages (from datasets==1.15.1->-r requirements.txt (line 1)) (3.0.0)
+Requirement already satisfied: pyarrow!=4.0.0,>=1.0.0 in /home/ask9126/.local/lib/python3.8/site-packages (from datasets==1.15.1->-r requirements.txt (line 1)) (7.0.0)
+Requirement already satisfied: multiprocess in /scratch/ask9126/.conda/envs/pt2/lib/python3.8/site-packages (from datasets==1.15.1->-r requirements.txt (line 1)) (0.70.12.2)
+Requirement already satisfied: fsspec[http]>=2021.05.0 in /scratch/ask9126/.conda/envs/pt2/lib/python3.8/site-packages (from datasets==1.15.1->-r requirements.txt (line 1)) (2022.3.0)
+Requirement already satisfied: huggingface-hub<1.0.0,>=0.1.0 in /home/ask9126/.local/lib/python3.8/site-packages (from datasets==1.15.1->-r requirements.txt (line 1)) (0.4.0)
+Requirement already satisfied: packaging in /scratch/ask9126/.conda/envs/pt2/lib/python3.8/site-packages (from datasets==1.15.1->-r requirements.txt (line 1)) (21.3)
+Requirement already satisfied: requests>=2.19.0 in /scratch/ask9126/.conda/envs/pt2/lib/python3.8/site-packages (from datasets==1.15.1->-r requirements.txt (line 1)) (2.27.1)
+Requirement already satisfied: aiohttp in /scratch/ask9126/.conda/envs/pt2/lib/python3.8/site-packages (from datasets==1.15.1->-r requirements.txt (line 1)) (3.8.1)
+Requirement already satisfied: sacremoses in /home/ask9126/.local/lib/python3.8/site-packages (from transformers==4.11.3->-r requirements.txt (line 4)) (0.0.47)
+Requirement already satisfied: filelock in /scratch/ask9126/.conda/envs/pt2/lib/python3.8/site-packages (from transformers==4.11.3->-r requirements.txt (line 4)) (3.6.0)
+Requirement already satisfied: regex!=2019.12.17 in /home/ask9126/.local/lib/python3.8/site-packages (from transformers==4.11.3->-r requirements.txt (line 4)) (2022.3.2)
+Requirement already satisfied: tokenizers<0.11,>=0.10.1 in /scratch/ask9126/.conda/envs/pt2/lib/python3.8/site-packages (from transformers==4.11.3->-r requirements.txt (line 4)) (0.10.3)
+Requirement already satisfied: pyyaml>=5.1 in /scratch/ask9126/.conda/envs/pt2/lib/python3.8/site-packages (from transformers==4.11.3->-r requirements.txt (line 4)) (6.0)
+Requirement already satisfied: scikit-learn>=0.21.3 in /scratch/ask9126/.conda/envs/pt2/lib/python3.8/site-packages (from seqeval==1.2.2->-r requirements.txt (line 5)) (1.0.2)
+Requirement already satisfied: typing-extensions>=3.7.4.3 in /home/ask9126/.local/lib/python3.8/site-packages (from huggingface-hub<1.0.0,>=0.1.0->datasets==1.15.1->-r requirements.txt (line 1)) (4.1.1)
+Requirement already satisfied: pyparsing!=3.0.5,>=2.0.2 in /scratch/ask9126/.conda/envs/pt2/lib/python3.8/site-packages (from packaging->datasets==1.15.1->-r requirements.txt (line 1)) (3.0.8)
+Requirement already satisfied: idna<4,>=2.5 in /scratch/ask9126/.conda/envs/pt2/lib/python3.8/site-packages (from requests>=2.19.0->datasets==1.15.1->-r requirements.txt (line 1)) (3.3)
+Requirement already satisfied: certifi>=2017.4.17 in /scratch/ask9126/.conda/envs/pt2/lib/python3.8/site-packages (from requests>=2.19.0->datasets==1.15.1->-r requirements.txt (line 1)) (2021.10.8)
+Requirement already satisfied: charset-normalizer~=2.0.0 in /scratch/ask9126/.conda/envs/pt2/lib/python3.8/site-packages (from requests>=2.19.0->datasets==1.15.1->-r requirements.txt (line 1)) (2.0.12)
+Requirement already satisfied: urllib3<1.27,>=1.21.1 in /scratch/ask9126/.conda/envs/pt2/lib/python3.8/site-packages (from requests>=2.19.0->datasets==1.15.1->-r requirements.txt (line 1)) (1.26.9)
+Requirement already satisfied: joblib>=0.11 in /scratch/ask9126/.conda/envs/pt2/lib/python3.8/site-packages (from scikit-learn>=0.21.3->seqeval==1.2.2->-r requirements.txt (line 5)) (1.1.0)
+Requirement already satisfied: threadpoolctl>=2.0.0 in /scratch/ask9126/.conda/envs/pt2/lib/python3.8/site-packages (from scikit-learn>=0.21.3->seqeval==1.2.2->-r requirements.txt (line 5)) (3.1.0)
+Requirement already satisfied: scipy>=1.1.0 in /scratch/ask9126/.conda/envs/pt2/lib/python3.8/site-packages (from scikit-learn>=0.21.3->seqeval==1.2.2->-r requirements.txt (line 5)) (1.8.0)
+Requirement already satisfied: frozenlist>=1.1.1 in /scratch/ask9126/.conda/envs/pt2/lib/python3.8/site-packages (from aiohttp->datasets==1.15.1->-r requirements.txt (line 1)) (1.3.0)
+Requirement already satisfied: multidict<7.0,>=4.5 in /scratch/ask9126/.conda/envs/pt2/lib/python3.8/site-packages (from aiohttp->datasets==1.15.1->-r requirements.txt (line 1)) (6.0.2)
+Requirement already satisfied: attrs>=17.3.0 in /scratch/ask9126/.conda/envs/pt2/lib/python3.8/site-packages (from aiohttp->datasets==1.15.1->-r requirements.txt (line 1)) (21.4.0)
+Requirement already satisfied: aiosignal>=1.1.2 in /scratch/ask9126/.conda/envs/pt2/lib/python3.8/site-packages (from aiohttp->datasets==1.15.1->-r requirements.txt (line 1)) (1.2.0)
+Requirement already satisfied: async-timeout<5.0,>=4.0.0a3 in /scratch/ask9126/.conda/envs/pt2/lib/python3.8/site-packages (from aiohttp->datasets==1.15.1->-r requirements.txt (line 1)) (4.0.2)
+Requirement already satisfied: yarl<2.0,>=1.0 in /scratch/ask9126/.conda/envs/pt2/lib/python3.8/site-packages (from aiohttp->datasets==1.15.1->-r requirements.txt (line 1)) (1.7.2)
+Requirement already satisfied: pytz>=2020.1 in /scratch/ask9126/.conda/envs/pt2/lib/python3.8/site-packages (from pandas->datasets==1.15.1->-r requirements.txt (line 1)) (2022.1)
+Requirement already satisfied: python-dateutil>=2.8.1 in /scratch/ask9126/.conda/envs/pt2/lib/python3.8/site-packages (from pandas->datasets==1.15.1->-r requirements.txt (line 1)) (2.8.2)
+Requirement already satisfied: six>=1.5 in /scratch/ask9126/.conda/envs/pt2/lib/python3.8/site-packages (from python-dateutil>=2.8.1->pandas->datasets==1.15.1->-r requirements.txt (line 1)) (1.16.0)
+Requirement already satisfied: click in /home/ask9126/.local/lib/python3.8/site-packages (from sacremoses->transformers==4.11.3->-r requirements.txt (line 4)) (8.0.4)
+04/18/2022 21:35:06 - WARNING - __main__ - Process rank: -1, device: cuda:0, n_gpu: 1distributed training: False, 16-bits training: False
+04/18/2022 21:35:06 - INFO - __main__ - Training/evaluation parameters TrainingArguments(
+_n_gpu=1,
+adafactor=False,
+adam_beta1=0.9,
+adam_beta2=0.999,
+adam_epsilon=1e-08,
+dataloader_drop_last=False,
+dataloader_num_workers=0,
+dataloader_pin_memory=True,
+ddp_find_unused_parameters=None,
+debug=[],
+deepspeed=None,
+disable_tqdm=False,
+do_eval=True,
+do_predict=False,
+do_train=True,
+eval_accumulation_steps=None,
+eval_steps=None,
+evaluation_strategy=IntervalStrategy.EPOCH,
+fp16=False,
+fp16_backend=auto,
+fp16_full_eval=False,
+fp16_opt_level=O1,
+gradient_accumulation_steps=1,
+gradient_checkpointing=False,
+greater_is_better=None,
+group_by_length=False,
+hub_model_id=None,
+hub_strategy=HubStrategy.EVERY_SAVE,
+hub_token=<HUB_TOKEN>,
+ignore_data_skip=False,
+label_names=None,
+label_smoothing_factor=0.0,
+learning_rate=0.005,
+length_column_name=length,
+load_best_model_at_end=False,
+local_rank=-1,
+log_level=-1,
+log_level_replica=-1,
+log_on_each_node=True,
+logging_dir=checkpoints/rte-t5-base/runs/Apr18_21-35-06_b-3-114,
+logging_first_step=False,
+logging_nan_inf_filter=True,
+logging_steps=500,
+logging_strategy=IntervalStrategy.STEPS,
+lr_scheduler_type=SchedulerType.LINEAR,
+max_grad_norm=1.0,
+max_steps=-1,
+metric_for_best_model=None,
+mp_parameters=,
+no_cuda=False,
+num_train_epochs=100.0,
+output_dir=checkpoints/rte-t5-base/,
+overwrite_output_dir=True,
+past_index=-1,
+per_device_eval_batch_size=8,
+per_device_train_batch_size=32,
+prediction_loss_only=False,
+push_to_hub=False,
+push_to_hub_model_id=None,
+push_to_hub_organization=None,
+push_to_hub_token=<PUSH_TO_HUB_TOKEN>,
+remove_unused_columns=True,
+report_to=[],
+resume_from_checkpoint=None,
+run_name=checkpoints/rte-t5-base/,
+save_on_each_node=False,
+save_steps=500,
+save_strategy=IntervalStrategy.NO,
+save_total_limit=None,
+seed=11,
+sharded_ddp=[],
+skip_memory_metrics=True,
+tpu_metrics_debug=False,
+tpu_num_cores=None,
+use_legacy_prediction_loop=False,
+warmup_ratio=0.0,
+warmup_steps=0,
+weight_decay=0.0,
+xpu_backend=None,
+)
+04/18/2022 21:35:08 - INFO - datasets.info - Loading Dataset Infos from /home/ask9126/.cache/huggingface/modules/datasets_modules/datasets/super_glue/2fb163bca9085c1deb906aff20f00c242227ff704a4e8c9cfdfe820be3abfc83
+04/18/2022 21:35:08 - INFO - datasets.builder - Overwrite dataset info from restored data version.
+04/18/2022 21:35:08 - INFO - datasets.info - Loading Dataset info from /home/ask9126/.cache/huggingface/datasets/super_glue/rte/1.0.2/2fb163bca9085c1deb906aff20f00c242227ff704a4e8c9cfdfe820be3abfc83
+04/18/2022 21:35:08 - WARNING - datasets.builder - Reusing dataset super_glue (/home/ask9126/.cache/huggingface/datasets/super_glue/rte/1.0.2/2fb163bca9085c1deb906aff20f00c242227ff704a4e8c9cfdfe820be3abfc83)
+04/18/2022 21:35:08 - INFO - datasets.info - Loading Dataset info from /home/ask9126/.cache/huggingface/datasets/super_glue/rte/1.0.2/2fb163bca9085c1deb906aff20f00c242227ff704a4e8c9cfdfe820be3abfc83
+{'entailment': 0, 'not_entailment': 1}
+{0: 'entailment', 1: 'not_entailment'}
+04/18/2022 21:35:08 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at /home/ask9126/.cache/huggingface/datasets/super_glue/rte/1.0.2/2fb163bca9085c1deb906aff20f00c242227ff704a4e8c9cfdfe820be3abfc83/cache-c05bd996f4c95b50.arrow
+04/18/2022 21:35:08 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at /home/ask9126/.cache/huggingface/datasets/super_glue/rte/1.0.2/2fb163bca9085c1deb906aff20f00c242227ff704a4e8c9cfdfe820be3abfc83/cache-cf1a9826740600f8.arrow
+04/18/2022 21:35:08 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at /home/ask9126/.cache/huggingface/datasets/super_glue/rte/1.0.2/2fb163bca9085c1deb906aff20f00c242227ff704a4e8c9cfdfe820be3abfc83/cache-546f6e9a14601f7e.arrow
+04/18/2022 21:35:09 - INFO - tasks.superglue.get_trainer - Sample 1852 of the training set: {'attention_mask': [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 'hypothesis': 'Wilkins became the captain of Chelsea in 1975.', 'idx': 1852, 'input_ids': [86, 16312, 6, 3, 9, 957, 215, 625, 8540, 7815, 47, 14014, 8, 14268, 75, 63, 13, 14373, 6, 3, 3565, 8, 3053, 13, 17813, 11, 72, 1906, 1508, 16, 8, 12025, 5, 1, 8540, 7815, 1632, 8, 14268, 13, 14373, 16, 16312, 5, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 'label': 0, 'premise': 'In 1975, a 19 year old Wilkins was handed the captaincy of Chelsea, despite the presence of elder and more experienced players in the squad.'}.
+04/18/2022 21:35:09 - INFO - tasks.superglue.get_trainer - Sample 2292 of the training set: {'attention_mask': [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 'hypothesis': 'Hubble discovers black holes.', 'idx': 2292, 'input_ids': [10261, 2296, 19, 2022, 3, 12466, 277, 11185, 11837, 8, 1246, 13, 8, 8084, 57, 1260, 4034, 2357, 7, 12, 7466, 8606, 15, 7, 6, 46, 359, 26840, 21, 3, 25956, 1246, 5, 10261, 2296, 3629, 8, 2357, 7, 12, 10678, 53, 7466, 8606, 15, 7, 57, 2342, 4034, 96, 8770, 5950, 17334, 976, 3, 9, 534, 853, 13, 3, 4801, 7, 1014, 2213, 718, 1064, 102, 88, 23, 26, 11445, 5, 506, 6, 16, 919, 6, 33, 271, 261, 12, 22266, 342, 72, 4322, 7728, 5950, 17334, 5, 1, 10261, 2296, 2928, 7, 1001, 8034, 5, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 'label': 1, 'premise': 'Hubble is helping astronomers precisely calculate the age of the universe by providing accurate distances to galaxies, an important prerequisite for calculating age. Hubble measures the distances to neighboring galaxies by finding accurate "milepost markers," a special class of pulsating star called Cepheid variables. These, in turn, are being used to calibrate more remote milepost markers.'}.
+04/18/2022 21:35:09 - INFO - tasks.superglue.get_trainer - Sample 1907 of the training set: {'attention_mask': [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 'hypothesis': 'Stephen Hawking is a physicist.', 'idx': 1907, 'input_ids': [466, 4516, 6, 3, 9, 2077, 166, 4382, 57, 11375, 890, 4008, 11, 557, 30310, 26, 57, 2390, 38, 17, 29006, 7, 447, 343, 7872, 12833, 53, 6, 2762, 7, 12, 253, 3, 9, 712, 356, 13, 13850, 7, 24, 54, 3209, 66, 8, 4431, 3859, 16, 8, 8084, 10, 18076, 6, 9281, 7493, 1582, 159, 51, 6, 11, 8, 1101, 11, 5676, 6076, 3859, 859, 769, 29, 76, 2482, 291, 14219, 5, 1, 7872, 12833, 53, 19, 3, 9, 3, 6941, 7, 447, 343, 5, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 'label': 0, 'premise': 'That theory, a concept first proposed by Albert Einstein and often reiterated by British astrophysicist Stephen Hawking, seeks to find a single set of equations that can explain all the fundamental forces in the universe: gravity, electromagnetism, and the strong and weak interactive forces among subnuclear particles.'}.
+total param is 6293506

@@ -1,0 +1,233 @@
+WARNING: A conda environment already exists at '/home/ask9126/.conda/envs/pt2'
+Remove existing environment (y/[n])? 
+Collecting package metadata (current_repodata.json): ...working... done
+Solving environment: ...working... done
+
+# All requested packages already installed.
+
+Requirement already satisfied: datasets==1.15.1 in /scratch/ask9126/.conda/envs/pt2/lib/python3.8/site-packages (from -r requirements.txt (line 1)) (1.15.1)
+Requirement already satisfied: numpy==1.19.2 in /scratch/ask9126/.conda/envs/pt2/lib/python3.8/site-packages (from -r requirements.txt (line 2)) (1.19.2)
+Requirement already satisfied: tqdm==4.62.3 in /scratch/ask9126/.conda/envs/pt2/lib/python3.8/site-packages (from -r requirements.txt (line 3)) (4.62.3)
+Requirement already satisfied: transformers==4.11.3 in /scratch/ask9126/.conda/envs/pt2/lib/python3.8/site-packages (from -r requirements.txt (line 4)) (4.11.3)
+Requirement already satisfied: seqeval==1.2.2 in /scratch/ask9126/.conda/envs/pt2/lib/python3.8/site-packages (from -r requirements.txt (line 5)) (1.2.2)
+Requirement already satisfied: aiohttp in /scratch/ask9126/.conda/envs/pt2/lib/python3.8/site-packages (from datasets==1.15.1->-r requirements.txt (line 1)) (3.8.1)
+Requirement already satisfied: requests>=2.19.0 in /scratch/ask9126/.conda/envs/pt2/lib/python3.8/site-packages (from datasets==1.15.1->-r requirements.txt (line 1)) (2.27.1)
+Requirement already satisfied: pandas in /scratch/ask9126/.conda/envs/pt2/lib/python3.8/site-packages (from datasets==1.15.1->-r requirements.txt (line 1)) (1.4.2)
+Requirement already satisfied: packaging in /scratch/ask9126/.conda/envs/pt2/lib/python3.8/site-packages (from datasets==1.15.1->-r requirements.txt (line 1)) (21.3)
+Requirement already satisfied: fsspec[http]>=2021.05.0 in /scratch/ask9126/.conda/envs/pt2/lib/python3.8/site-packages (from datasets==1.15.1->-r requirements.txt (line 1)) (2022.3.0)
+Requirement already satisfied: pyarrow!=4.0.0,>=1.0.0 in /home/ask9126/.local/lib/python3.8/site-packages (from datasets==1.15.1->-r requirements.txt (line 1)) (7.0.0)
+Requirement already satisfied: multiprocess in /scratch/ask9126/.conda/envs/pt2/lib/python3.8/site-packages (from datasets==1.15.1->-r requirements.txt (line 1)) (0.70.12.2)
+Requirement already satisfied: xxhash in /home/ask9126/.local/lib/python3.8/site-packages (from datasets==1.15.1->-r requirements.txt (line 1)) (3.0.0)
+Requirement already satisfied: huggingface-hub<1.0.0,>=0.1.0 in /home/ask9126/.local/lib/python3.8/site-packages (from datasets==1.15.1->-r requirements.txt (line 1)) (0.4.0)
+Requirement already satisfied: dill in /home/ask9126/.local/lib/python3.8/site-packages (from datasets==1.15.1->-r requirements.txt (line 1)) (0.3.4)
+Requirement already satisfied: sacremoses in /home/ask9126/.local/lib/python3.8/site-packages (from transformers==4.11.3->-r requirements.txt (line 4)) (0.0.47)
+Requirement already satisfied: filelock in /scratch/ask9126/.conda/envs/pt2/lib/python3.8/site-packages (from transformers==4.11.3->-r requirements.txt (line 4)) (3.6.0)
+Requirement already satisfied: tokenizers<0.11,>=0.10.1 in /scratch/ask9126/.conda/envs/pt2/lib/python3.8/site-packages (from transformers==4.11.3->-r requirements.txt (line 4)) (0.10.3)
+Requirement already satisfied: regex!=2019.12.17 in /home/ask9126/.local/lib/python3.8/site-packages (from transformers==4.11.3->-r requirements.txt (line 4)) (2022.3.2)
+Requirement already satisfied: pyyaml>=5.1 in /scratch/ask9126/.conda/envs/pt2/lib/python3.8/site-packages (from transformers==4.11.3->-r requirements.txt (line 4)) (6.0)
+Requirement already satisfied: scikit-learn>=0.21.3 in /scratch/ask9126/.conda/envs/pt2/lib/python3.8/site-packages (from seqeval==1.2.2->-r requirements.txt (line 5)) (1.0.2)
+Requirement already satisfied: typing-extensions>=3.7.4.3 in /home/ask9126/.local/lib/python3.8/site-packages (from huggingface-hub<1.0.0,>=0.1.0->datasets==1.15.1->-r requirements.txt (line 1)) (4.1.1)
+Requirement already satisfied: pyparsing!=3.0.5,>=2.0.2 in /scratch/ask9126/.conda/envs/pt2/lib/python3.8/site-packages (from packaging->datasets==1.15.1->-r requirements.txt (line 1)) (3.0.8)
+Requirement already satisfied: idna<4,>=2.5 in /scratch/ask9126/.conda/envs/pt2/lib/python3.8/site-packages (from requests>=2.19.0->datasets==1.15.1->-r requirements.txt (line 1)) (3.3)
+Requirement already satisfied: certifi>=2017.4.17 in /scratch/ask9126/.conda/envs/pt2/lib/python3.8/site-packages (from requests>=2.19.0->datasets==1.15.1->-r requirements.txt (line 1)) (2021.10.8)
+Requirement already satisfied: urllib3<1.27,>=1.21.1 in /scratch/ask9126/.conda/envs/pt2/lib/python3.8/site-packages (from requests>=2.19.0->datasets==1.15.1->-r requirements.txt (line 1)) (1.26.9)
+Requirement already satisfied: charset-normalizer~=2.0.0 in /scratch/ask9126/.conda/envs/pt2/lib/python3.8/site-packages (from requests>=2.19.0->datasets==1.15.1->-r requirements.txt (line 1)) (2.0.12)
+Requirement already satisfied: threadpoolctl>=2.0.0 in /scratch/ask9126/.conda/envs/pt2/lib/python3.8/site-packages (from scikit-learn>=0.21.3->seqeval==1.2.2->-r requirements.txt (line 5)) (3.1.0)
+Requirement already satisfied: joblib>=0.11 in /scratch/ask9126/.conda/envs/pt2/lib/python3.8/site-packages (from scikit-learn>=0.21.3->seqeval==1.2.2->-r requirements.txt (line 5)) (1.1.0)
+Requirement already satisfied: scipy>=1.1.0 in /scratch/ask9126/.conda/envs/pt2/lib/python3.8/site-packages (from scikit-learn>=0.21.3->seqeval==1.2.2->-r requirements.txt (line 5)) (1.8.0)
+Requirement already satisfied: yarl<2.0,>=1.0 in /scratch/ask9126/.conda/envs/pt2/lib/python3.8/site-packages (from aiohttp->datasets==1.15.1->-r requirements.txt (line 1)) (1.7.2)
+Requirement already satisfied: async-timeout<5.0,>=4.0.0a3 in /scratch/ask9126/.conda/envs/pt2/lib/python3.8/site-packages (from aiohttp->datasets==1.15.1->-r requirements.txt (line 1)) (4.0.2)
+Requirement already satisfied: aiosignal>=1.1.2 in /scratch/ask9126/.conda/envs/pt2/lib/python3.8/site-packages (from aiohttp->datasets==1.15.1->-r requirements.txt (line 1)) (1.2.0)
+Requirement already satisfied: multidict<7.0,>=4.5 in /scratch/ask9126/.conda/envs/pt2/lib/python3.8/site-packages (from aiohttp->datasets==1.15.1->-r requirements.txt (line 1)) (6.0.2)
+Requirement already satisfied: attrs>=17.3.0 in /scratch/ask9126/.conda/envs/pt2/lib/python3.8/site-packages (from aiohttp->datasets==1.15.1->-r requirements.txt (line 1)) (21.4.0)
+Requirement already satisfied: frozenlist>=1.1.1 in /scratch/ask9126/.conda/envs/pt2/lib/python3.8/site-packages (from aiohttp->datasets==1.15.1->-r requirements.txt (line 1)) (1.3.0)
+Requirement already satisfied: pytz>=2020.1 in /scratch/ask9126/.conda/envs/pt2/lib/python3.8/site-packages (from pandas->datasets==1.15.1->-r requirements.txt (line 1)) (2022.1)
+Requirement already satisfied: python-dateutil>=2.8.1 in /scratch/ask9126/.conda/envs/pt2/lib/python3.8/site-packages (from pandas->datasets==1.15.1->-r requirements.txt (line 1)) (2.8.2)
+Requirement already satisfied: six>=1.5 in /scratch/ask9126/.conda/envs/pt2/lib/python3.8/site-packages (from python-dateutil>=2.8.1->pandas->datasets==1.15.1->-r requirements.txt (line 1)) (1.16.0)
+Requirement already satisfied: click in /home/ask9126/.local/lib/python3.8/site-packages (from sacremoses->transformers==4.11.3->-r requirements.txt (line 4)) (8.0.4)
+04/17/2022 21:25:33 - WARNING - __main__ - Process rank: -1, device: cuda:0, n_gpu: 1distributed training: False, 16-bits training: False
+04/17/2022 21:25:33 - INFO - __main__ - Training/evaluation parameters TrainingArguments(
+_n_gpu=1,
+adafactor=False,
+adam_beta1=0.9,
+adam_beta2=0.999,
+adam_epsilon=1e-08,
+dataloader_drop_last=False,
+dataloader_num_workers=0,
+dataloader_pin_memory=True,
+ddp_find_unused_parameters=None,
+debug=[],
+deepspeed=None,
+disable_tqdm=False,
+do_eval=True,
+do_predict=False,
+do_train=True,
+eval_accumulation_steps=None,
+eval_steps=None,
+evaluation_strategy=IntervalStrategy.EPOCH,
+fp16=False,
+fp16_backend=auto,
+fp16_full_eval=False,
+fp16_opt_level=O1,
+gradient_accumulation_steps=1,
+gradient_checkpointing=False,
+greater_is_better=None,
+group_by_length=False,
+hub_model_id=None,
+hub_strategy=HubStrategy.EVERY_SAVE,
+hub_token=<HUB_TOKEN>,
+ignore_data_skip=False,
+label_names=None,
+label_smoothing_factor=0.0,
+learning_rate=0.01,
+length_column_name=length,
+load_best_model_at_end=False,
+local_rank=-1,
+log_level=-1,
+log_level_replica=-1,
+log_on_each_node=True,
+logging_dir=checkpoints/wsc-bert/runs/Apr17_21-25-33_b-3-105,
+logging_first_step=False,
+logging_nan_inf_filter=True,
+logging_steps=500,
+logging_strategy=IntervalStrategy.STEPS,
+lr_scheduler_type=SchedulerType.LINEAR,
+max_grad_norm=1.0,
+max_steps=-1,
+metric_for_best_model=None,
+mp_parameters=,
+no_cuda=False,
+num_train_epochs=10.0,
+output_dir=checkpoints/wsc-bert/,
+overwrite_output_dir=True,
+past_index=-1,
+per_device_eval_batch_size=8,
+per_device_train_batch_size=16,
+prediction_loss_only=False,
+push_to_hub=False,
+push_to_hub_model_id=None,
+push_to_hub_organization=None,
+push_to_hub_token=<PUSH_TO_HUB_TOKEN>,
+remove_unused_columns=True,
+report_to=[],
+resume_from_checkpoint=None,
+run_name=checkpoints/wsc-bert/,
+save_on_each_node=False,
+save_steps=500,
+save_strategy=IntervalStrategy.NO,
+save_total_limit=None,
+seed=44,
+sharded_ddp=[],
+skip_memory_metrics=True,
+tpu_metrics_debug=False,
+tpu_num_cores=None,
+use_legacy_prediction_loop=False,
+warmup_ratio=0.0,
+warmup_steps=0,
+weight_decay=0.0,
+xpu_backend=None,
+)
+04/17/2022 21:25:36 - INFO - datasets.info - Loading Dataset Infos from /home/ask9126/.cache/huggingface/modules/datasets_modules/datasets/super_glue/2fb163bca9085c1deb906aff20f00c242227ff704a4e8c9cfdfe820be3abfc83
+04/17/2022 21:25:36 - INFO - datasets.builder - Generating dataset super_glue (/home/ask9126/.cache/huggingface/datasets/super_glue/wsc/1.0.2/2fb163bca9085c1deb906aff20f00c242227ff704a4e8c9cfdfe820be3abfc83)
+Downloading and preparing dataset super_glue/wsc (download: 31.98 KiB, generated: 139.74 KiB, post-processed: Unknown size, total: 171.72 KiB) to /home/ask9126/.cache/huggingface/datasets/super_glue/wsc/1.0.2/2fb163bca9085c1deb906aff20f00c242227ff704a4e8c9cfdfe820be3abfc83...
+04/17/2022 21:25:36 - INFO - datasets.builder - Dataset not on Hf google storage. Downloading and preparing it from source
+04/17/2022 21:25:36 - INFO - datasets.utils.file_utils - https://dl.fbaipublicfiles.com/glue/superglue/data/v2/WSC.zip not found in cache or force_download set to True, downloading to /home/ask9126/.cache/huggingface/datasets/downloads/tmpe2dtcu26
+04/17/2022 21:25:37 - INFO - datasets.utils.file_utils - storing https://dl.fbaipublicfiles.com/glue/superglue/data/v2/WSC.zip in cache at /home/ask9126/.cache/huggingface/datasets/downloads/7bb90f9a9b11caaf5a72d36ce003cf8338c1d52acd26bf68657b12e6e364c624
+04/17/2022 21:25:37 - INFO - datasets.utils.file_utils - creating metadata file for /home/ask9126/.cache/huggingface/datasets/downloads/7bb90f9a9b11caaf5a72d36ce003cf8338c1d52acd26bf68657b12e6e364c624
+04/17/2022 21:25:37 - INFO - datasets.utils.download_manager - Downloading took 0.0 min
+04/17/2022 21:25:37 - INFO - datasets.utils.download_manager - Checksum Computation took 0.0 min
+04/17/2022 21:25:37 - INFO - datasets.utils.info_utils - All the checksums matched successfully for dataset source files
+04/17/2022 21:25:37 - INFO - datasets.builder - Generating split train
+04/17/2022 21:25:37 - INFO - datasets.builder - Generating split validation
+04/17/2022 21:25:37 - INFO - datasets.builder - Generating split test
+04/17/2022 21:25:37 - INFO - datasets.utils.info_utils - All the splits matched successfully.
+Dataset super_glue downloaded and prepared to /home/ask9126/.cache/huggingface/datasets/super_glue/wsc/1.0.2/2fb163bca9085c1deb906aff20f00c242227ff704a4e8c9cfdfe820be3abfc83. Subsequent calls will reuse this data.
+{'False': 0, 'True': 1}
+{0: 'False', 1: 'True'}
+04/17/2022 21:25:37 - INFO - datasets.arrow_dataset - Caching processed dataset at /home/ask9126/.cache/huggingface/datasets/super_glue/wsc/1.0.2/2fb163bca9085c1deb906aff20f00c242227ff704a4e8c9cfdfe820be3abfc83/cache-0f5634051f95a252.arrow
+04/17/2022 21:25:37 - INFO - datasets.arrow_dataset - Caching processed dataset at /home/ask9126/.cache/huggingface/datasets/super_glue/wsc/1.0.2/2fb163bca9085c1deb906aff20f00c242227ff704a4e8c9cfdfe820be3abfc83/cache-624e50551e8ddb9c.arrow
+04/17/2022 21:25:37 - INFO - datasets.arrow_dataset - Caching processed dataset at /home/ask9126/.cache/huggingface/datasets/super_glue/wsc/1.0.2/2fb163bca9085c1deb906aff20f00c242227ff704a4e8c9cfdfe820be3abfc83/cache-4c84f5878cee6153.arrow
+04/17/2022 21:25:38 - INFO - tasks.superglue.get_trainer - Sample 418 of the training set: {'attention_mask': [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 'idx': 418, 'input_ids': [0, 12724, 35, 8510, 2368, 3514, 3863, 12, 17328, 16, 230, 4, 530, 4, 30258, 12050, 2156, 10, 26365, 808, 664, 385, 10708, 1826, 10, 1236, 1829, 12, 42536, 3051, 4757, 6, 19, 10, 181, 36161, 15028, 23, 39, 1730, 2, 2, 642, 36161, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], 'label': 0, 'span1_index': 18, 'span1_text': 'poodle', 'span2_index': 21, 'span2_text': 'his', 'span2_word_text': 'his: Equally swoon-worthy is C.K. Dexter Haven , a pallid young dandy holding a jade-handled walking stick, with a poodle asleep at his feet', 'text': 'Equally swoon-worthy is C.K. Dexter Haven , a pallid young dandy holding a jade-handled walking stick, with a poodle asleep at his feet'}.
+04/17/2022 21:25:38 - INFO - tasks.superglue.get_trainer - Sample 532 of the training set: {'attention_mask': [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 'idx': 532, 'input_ids': [0, 10010, 35, 96, 550, 6, 5911, 90, 29465, 2348, 2998, 997, 15, 19810, 7046, 330, 479, 1773, 19810, 7046, 330, 128, 29, 3835, 21, 203, 357, 8895, 8, 2724, 498, 2514, 6, 51, 58, 5125, 624, 688, 4, 2, 2, 975, 677, 7046, 330, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], 'label': 0, 'span1_index': 6, 'span1_text': 'Yakutsk', 'span2_index': 20, 'span2_text': 'they', 'span2_word_text': "they: In July, Kamtchatka declared war on Yakutsk . Since Yakutsk 's army was much better equipped and ten times larger, they were defeated within weeks.", 'text': "In July, Kamtchatka declared war on Yakutsk . Since Yakutsk 's army was much better equipped and ten times larger, they were defeated within weeks."}.
+04/17/2022 21:25:38 - INFO - tasks.superglue.get_trainer - Sample 119 of the training set: {'attention_mask': [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 'idx': 119, 'input_ids': [0, 700, 35, 1590, 10, 177, 9, 6694, 6, 15926, 15378, 5790, 142, 37, 21, 22, 405, 845, 2, 2, 717, 5652, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], 'label': 1, 'span1_index': 5, 'span1_text': 'Ethan', 'span2_index': 9, 'span2_text': 'he', 'span2_word_text': 'he: During a game of tag, Ethan chased Luke because he was "it".', 'text': 'During a game of tag, Ethan chased Luke because he was "it".'}.
+total param is 395266
+04/17/2022 21:26:13 - INFO - datasets.metric - Removing /home/ask9126/.cache/huggingface/metrics/super_glue/wsc/default_experiment-1-0.arrow
+{'eval_loss': 0.7118351459503174, 'eval_accuracy': 0.4230769230769231, 'eval_runtime': 0.8951, 'eval_samples_per_second': 116.186, 'eval_steps_per_second': 14.523, 'epoch': 1.0}
+04/17/2022 21:26:13 - INFO - training.trainer_base - ***** Epoch 0: Best results *****
+04/17/2022 21:26:13 - INFO - training.trainer_base - best_epoch = 0
+04/17/2022 21:26:13 - INFO - training.trainer_base - best_eval_accuracy = 0.4230769230769231
+OrderedDict([('best_epoch', 0), ('best_eval_accuracy', 0.4230769230769231), ('epoch', 1.0)])
+04/17/2022 21:26:23 - INFO - datasets.metric - Removing /home/ask9126/.cache/huggingface/metrics/super_glue/wsc/default_experiment-1-0.arrow
+{'eval_loss': 0.699066162109375, 'eval_accuracy': 0.40384615384615385, 'eval_runtime': 0.8774, 'eval_samples_per_second': 118.531, 'eval_steps_per_second': 14.816, 'epoch': 2.0}
+04/17/2022 21:26:23 - INFO - training.trainer_base - ***** Epoch 1: Best results *****
+04/17/2022 21:26:23 - INFO - training.trainer_base - best_epoch = 0
+04/17/2022 21:26:23 - INFO - training.trainer_base - best_eval_accuracy = 0.4230769230769231
+04/17/2022 21:26:23 - INFO - training.trainer_base - epoch = 1.0
+OrderedDict([('best_epoch', 0), ('best_eval_accuracy', 0.4230769230769231), ('epoch', 2.0)])
+04/17/2022 21:26:32 - INFO - datasets.metric - Removing /home/ask9126/.cache/huggingface/metrics/super_glue/wsc/default_experiment-1-0.arrow
+{'eval_loss': 0.6904668211936951, 'eval_accuracy': 0.6346153846153846, 'eval_runtime': 0.8816, 'eval_samples_per_second': 117.973, 'eval_steps_per_second': 14.747, 'epoch': 3.0}
+04/17/2022 21:26:32 - INFO - training.trainer_base - ***** Epoch 2: Best results *****
+04/17/2022 21:26:32 - INFO - training.trainer_base - best_epoch = 2
+04/17/2022 21:26:32 - INFO - training.trainer_base - best_eval_accuracy = 0.6346153846153846
+04/17/2022 21:26:32 - INFO - training.trainer_base - epoch = 2.0
+OrderedDict([('best_epoch', 2), ('best_eval_accuracy', 0.6346153846153846), ('epoch', 3.0)])
+04/17/2022 21:26:42 - INFO - datasets.metric - Removing /home/ask9126/.cache/huggingface/metrics/super_glue/wsc/default_experiment-1-0.arrow
+{'eval_loss': 1.429885983467102, 'eval_accuracy': 0.36538461538461536, 'eval_runtime': 0.8938, 'eval_samples_per_second': 116.357, 'eval_steps_per_second': 14.545, 'epoch': 4.0}
+04/17/2022 21:26:42 - INFO - training.trainer_base - ***** Epoch 3: Best results *****
+04/17/2022 21:26:42 - INFO - training.trainer_base - best_epoch = 2
+04/17/2022 21:26:42 - INFO - training.trainer_base - best_eval_accuracy = 0.6346153846153846
+04/17/2022 21:26:42 - INFO - training.trainer_base - epoch = 3.0
+OrderedDict([('best_epoch', 2), ('best_eval_accuracy', 0.6346153846153846), ('epoch', 4.0)])
+04/17/2022 21:26:52 - INFO - datasets.metric - Removing /home/ask9126/.cache/huggingface/metrics/super_glue/wsc/default_experiment-1-0.arrow
+{'eval_loss': 0.6602401733398438, 'eval_accuracy': 0.6346153846153846, 'eval_runtime': 0.8888, 'eval_samples_per_second': 117.017, 'eval_steps_per_second': 14.627, 'epoch': 5.0}
+04/17/2022 21:26:52 - INFO - training.trainer_base - ***** Epoch 4: Best results *****
+04/17/2022 21:26:52 - INFO - training.trainer_base - best_epoch = 2
+04/17/2022 21:26:52 - INFO - training.trainer_base - best_eval_accuracy = 0.6346153846153846
+04/17/2022 21:26:52 - INFO - training.trainer_base - epoch = 4.0
+OrderedDict([('best_epoch', 2), ('best_eval_accuracy', 0.6346153846153846), ('epoch', 5.0)])
+04/17/2022 21:27:01 - INFO - datasets.metric - Removing /home/ask9126/.cache/huggingface/metrics/super_glue/wsc/default_experiment-1-0.arrow
+{'eval_loss': 0.6581737995147705, 'eval_accuracy': 0.6346153846153846, 'eval_runtime': 0.8904, 'eval_samples_per_second': 116.804, 'eval_steps_per_second': 14.601, 'epoch': 6.0}
+04/17/2022 21:27:01 - INFO - training.trainer_base - ***** Epoch 5: Best results *****
+04/17/2022 21:27:01 - INFO - training.trainer_base - best_epoch = 2
+04/17/2022 21:27:01 - INFO - training.trainer_base - best_eval_accuracy = 0.6346153846153846
+04/17/2022 21:27:01 - INFO - training.trainer_base - epoch = 5.0
+OrderedDict([('best_epoch', 2), ('best_eval_accuracy', 0.6346153846153846), ('epoch', 6.0)])
+04/17/2022 21:27:11 - INFO - datasets.metric - Removing /home/ask9126/.cache/huggingface/metrics/super_glue/wsc/default_experiment-1-0.arrow
+{'eval_loss': 0.835940420627594, 'eval_accuracy': 0.36538461538461536, 'eval_runtime': 0.8842, 'eval_samples_per_second': 117.625, 'eval_steps_per_second': 14.703, 'epoch': 7.0}
+04/17/2022 21:27:11 - INFO - training.trainer_base - ***** Epoch 6: Best results *****
+04/17/2022 21:27:11 - INFO - training.trainer_base - best_epoch = 2
+04/17/2022 21:27:11 - INFO - training.trainer_base - best_eval_accuracy = 0.6346153846153846
+04/17/2022 21:27:11 - INFO - training.trainer_base - epoch = 6.0
+OrderedDict([('best_epoch', 2), ('best_eval_accuracy', 0.6346153846153846), ('epoch', 7.0)])
+04/17/2022 21:27:21 - INFO - datasets.metric - Removing /home/ask9126/.cache/huggingface/metrics/super_glue/wsc/default_experiment-1-0.arrow
+{'eval_loss': 0.6942602396011353, 'eval_accuracy': 0.5480769230769231, 'eval_runtime': 0.894, 'eval_samples_per_second': 116.328, 'eval_steps_per_second': 14.541, 'epoch': 8.0}
+04/17/2022 21:27:21 - INFO - training.trainer_base - ***** Epoch 7: Best results *****
+04/17/2022 21:27:21 - INFO - training.trainer_base - best_epoch = 2
+04/17/2022 21:27:21 - INFO - training.trainer_base - best_eval_accuracy = 0.6346153846153846
+04/17/2022 21:27:21 - INFO - training.trainer_base - epoch = 7.0
+OrderedDict([('best_epoch', 2), ('best_eval_accuracy', 0.6346153846153846), ('epoch', 8.0)])
+04/17/2022 21:27:31 - INFO - datasets.metric - Removing /home/ask9126/.cache/huggingface/metrics/super_glue/wsc/default_experiment-1-0.arrow
+{'eval_loss': 0.6650838255882263, 'eval_accuracy': 0.6346153846153846, 'eval_runtime': 0.882, 'eval_samples_per_second': 117.908, 'eval_steps_per_second': 14.739, 'epoch': 9.0}
+04/17/2022 21:27:31 - INFO - training.trainer_base - ***** Epoch 8: Best results *****
+04/17/2022 21:27:31 - INFO - training.trainer_base - best_epoch = 2
+04/17/2022 21:27:31 - INFO - training.trainer_base - best_eval_accuracy = 0.6346153846153846
+04/17/2022 21:27:31 - INFO - training.trainer_base - epoch = 8.0
+OrderedDict([('best_epoch', 2), ('best_eval_accuracy', 0.6346153846153846), ('epoch', 9.0)])
+04/17/2022 21:27:40 - INFO - datasets.metric - Removing /home/ask9126/.cache/huggingface/metrics/super_glue/wsc/default_experiment-1-0.arrow
+{'eval_loss': 0.7117226123809814, 'eval_accuracy': 0.36538461538461536, 'eval_runtime': 0.889, 'eval_samples_per_second': 116.981, 'eval_steps_per_second': 14.623, 'epoch': 10.0}
+04/17/2022 21:27:40 - INFO - training.trainer_base - ***** Epoch 9: Best results *****
+04/17/2022 21:27:40 - INFO - training.trainer_base - best_epoch = 2
+04/17/2022 21:27:40 - INFO - training.trainer_base - best_eval_accuracy = 0.6346153846153846
+04/17/2022 21:27:40 - INFO - training.trainer_base - epoch = 9.0
+OrderedDict([('best_epoch', 2), ('best_eval_accuracy', 0.6346153846153846), ('epoch', 10.0)])
+{'train_runtime': 99.4327, 'train_samples_per_second': 55.716, 'train_steps_per_second': 3.52, 'train_loss': 0.8939418247767857, 'epoch': 10.0}
+***** train metrics *****
+  epoch                    =       10.0
+  train_loss               =     0.8939
+  train_runtime            = 0:01:39.43
+  train_samples_per_second =     55.716
+  train_steps_per_second   =       3.52
+***** best metrics *****
+  best_epoch         =      2
+  best_eval_accuracy = 0.6346
+  epoch              =   10.0

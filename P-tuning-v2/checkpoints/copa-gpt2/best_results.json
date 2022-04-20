@@ -1,0 +1,5 @@
+{
+    "best_epoch": 6,
+    "best_eval_accuracy": 0.62,
+    "epoch": 120.0
+}

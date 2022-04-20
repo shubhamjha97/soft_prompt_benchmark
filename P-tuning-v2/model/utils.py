@@ -12,7 +12,11 @@ from model.sequence_classification import (
     BertPromptForSequenceClassification,
     RobertaPrefixForSequenceClassification,
     RobertaPromptForSequenceClassification,
-    DebertaPrefixForSequenceClassification
+    DebertaPrefixForSequenceClassification,
+    T5BasePrefixForSequenceClassification,
+    GPT2BasePrefixForSequenceClassification,
+
+
 )
 
 from model.question_answering import (
@@ -26,7 +30,8 @@ from model.multiple_choice import (
     RobertaPrefixForMultipleChoice,
     DebertaPrefixForMultipleChoice,
     BertPromptForMultipleChoice,
-    RobertaPromptForMultipleChoice
+    RobertaPromptForMultipleChoice,
+    GPT2PrefixForMultipleChoice
 )
 
 from transformers import (
@@ -67,6 +72,18 @@ PREFIX_MODELS = {
         TaskType.SEQUENCE_CLASSIFICATION: None,
         TaskType.QUESTION_ANSWERING: None,
         TaskType.MULTIPLE_CHOICE: None,
+    },
+    "t5": {
+        TaskType.TOKEN_CLASSIFICATION: None,
+        TaskType.SEQUENCE_CLASSIFICATION: T5BasePrefixForSequenceClassification,
+        TaskType.QUESTION_ANSWERING: None,
+        TaskType.MULTIPLE_CHOICE: None,
+    },
+    "gpt2": {
+        TaskType.TOKEN_CLASSIFICATION: None,
+        TaskType.SEQUENCE_CLASSIFICATION: GPT2BasePrefixForSequenceClassification,
+        TaskType.QUESTION_ANSWERING: None,
+        TaskType.MULTIPLE_CHOICE: GPT2PrefixForMultipleChoice,
     }
 }
 
