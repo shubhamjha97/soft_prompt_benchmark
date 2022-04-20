@@ -1,30 +1,12 @@
 # Prompt Tuning
-This is the pytorch implementation of [The Power of Scale for Parameter-Efficient Prompt Tuning](https://arxiv.org/abs/2104.08691v2).
-
-Currently, we support the following huggigface models:
-- `GPT2LMModel`
+A Pytorch implementation of [The Power of Scale for Parameter-Efficient Prompt Tuning](https://arxiv.org/abs/2104.08691v2).
 
 ## Usage
-See `example.ipynb` for more details. 
-```python
-from model import GPT2PromptTuningLM
 
-# number of prompt tokens
-n_prompt_tokens = 20
-# If True, soft prompt will be initialized from vocab 
-# Otherwise, you can set `random_range` to initialize by randomization.
-init_from_vocab = True
-# random_range = 0.5
+To train soft prompts for a dataset on an specific PLM:
 
-# Initialize GPT2LM with soft prompt
-model = GPT2PromptTuningLM.from_pretrained(
-    "gpt2",
-    n_tokens=n_prompt_tokens,
-    initialize_from_vocab=init_from_vocab
-)
+```bash
+python3 "plm=<plm-name>" "task_name=<name-of-the-task>"
 ```
 
-
-## Reference
-- https://github.com/corolla-johnson/mkultra
-- https://github.com/kipgparker/soft-prompt-tuning
+Default hyperparameters and configuration have already been provided in config.yaml. These configurations can be overridden via command line args.
