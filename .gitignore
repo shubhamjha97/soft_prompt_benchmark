@@ -1,0 +1,7 @@
+.idea/*
+*/.idea/*
+.DS_Store
+*/.DS_Store
+PrefixTuning/gpt2/*_models
+PrefixTuning/transformers/*
+Prompt-Tuning/outputs*
