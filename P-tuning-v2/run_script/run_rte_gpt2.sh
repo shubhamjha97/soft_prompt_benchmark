@@ -2,14 +2,14 @@ export TASK_NAME=superglue
 export DATASET_NAME=rte
 export CUDA_VISIBLE_DEVICES=0
 
-bs=32
-lr=5e-3
+bs=8
+lr=3e-4
 dropout=0.1
 psl=128
 epoch=100
 
 python3 run.py \
-  --model_name_or_path gpt2 \
+  --model_name_or_path gpt2-medium \
   --task_name $TASK_NAME \
   --dataset_name $DATASET_NAME \
   --do_train \
@@ -22,7 +22,8 @@ python3 run.py \
   --output_dir checkpoints/$DATASET_NAME-gpt2/ \
   --overwrite_output_dir \
   --hidden_dropout_prob $dropout \
-  --seed 11 \
+  --seed 13 \
   --save_strategy no \
   --evaluation_strategy epoch \
-  --prefix
+  --prefix \
+  --prefix_projection yes

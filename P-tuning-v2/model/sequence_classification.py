@@ -5,7 +5,7 @@ import torch.nn.functional as F
 from torch import Tensor
 from torch.nn import CrossEntropyLoss, MSELoss, BCEWithLogitsLoss
 
-from transformers import BertModel, BertPreTrainedModel, T5PreTrainedModel, T5Model, T5EncoderModel, TFT5PreTrainedModel, TFT5EncoderModel, GPT2ForSequenceClassification, GPT2PreTrainedModel
+from transformers import BertModel, BertPreTrainedModel, T5PreTrainedModel, T5Model, T5EncoderModel, TFT5PreTrainedModel, TFT5EncoderModel, GPT2Model, GPT2ForSequenceClassification, GPT2PreTrainedModel
 from transformers import RobertaModel, RobertaPreTrainedModel
 from transformers.modeling_outputs import SequenceClassifierOutput, BaseModelOutput, Seq2SeqLMOutput
 
@@ -788,9 +788,9 @@ class GPT2BasePrefixForSequenceClassification(GPT2PreTrainedModel):
     def __init__(self, config):
         super().__init__(config)
         self.num_labels = config.num_labels
-        config.pad_token_id=1
+        config.pad_token_id=50256
         self.config = config
-        self.gpt2 = GPT2ForSequenceClassification(config)
+        self.gpt2 = GPT2Model(config)
         self.model_parallel = False
         self.dropout = torch.nn.Dropout(config.hidden_dropout_prob)
         self.classifier = torch.nn.Linear(config.hidden_size, config.num_labels)
@@ -862,11 +862,11 @@ class GPT2BasePrefixForSequenceClassification(GPT2PreTrainedModel):
             return_dict=return_dict,
             past_key_values=past_key_values,
         )
-        logits = outputs.logits
-        # pooled_output = outputs[1]
+        # logits = outputs.logits
+        pooled_output = outputs.last_hidden_state[:,-1,:]
 
-        # pooled_output = self.dropout(pooled_output)
-        # logits = self.classifier(pooled_output)
+        pooled_output = self.dropout(pooled_output)
+        logits = self.classifier(pooled_output)
 
         loss = None
         if labels is not None:

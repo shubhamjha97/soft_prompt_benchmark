@@ -30,7 +30,8 @@ from model.multiple_choice import (
     RobertaPrefixForMultipleChoice,
     DebertaPrefixForMultipleChoice,
     BertPromptForMultipleChoice,
-    RobertaPromptForMultipleChoice
+    RobertaPromptForMultipleChoice,
+    GPT2PrefixForMultipleChoice
 )
 
 from transformers import (
@@ -82,7 +83,7 @@ PREFIX_MODELS = {
         TaskType.TOKEN_CLASSIFICATION: None,
         TaskType.SEQUENCE_CLASSIFICATION: GPT2BasePrefixForSequenceClassification,
         TaskType.QUESTION_ANSWERING: None,
-        TaskType.MULTIPLE_CHOICE: None,
+        TaskType.MULTIPLE_CHOICE: GPT2PrefixForMultipleChoice,
     }
 }
 

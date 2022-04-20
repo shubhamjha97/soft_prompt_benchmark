@@ -1,0 +1,868 @@
+WARNING: A conda environment already exists at '/home/ask9126/.conda/envs/pt2'
+Remove existing environment (y/[n])? 
+Collecting package metadata (current_repodata.json): ...working... done
+Solving environment: ...working... done
+
+# All requested packages already installed.
+
+Requirement already satisfied: datasets==1.15.1 in /scratch/ask9126/.conda/envs/pt2/lib/python3.8/site-packages (from -r requirements.txt (line 1)) (1.15.1)
+Requirement already satisfied: numpy==1.19.2 in /scratch/ask9126/.conda/envs/pt2/lib/python3.8/site-packages (from -r requirements.txt (line 2)) (1.19.2)
+Requirement already satisfied: tqdm==4.62.3 in /scratch/ask9126/.conda/envs/pt2/lib/python3.8/site-packages (from -r requirements.txt (line 3)) (4.62.3)
+Requirement already satisfied: transformers==4.11.3 in /scratch/ask9126/.conda/envs/pt2/lib/python3.8/site-packages (from -r requirements.txt (line 4)) (4.11.3)
+Requirement already satisfied: seqeval==1.2.2 in /scratch/ask9126/.conda/envs/pt2/lib/python3.8/site-packages (from -r requirements.txt (line 5)) (1.2.2)
+Requirement already satisfied: pyarrow!=4.0.0,>=1.0.0 in /home/ask9126/.local/lib/python3.8/site-packages (from datasets==1.15.1->-r requirements.txt (line 1)) (7.0.0)
+Requirement already satisfied: xxhash in /home/ask9126/.local/lib/python3.8/site-packages (from datasets==1.15.1->-r requirements.txt (line 1)) (3.0.0)
+Requirement already satisfied: packaging in /scratch/ask9126/.conda/envs/pt2/lib/python3.8/site-packages (from datasets==1.15.1->-r requirements.txt (line 1)) (21.3)
+Requirement already satisfied: multiprocess in /scratch/ask9126/.conda/envs/pt2/lib/python3.8/site-packages (from datasets==1.15.1->-r requirements.txt (line 1)) (0.70.12.2)
+Requirement already satisfied: fsspec[http]>=2021.05.0 in /scratch/ask9126/.conda/envs/pt2/lib/python3.8/site-packages (from datasets==1.15.1->-r requirements.txt (line 1)) (2022.3.0)
+Requirement already satisfied: pandas in /scratch/ask9126/.conda/envs/pt2/lib/python3.8/site-packages (from datasets==1.15.1->-r requirements.txt (line 1)) (1.4.2)
+Requirement already satisfied: dill in /home/ask9126/.local/lib/python3.8/site-packages (from datasets==1.15.1->-r requirements.txt (line 1)) (0.3.4)
+Requirement already satisfied: aiohttp in /scratch/ask9126/.conda/envs/pt2/lib/python3.8/site-packages (from datasets==1.15.1->-r requirements.txt (line 1)) (3.8.1)
+Requirement already satisfied: huggingface-hub<1.0.0,>=0.1.0 in /home/ask9126/.local/lib/python3.8/site-packages (from datasets==1.15.1->-r requirements.txt (line 1)) (0.4.0)
+Requirement already satisfied: requests>=2.19.0 in /scratch/ask9126/.conda/envs/pt2/lib/python3.8/site-packages (from datasets==1.15.1->-r requirements.txt (line 1)) (2.27.1)
+Requirement already satisfied: filelock in /scratch/ask9126/.conda/envs/pt2/lib/python3.8/site-packages (from transformers==4.11.3->-r requirements.txt (line 4)) (3.6.0)
+Requirement already satisfied: regex!=2019.12.17 in /home/ask9126/.local/lib/python3.8/site-packages (from transformers==4.11.3->-r requirements.txt (line 4)) (2022.3.2)
+Requirement already satisfied: pyyaml>=5.1 in /scratch/ask9126/.conda/envs/pt2/lib/python3.8/site-packages (from transformers==4.11.3->-r requirements.txt (line 4)) (6.0)
+Requirement already satisfied: sacremoses in /home/ask9126/.local/lib/python3.8/site-packages (from transformers==4.11.3->-r requirements.txt (line 4)) (0.0.47)
+Requirement already satisfied: tokenizers<0.11,>=0.10.1 in /scratch/ask9126/.conda/envs/pt2/lib/python3.8/site-packages (from transformers==4.11.3->-r requirements.txt (line 4)) (0.10.3)
+Requirement already satisfied: scikit-learn>=0.21.3 in /scratch/ask9126/.conda/envs/pt2/lib/python3.8/site-packages (from seqeval==1.2.2->-r requirements.txt (line 5)) (1.0.2)
+Requirement already satisfied: typing-extensions>=3.7.4.3 in /home/ask9126/.local/lib/python3.8/site-packages (from huggingface-hub<1.0.0,>=0.1.0->datasets==1.15.1->-r requirements.txt (line 1)) (4.1.1)
+Requirement already satisfied: pyparsing!=3.0.5,>=2.0.2 in /scratch/ask9126/.conda/envs/pt2/lib/python3.8/site-packages (from packaging->datasets==1.15.1->-r requirements.txt (line 1)) (3.0.8)
+Requirement already satisfied: urllib3<1.27,>=1.21.1 in /scratch/ask9126/.conda/envs/pt2/lib/python3.8/site-packages (from requests>=2.19.0->datasets==1.15.1->-r requirements.txt (line 1)) (1.26.9)
+Requirement already satisfied: idna<4,>=2.5 in /scratch/ask9126/.conda/envs/pt2/lib/python3.8/site-packages (from requests>=2.19.0->datasets==1.15.1->-r requirements.txt (line 1)) (3.3)
+Requirement already satisfied: certifi>=2017.4.17 in /scratch/ask9126/.conda/envs/pt2/lib/python3.8/site-packages (from requests>=2.19.0->datasets==1.15.1->-r requirements.txt (line 1)) (2021.10.8)
+Requirement already satisfied: charset-normalizer~=2.0.0 in /scratch/ask9126/.conda/envs/pt2/lib/python3.8/site-packages (from requests>=2.19.0->datasets==1.15.1->-r requirements.txt (line 1)) (2.0.12)
+Requirement already satisfied: joblib>=0.11 in /scratch/ask9126/.conda/envs/pt2/lib/python3.8/site-packages (from scikit-learn>=0.21.3->seqeval==1.2.2->-r requirements.txt (line 5)) (1.1.0)
+Requirement already satisfied: scipy>=1.1.0 in /scratch/ask9126/.conda/envs/pt2/lib/python3.8/site-packages (from scikit-learn>=0.21.3->seqeval==1.2.2->-r requirements.txt (line 5)) (1.8.0)
+Requirement already satisfied: threadpoolctl>=2.0.0 in /scratch/ask9126/.conda/envs/pt2/lib/python3.8/site-packages (from scikit-learn>=0.21.3->seqeval==1.2.2->-r requirements.txt (line 5)) (3.1.0)
+Requirement already satisfied: async-timeout<5.0,>=4.0.0a3 in /scratch/ask9126/.conda/envs/pt2/lib/python3.8/site-packages (from aiohttp->datasets==1.15.1->-r requirements.txt (line 1)) (4.0.2)
+Requirement already satisfied: yarl<2.0,>=1.0 in /scratch/ask9126/.conda/envs/pt2/lib/python3.8/site-packages (from aiohttp->datasets==1.15.1->-r requirements.txt (line 1)) (1.7.2)
+Requirement already satisfied: multidict<7.0,>=4.5 in /scratch/ask9126/.conda/envs/pt2/lib/python3.8/site-packages (from aiohttp->datasets==1.15.1->-r requirements.txt (line 1)) (6.0.2)
+Requirement already satisfied: attrs>=17.3.0 in /scratch/ask9126/.conda/envs/pt2/lib/python3.8/site-packages (from aiohttp->datasets==1.15.1->-r requirements.txt (line 1)) (21.4.0)
+Requirement already satisfied: frozenlist>=1.1.1 in /scratch/ask9126/.conda/envs/pt2/lib/python3.8/site-packages (from aiohttp->datasets==1.15.1->-r requirements.txt (line 1)) (1.3.0)
+Requirement already satisfied: aiosignal>=1.1.2 in /scratch/ask9126/.conda/envs/pt2/lib/python3.8/site-packages (from aiohttp->datasets==1.15.1->-r requirements.txt (line 1)) (1.2.0)
+Requirement already satisfied: python-dateutil>=2.8.1 in /scratch/ask9126/.conda/envs/pt2/lib/python3.8/site-packages (from pandas->datasets==1.15.1->-r requirements.txt (line 1)) (2.8.2)
+Requirement already satisfied: pytz>=2020.1 in /scratch/ask9126/.conda/envs/pt2/lib/python3.8/site-packages (from pandas->datasets==1.15.1->-r requirements.txt (line 1)) (2022.1)
+Requirement already satisfied: six>=1.5 in /scratch/ask9126/.conda/envs/pt2/lib/python3.8/site-packages (from python-dateutil>=2.8.1->pandas->datasets==1.15.1->-r requirements.txt (line 1)) (1.16.0)
+Requirement already satisfied: click in /home/ask9126/.local/lib/python3.8/site-packages (from sacremoses->transformers==4.11.3->-r requirements.txt (line 4)) (8.0.4)
+04/19/2022 00:47:59 - WARNING - __main__ - Process rank: -1, device: cuda:0, n_gpu: 1distributed training: False, 16-bits training: False
+04/19/2022 00:47:59 - INFO - __main__ - Training/evaluation parameters TrainingArguments(
+_n_gpu=1,
+adafactor=False,
+adam_beta1=0.9,
+adam_beta2=0.999,
+adam_epsilon=1e-08,
+dataloader_drop_last=False,
+dataloader_num_workers=0,
+dataloader_pin_memory=True,
+ddp_find_unused_parameters=None,
+debug=[],
+deepspeed=None,
+disable_tqdm=False,
+do_eval=True,
+do_predict=False,
+do_train=True,
+eval_accumulation_steps=None,
+eval_steps=None,
+evaluation_strategy=IntervalStrategy.EPOCH,
+fp16=False,
+fp16_backend=auto,
+fp16_full_eval=False,
+fp16_opt_level=O1,
+gradient_accumulation_steps=1,
+gradient_checkpointing=False,
+greater_is_better=None,
+group_by_length=False,
+hub_model_id=None,
+hub_strategy=HubStrategy.EVERY_SAVE,
+hub_token=<HUB_TOKEN>,
+ignore_data_skip=False,
+label_names=None,
+label_smoothing_factor=0.0,
+learning_rate=3e-05,
+length_column_name=length,
+load_best_model_at_end=False,
+local_rank=-1,
+log_level=-1,
+log_level_replica=-1,
+log_on_each_node=True,
+logging_dir=checkpoints/rte-gpt2/runs/Apr19_00-47-59_b-3-135,
+logging_first_step=False,
+logging_nan_inf_filter=True,
+logging_steps=500,
+logging_strategy=IntervalStrategy.STEPS,
+lr_scheduler_type=SchedulerType.LINEAR,
+max_grad_norm=1.0,
+max_steps=-1,
+metric_for_best_model=None,
+mp_parameters=,
+no_cuda=False,
+num_train_epochs=100.0,
+output_dir=checkpoints/rte-gpt2/,
+overwrite_output_dir=True,
+past_index=-1,
+per_device_eval_batch_size=8,
+per_device_train_batch_size=32,
+prediction_loss_only=False,
+push_to_hub=False,
+push_to_hub_model_id=None,
+push_to_hub_organization=None,
+push_to_hub_token=<PUSH_TO_HUB_TOKEN>,
+remove_unused_columns=True,
+report_to=[],
+resume_from_checkpoint=None,
+run_name=checkpoints/rte-gpt2/,
+save_on_each_node=False,
+save_steps=500,
+save_strategy=IntervalStrategy.NO,
+save_total_limit=None,
+seed=13,
+sharded_ddp=[],
+skip_memory_metrics=True,
+tpu_metrics_debug=False,
+tpu_num_cores=None,
+use_legacy_prediction_loop=False,
+warmup_ratio=0.0,
+warmup_steps=0,
+weight_decay=0.0,
+xpu_backend=None,
+)
+04/19/2022 00:48:02 - INFO - datasets.info - Loading Dataset Infos from /home/ask9126/.cache/huggingface/modules/datasets_modules/datasets/super_glue/2fb163bca9085c1deb906aff20f00c242227ff704a4e8c9cfdfe820be3abfc83
+04/19/2022 00:48:02 - INFO - datasets.builder - Overwrite dataset info from restored data version.
+04/19/2022 00:48:02 - INFO - datasets.info - Loading Dataset info from /home/ask9126/.cache/huggingface/datasets/super_glue/rte/1.0.2/2fb163bca9085c1deb906aff20f00c242227ff704a4e8c9cfdfe820be3abfc83
+04/19/2022 00:48:02 - WARNING - datasets.builder - Reusing dataset super_glue (/home/ask9126/.cache/huggingface/datasets/super_glue/rte/1.0.2/2fb163bca9085c1deb906aff20f00c242227ff704a4e8c9cfdfe820be3abfc83)
+04/19/2022 00:48:02 - INFO - datasets.info - Loading Dataset info from /home/ask9126/.cache/huggingface/datasets/super_glue/rte/1.0.2/2fb163bca9085c1deb906aff20f00c242227ff704a4e8c9cfdfe820be3abfc83
+{'entailment': 0, 'not_entailment': 1}
+{0: 'entailment', 1: 'not_entailment'}
+04/19/2022 00:48:02 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at /home/ask9126/.cache/huggingface/datasets/super_glue/rte/1.0.2/2fb163bca9085c1deb906aff20f00c242227ff704a4e8c9cfdfe820be3abfc83/cache-59d14fb6d71f8484.arrow
+04/19/2022 00:48:02 - WARNING - datasets.arrow_dataset - Loading cached processed dataset at /home/ask9126/.cache/huggingface/datasets/super_glue/rte/1.0.2/2fb163bca9085c1deb906aff20f00c242227ff704a4e8c9cfdfe820be3abfc83/cache-6cd6a6ea05862f89.arrow
+04/19/2022 00:48:02 - INFO - datasets.arrow_dataset - Caching processed dataset at /home/ask9126/.cache/huggingface/datasets/super_glue/rte/1.0.2/2fb163bca9085c1deb906aff20f00c242227ff704a4e8c9cfdfe820be3abfc83/cache-49182c9ff98b56d7.arrow
+04/19/2022 00:48:03 - INFO - tasks.superglue.get_trainer - Sample 1060 of the training set: {'attention_mask': [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 'hypothesis': 'Two Trains Running was written by Wilson.', 'idx': 1060, 'input_ids': [1544, 318, 262, 6240, 286, 13766, 290, 10512, 379, 406, 726, 5708, 2059, 290, 262, 3437, 286, 8127, 338, 366, 7571, 833, 1299, 18162, 553, 783, 38500, 379, 48188, 13094, 13, 7571, 833, 1299, 18162, 373, 3194, 416, 8127, 13, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256], 'label': 0, 'premise': 'He is the professor of theater and drama at Loyola University and the director of Wilson\'s "Two Trains Running," now onstage at Pegasus Players.'}.
+04/19/2022 00:48:03 - INFO - tasks.superglue.get_trainer - Sample 1190 of the training set: {'attention_mask': [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 'hypothesis': 'A spelling reform was approved in all German speaking countries.', 'idx': 1190, 'input_ids': [464, 2656, 24993, 4975, 286, 8235, 11, 543, 373, 4001, 284, 25625, 1096, 262, 24993, 3173, 1973, 262, 2679, 12, 25159, 2678, 11, 2900, 503, 284, 307, 257, 1688, 24655, 611, 407, 15828, 5287, 13, 32, 24993, 4975, 373, 6325, 287, 477, 2679, 5486, 2678, 13, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256], 'label': 0, 'premise': 'The original spelling reform of 1996, which was meant to harmonize the spelling rules across the German-speaking countries, turned out to be a major embarrassment if not outright failure.'}.
+04/19/2022 00:48:03 - INFO - tasks.superglue.get_trainer - Sample 760 of the training set: {'attention_mask': [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 'hypothesis': "Dalai Lama and the government of the People's Republic of China are in dispute over Panchen Lama's reincarnation.", 'idx': 760, 'input_ids': [14581, 338, 8009, 286, 257, 8976, 49957, 831, 36187, 284, 262, 2933, 1541, 8018, 416, 262, 41180, 36187, 389, 26496, 326, 663, 14884, 7142, 318, 12111, 287, 1262, 597, 1724, 1744, 284, 12160, 1630, 625, 18910, 290, 31877, 9674, 13, 35, 282, 1872, 36187, 290, 262, 1230, 286, 262, 4380, 338, 2066, 286, 2807, 389, 287, 11047, 625, 49957, 831, 36187, 338, 41831, 341, 13, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256, 50256], 'label': 0, 'premise': "China's announcement of a rival Panchen Lama to the boy already recognized by the Dalai Lama are indications that its Communist regime is desperate in using any means possible to strengthen control over Tibet and Tibetan affairs."}.
+total param is 4720130
+04/19/2022 00:48:37 - INFO - datasets.metric - Removing /home/ask9126/.cache/huggingface/metrics/super_glue/rte/default_experiment-1-0.arrow
+{'eval_loss': 0.7111948728561401, 'eval_accuracy': 0.5018050541516246, 'eval_runtime': 1.0367, 'eval_samples_per_second': 267.198, 'eval_steps_per_second': 33.762, 'epoch': 1.0}
+04/19/2022 00:48:37 - INFO - training.trainer_base - ***** Epoch 0: Best results *****
+04/19/2022 00:48:37 - INFO - training.trainer_base - best_epoch = 0
+04/19/2022 00:48:37 - INFO - training.trainer_base - best_eval_accuracy = 0.5018050541516246
+OrderedDict([('best_epoch', 0), ('best_eval_accuracy', 0.5018050541516246), ('epoch', 1.0)])
+04/19/2022 00:48:55 - INFO - datasets.metric - Removing /home/ask9126/.cache/huggingface/metrics/super_glue/rte/default_experiment-1-0.arrow
+{'eval_loss': 0.7089760303497314, 'eval_accuracy': 0.5054151624548736, 'eval_runtime': 1.0125, 'eval_samples_per_second': 273.591, 'eval_steps_per_second': 34.569, 'epoch': 2.0}
+04/19/2022 00:48:55 - INFO - training.trainer_base - ***** Epoch 1: Best results *****
+04/19/2022 00:48:55 - INFO - training.trainer_base - best_epoch = 1
+04/19/2022 00:48:55 - INFO - training.trainer_base - best_eval_accuracy = 0.5054151624548736
+04/19/2022 00:48:55 - INFO - training.trainer_base - epoch = 1.0
+OrderedDict([('best_epoch', 1), ('best_eval_accuracy', 0.5054151624548736), ('epoch', 2.0)])
+04/19/2022 00:49:13 - INFO - datasets.metric - Removing /home/ask9126/.cache/huggingface/metrics/super_glue/rte/default_experiment-1-0.arrow
+{'eval_loss': 0.708387017250061, 'eval_accuracy': 0.49458483754512633, 'eval_runtime': 1.0047, 'eval_samples_per_second': 275.716, 'eval_steps_per_second': 34.838, 'epoch': 3.0}
+04/19/2022 00:49:13 - INFO - training.trainer_base - ***** Epoch 2: Best results *****
+04/19/2022 00:49:13 - INFO - training.trainer_base - best_epoch = 1
+04/19/2022 00:49:13 - INFO - training.trainer_base - best_eval_accuracy = 0.5054151624548736
+04/19/2022 00:49:13 - INFO - training.trainer_base - epoch = 2.0
+OrderedDict([('best_epoch', 1), ('best_eval_accuracy', 0.5054151624548736), ('epoch', 3.0)])
+04/19/2022 00:49:30 - INFO - datasets.metric - Removing /home/ask9126/.cache/huggingface/metrics/super_glue/rte/default_experiment-1-0.arrow
+{'eval_loss': 0.7078379392623901, 'eval_accuracy': 0.49458483754512633, 'eval_runtime': 1.0012, 'eval_samples_per_second': 276.656, 'eval_steps_per_second': 34.956, 'epoch': 4.0}
+04/19/2022 00:49:30 - INFO - training.trainer_base - ***** Epoch 3: Best results *****
+04/19/2022 00:49:30 - INFO - training.trainer_base - best_epoch = 1
+04/19/2022 00:49:30 - INFO - training.trainer_base - best_eval_accuracy = 0.5054151624548736
+04/19/2022 00:49:30 - INFO - training.trainer_base - epoch = 3.0
+OrderedDict([('best_epoch', 1), ('best_eval_accuracy', 0.5054151624548736), ('epoch', 4.0)])
+04/19/2022 00:49:48 - INFO - datasets.metric - Removing /home/ask9126/.cache/huggingface/metrics/super_glue/rte/default_experiment-1-0.arrow
+{'eval_loss': 0.7075955271720886, 'eval_accuracy': 0.48375451263537905, 'eval_runtime': 1.0149, 'eval_samples_per_second': 272.935, 'eval_steps_per_second': 34.486, 'epoch': 5.0}
+04/19/2022 00:49:48 - INFO - training.trainer_base - ***** Epoch 4: Best results *****
+04/19/2022 00:49:48 - INFO - training.trainer_base - best_epoch = 1
+04/19/2022 00:49:48 - INFO - training.trainer_base - best_eval_accuracy = 0.5054151624548736
+04/19/2022 00:49:48 - INFO - training.trainer_base - epoch = 4.0
+OrderedDict([('best_epoch', 1), ('best_eval_accuracy', 0.5054151624548736), ('epoch', 5.0)])
+04/19/2022 00:50:06 - INFO - datasets.metric - Removing /home/ask9126/.cache/huggingface/metrics/super_glue/rte/default_experiment-1-0.arrow
+{'eval_loss': 0.7069445252418518, 'eval_accuracy': 0.49097472924187724, 'eval_runtime': 1.003, 'eval_samples_per_second': 276.171, 'eval_steps_per_second': 34.895, 'epoch': 6.0}
+04/19/2022 00:50:06 - INFO - training.trainer_base - ***** Epoch 5: Best results *****
+04/19/2022 00:50:06 - INFO - training.trainer_base - best_epoch = 1
+04/19/2022 00:50:06 - INFO - training.trainer_base - best_eval_accuracy = 0.5054151624548736
+04/19/2022 00:50:06 - INFO - training.trainer_base - epoch = 5.0
+OrderedDict([('best_epoch', 1), ('best_eval_accuracy', 0.5054151624548736), ('epoch', 6.0)])
+{'loss': 0.7331, 'learning_rate': 2.807692307692308e-05, 'epoch': 6.41}
+04/19/2022 00:50:24 - INFO - datasets.metric - Removing /home/ask9126/.cache/huggingface/metrics/super_glue/rte/default_experiment-1-0.arrow
+{'eval_loss': 0.7066740989685059, 'eval_accuracy': 0.48014440433212996, 'eval_runtime': 1.0065, 'eval_samples_per_second': 275.2, 'eval_steps_per_second': 34.773, 'epoch': 7.0}
+04/19/2022 00:50:24 - INFO - training.trainer_base - ***** Epoch 6: Best results *****
+04/19/2022 00:50:24 - INFO - training.trainer_base - best_epoch = 1
+04/19/2022 00:50:24 - INFO - training.trainer_base - best_eval_accuracy = 0.5054151624548736
+04/19/2022 00:50:24 - INFO - training.trainer_base - epoch = 6.0
+OrderedDict([('best_epoch', 1), ('best_eval_accuracy', 0.5054151624548736), ('epoch', 7.0)])
+04/19/2022 00:50:42 - INFO - datasets.metric - Removing /home/ask9126/.cache/huggingface/metrics/super_glue/rte/default_experiment-1-0.arrow
+{'eval_loss': 0.706531286239624, 'eval_accuracy': 0.4729241877256318, 'eval_runtime': 1.0068, 'eval_samples_per_second': 275.138, 'eval_steps_per_second': 34.765, 'epoch': 8.0}
+04/19/2022 00:50:42 - INFO - training.trainer_base - ***** Epoch 7: Best results *****
+04/19/2022 00:50:42 - INFO - training.trainer_base - best_epoch = 1
+04/19/2022 00:50:42 - INFO - training.trainer_base - best_eval_accuracy = 0.5054151624548736
+04/19/2022 00:50:42 - INFO - training.trainer_base - epoch = 7.0
+OrderedDict([('best_epoch', 1), ('best_eval_accuracy', 0.5054151624548736), ('epoch', 8.0)])
+04/19/2022 00:50:59 - INFO - datasets.metric - Removing /home/ask9126/.cache/huggingface/metrics/super_glue/rte/default_experiment-1-0.arrow
+{'eval_loss': 0.7062260508537292, 'eval_accuracy': 0.4729241877256318, 'eval_runtime': 1.0091, 'eval_samples_per_second': 274.513, 'eval_steps_per_second': 34.686, 'epoch': 9.0}
+04/19/2022 00:50:59 - INFO - training.trainer_base - ***** Epoch 8: Best results *****
+04/19/2022 00:50:59 - INFO - training.trainer_base - best_epoch = 1
+04/19/2022 00:50:59 - INFO - training.trainer_base - best_eval_accuracy = 0.5054151624548736
+04/19/2022 00:50:59 - INFO - training.trainer_base - epoch = 8.0
+OrderedDict([('best_epoch', 1), ('best_eval_accuracy', 0.5054151624548736), ('epoch', 9.0)])
+04/19/2022 00:51:17 - INFO - datasets.metric - Removing /home/ask9126/.cache/huggingface/metrics/super_glue/rte/default_experiment-1-0.arrow
+{'eval_loss': 0.7060847878456116, 'eval_accuracy': 0.47653429602888087, 'eval_runtime': 1.0094, 'eval_samples_per_second': 274.433, 'eval_steps_per_second': 34.676, 'epoch': 10.0}
+04/19/2022 00:51:17 - INFO - training.trainer_base - ***** Epoch 9: Best results *****
+04/19/2022 00:51:17 - INFO - training.trainer_base - best_epoch = 1
+04/19/2022 00:51:17 - INFO - training.trainer_base - best_eval_accuracy = 0.5054151624548736
+04/19/2022 00:51:17 - INFO - training.trainer_base - epoch = 9.0
+OrderedDict([('best_epoch', 1), ('best_eval_accuracy', 0.5054151624548736), ('epoch', 10.0)])
+04/19/2022 00:51:35 - INFO - datasets.metric - Removing /home/ask9126/.cache/huggingface/metrics/super_glue/rte/default_experiment-1-0.arrow
+{'eval_loss': 0.7057419419288635, 'eval_accuracy': 0.48014440433212996, 'eval_runtime': 1.0098, 'eval_samples_per_second': 274.305, 'eval_steps_per_second': 34.659, 'epoch': 11.0}
+04/19/2022 00:51:35 - INFO - training.trainer_base - ***** Epoch 10: Best results *****
+04/19/2022 00:51:35 - INFO - training.trainer_base - best_epoch = 1
+04/19/2022 00:51:35 - INFO - training.trainer_base - best_eval_accuracy = 0.5054151624548736
+04/19/2022 00:51:35 - INFO - training.trainer_base - epoch = 10.0
+OrderedDict([('best_epoch', 1), ('best_eval_accuracy', 0.5054151624548736), ('epoch', 11.0)])
+04/19/2022 00:51:53 - INFO - datasets.metric - Removing /home/ask9126/.cache/huggingface/metrics/super_glue/rte/default_experiment-1-0.arrow
+{'eval_loss': 0.7056317329406738, 'eval_accuracy': 0.4693140794223827, 'eval_runtime': 1.0071, 'eval_samples_per_second': 275.059, 'eval_steps_per_second': 34.755, 'epoch': 12.0}
+04/19/2022 00:51:53 - INFO - training.trainer_base - ***** Epoch 11: Best results *****
+04/19/2022 00:51:53 - INFO - training.trainer_base - best_epoch = 1
+04/19/2022 00:51:53 - INFO - training.trainer_base - best_eval_accuracy = 0.5054151624548736
+04/19/2022 00:51:53 - INFO - training.trainer_base - epoch = 11.0
+OrderedDict([('best_epoch', 1), ('best_eval_accuracy', 0.5054151624548736), ('epoch', 12.0)])
+{'loss': 0.728, 'learning_rate': 2.6153846153846157e-05, 'epoch': 12.82}
+04/19/2022 00:52:10 - INFO - datasets.metric - Removing /home/ask9126/.cache/huggingface/metrics/super_glue/rte/default_experiment-1-0.arrow
+{'eval_loss': 0.7056783437728882, 'eval_accuracy': 0.48375451263537905, 'eval_runtime': 1.0055, 'eval_samples_per_second': 275.476, 'eval_steps_per_second': 34.807, 'epoch': 13.0}
+04/19/2022 00:52:10 - INFO - training.trainer_base - ***** Epoch 12: Best results *****
+04/19/2022 00:52:10 - INFO - training.trainer_base - best_epoch = 1
+04/19/2022 00:52:10 - INFO - training.trainer_base - best_eval_accuracy = 0.5054151624548736
+04/19/2022 00:52:10 - INFO - training.trainer_base - epoch = 12.0
+OrderedDict([('best_epoch', 1), ('best_eval_accuracy', 0.5054151624548736), ('epoch', 13.0)])
+04/19/2022 00:52:28 - INFO - datasets.metric - Removing /home/ask9126/.cache/huggingface/metrics/super_glue/rte/default_experiment-1-0.arrow
+{'eval_loss': 0.7057632803916931, 'eval_accuracy': 0.49458483754512633, 'eval_runtime': 1.012, 'eval_samples_per_second': 273.709, 'eval_steps_per_second': 34.584, 'epoch': 14.0}
+04/19/2022 00:52:28 - INFO - training.trainer_base - ***** Epoch 13: Best results *****
+04/19/2022 00:52:28 - INFO - training.trainer_base - best_epoch = 1
+04/19/2022 00:52:28 - INFO - training.trainer_base - best_eval_accuracy = 0.5054151624548736
+04/19/2022 00:52:28 - INFO - training.trainer_base - epoch = 13.0
+OrderedDict([('best_epoch', 1), ('best_eval_accuracy', 0.5054151624548736), ('epoch', 14.0)])
+04/19/2022 00:52:46 - INFO - datasets.metric - Removing /home/ask9126/.cache/huggingface/metrics/super_glue/rte/default_experiment-1-0.arrow
+{'eval_loss': 0.7052599191665649, 'eval_accuracy': 0.4657039711191336, 'eval_runtime': 1.0157, 'eval_samples_per_second': 272.72, 'eval_steps_per_second': 34.459, 'epoch': 15.0}
+04/19/2022 00:52:46 - INFO - training.trainer_base - ***** Epoch 14: Best results *****
+04/19/2022 00:52:46 - INFO - training.trainer_base - best_epoch = 1
+04/19/2022 00:52:46 - INFO - training.trainer_base - best_eval_accuracy = 0.5054151624548736
+04/19/2022 00:52:46 - INFO - training.trainer_base - epoch = 14.0
+OrderedDict([('best_epoch', 1), ('best_eval_accuracy', 0.5054151624548736), ('epoch', 15.0)])
+04/19/2022 00:53:04 - INFO - datasets.metric - Removing /home/ask9126/.cache/huggingface/metrics/super_glue/rte/default_experiment-1-0.arrow
+{'eval_loss': 0.705377995967865, 'eval_accuracy': 0.48014440433212996, 'eval_runtime': 1.0084, 'eval_samples_per_second': 274.69, 'eval_steps_per_second': 34.708, 'epoch': 16.0}
+04/19/2022 00:53:04 - INFO - training.trainer_base - ***** Epoch 15: Best results *****
+04/19/2022 00:53:04 - INFO - training.trainer_base - best_epoch = 1
+04/19/2022 00:53:04 - INFO - training.trainer_base - best_eval_accuracy = 0.5054151624548736
+04/19/2022 00:53:04 - INFO - training.trainer_base - epoch = 15.0
+OrderedDict([('best_epoch', 1), ('best_eval_accuracy', 0.5054151624548736), ('epoch', 16.0)])
+04/19/2022 00:53:21 - INFO - datasets.metric - Removing /home/ask9126/.cache/huggingface/metrics/super_glue/rte/default_experiment-1-0.arrow
+{'eval_loss': 0.7053909301757812, 'eval_accuracy': 0.4729241877256318, 'eval_runtime': 1.0153, 'eval_samples_per_second': 272.815, 'eval_steps_per_second': 34.471, 'epoch': 17.0}
+04/19/2022 00:53:21 - INFO - training.trainer_base - ***** Epoch 16: Best results *****
+04/19/2022 00:53:21 - INFO - training.trainer_base - best_epoch = 1
+04/19/2022 00:53:21 - INFO - training.trainer_base - best_eval_accuracy = 0.5054151624548736
+04/19/2022 00:53:21 - INFO - training.trainer_base - epoch = 16.0
+OrderedDict([('best_epoch', 1), ('best_eval_accuracy', 0.5054151624548736), ('epoch', 17.0)])
+04/19/2022 00:53:39 - INFO - datasets.metric - Removing /home/ask9126/.cache/huggingface/metrics/super_glue/rte/default_experiment-1-0.arrow
+{'eval_loss': 0.7055535316467285, 'eval_accuracy': 0.48014440433212996, 'eval_runtime': 1.0144, 'eval_samples_per_second': 273.078, 'eval_steps_per_second': 34.504, 'epoch': 18.0}
+04/19/2022 00:53:39 - INFO - training.trainer_base - ***** Epoch 17: Best results *****
+04/19/2022 00:53:39 - INFO - training.trainer_base - best_epoch = 1
+04/19/2022 00:53:39 - INFO - training.trainer_base - best_eval_accuracy = 0.5054151624548736
+04/19/2022 00:53:39 - INFO - training.trainer_base - epoch = 17.0
+OrderedDict([('best_epoch', 1), ('best_eval_accuracy', 0.5054151624548736), ('epoch', 18.0)])
+04/19/2022 00:53:57 - INFO - datasets.metric - Removing /home/ask9126/.cache/huggingface/metrics/super_glue/rte/default_experiment-1-0.arrow
+{'eval_loss': 0.7053350210189819, 'eval_accuracy': 0.4657039711191336, 'eval_runtime': 1.0138, 'eval_samples_per_second': 273.227, 'eval_steps_per_second': 34.523, 'epoch': 19.0}
+04/19/2022 00:53:57 - INFO - training.trainer_base - ***** Epoch 18: Best results *****
+04/19/2022 00:53:57 - INFO - training.trainer_base - best_epoch = 1
+04/19/2022 00:53:57 - INFO - training.trainer_base - best_eval_accuracy = 0.5054151624548736
+04/19/2022 00:53:57 - INFO - training.trainer_base - epoch = 18.0
+OrderedDict([('best_epoch', 1), ('best_eval_accuracy', 0.5054151624548736), ('epoch', 19.0)])
+{'loss': 0.7253, 'learning_rate': 2.423076923076923e-05, 'epoch': 19.23}
+04/19/2022 00:54:15 - INFO - datasets.metric - Removing /home/ask9126/.cache/huggingface/metrics/super_glue/rte/default_experiment-1-0.arrow
+{'eval_loss': 0.7056336998939514, 'eval_accuracy': 0.48014440433212996, 'eval_runtime': 1.0053, 'eval_samples_per_second': 275.531, 'eval_steps_per_second': 34.814, 'epoch': 20.0}
+04/19/2022 00:54:15 - INFO - training.trainer_base - ***** Epoch 19: Best results *****
+04/19/2022 00:54:15 - INFO - training.trainer_base - best_epoch = 1
+04/19/2022 00:54:15 - INFO - training.trainer_base - best_eval_accuracy = 0.5054151624548736
+04/19/2022 00:54:15 - INFO - training.trainer_base - epoch = 19.0
+OrderedDict([('best_epoch', 1), ('best_eval_accuracy', 0.5054151624548736), ('epoch', 20.0)])
+04/19/2022 00:54:32 - INFO - datasets.metric - Removing /home/ask9126/.cache/huggingface/metrics/super_glue/rte/default_experiment-1-0.arrow
+{'eval_loss': 0.7055038213729858, 'eval_accuracy': 0.4729241877256318, 'eval_runtime': 1.0047, 'eval_samples_per_second': 275.713, 'eval_steps_per_second': 34.837, 'epoch': 21.0}
+04/19/2022 00:54:32 - INFO - training.trainer_base - ***** Epoch 20: Best results *****
+04/19/2022 00:54:32 - INFO - training.trainer_base - best_epoch = 1
+04/19/2022 00:54:32 - INFO - training.trainer_base - best_eval_accuracy = 0.5054151624548736
+04/19/2022 00:54:32 - INFO - training.trainer_base - epoch = 20.0
+OrderedDict([('best_epoch', 1), ('best_eval_accuracy', 0.5054151624548736), ('epoch', 21.0)])
+04/19/2022 00:54:50 - INFO - datasets.metric - Removing /home/ask9126/.cache/huggingface/metrics/super_glue/rte/default_experiment-1-0.arrow
+{'eval_loss': 0.7057321071624756, 'eval_accuracy': 0.48375451263537905, 'eval_runtime': 1.0118, 'eval_samples_per_second': 273.763, 'eval_steps_per_second': 34.591, 'epoch': 22.0}
+04/19/2022 00:54:50 - INFO - training.trainer_base - ***** Epoch 21: Best results *****
+04/19/2022 00:54:50 - INFO - training.trainer_base - best_epoch = 1
+04/19/2022 00:54:50 - INFO - training.trainer_base - best_eval_accuracy = 0.5054151624548736
+04/19/2022 00:54:50 - INFO - training.trainer_base - epoch = 21.0
+OrderedDict([('best_epoch', 1), ('best_eval_accuracy', 0.5054151624548736), ('epoch', 22.0)])
+04/19/2022 00:55:08 - INFO - datasets.metric - Removing /home/ask9126/.cache/huggingface/metrics/super_glue/rte/default_experiment-1-0.arrow
+{'eval_loss': 0.7058022022247314, 'eval_accuracy': 0.48736462093862815, 'eval_runtime': 1.0068, 'eval_samples_per_second': 275.13, 'eval_steps_per_second': 34.764, 'epoch': 23.0}
+04/19/2022 00:55:08 - INFO - training.trainer_base - ***** Epoch 22: Best results *****
+04/19/2022 00:55:08 - INFO - training.trainer_base - best_epoch = 1
+04/19/2022 00:55:08 - INFO - training.trainer_base - best_eval_accuracy = 0.5054151624548736
+04/19/2022 00:55:08 - INFO - training.trainer_base - epoch = 22.0
+OrderedDict([('best_epoch', 1), ('best_eval_accuracy', 0.5054151624548736), ('epoch', 23.0)])
+04/19/2022 00:55:26 - INFO - datasets.metric - Removing /home/ask9126/.cache/huggingface/metrics/super_glue/rte/default_experiment-1-0.arrow
+{'eval_loss': 0.7057408094406128, 'eval_accuracy': 0.49097472924187724, 'eval_runtime': 1.0061, 'eval_samples_per_second': 275.317, 'eval_steps_per_second': 34.787, 'epoch': 24.0}
+04/19/2022 00:55:26 - INFO - training.trainer_base - ***** Epoch 23: Best results *****
+04/19/2022 00:55:26 - INFO - training.trainer_base - best_epoch = 1
+04/19/2022 00:55:26 - INFO - training.trainer_base - best_eval_accuracy = 0.5054151624548736
+04/19/2022 00:55:26 - INFO - training.trainer_base - epoch = 23.0
+OrderedDict([('best_epoch', 1), ('best_eval_accuracy', 0.5054151624548736), ('epoch', 24.0)])
+04/19/2022 00:55:43 - INFO - datasets.metric - Removing /home/ask9126/.cache/huggingface/metrics/super_glue/rte/default_experiment-1-0.arrow
+{'eval_loss': 0.7056415677070618, 'eval_accuracy': 0.49097472924187724, 'eval_runtime': 1.0123, 'eval_samples_per_second': 273.631, 'eval_steps_per_second': 34.574, 'epoch': 25.0}
+04/19/2022 00:55:43 - INFO - training.trainer_base - ***** Epoch 24: Best results *****
+04/19/2022 00:55:43 - INFO - training.trainer_base - best_epoch = 1
+04/19/2022 00:55:43 - INFO - training.trainer_base - best_eval_accuracy = 0.5054151624548736
+04/19/2022 00:55:43 - INFO - training.trainer_base - epoch = 24.0
+OrderedDict([('best_epoch', 1), ('best_eval_accuracy', 0.5054151624548736), ('epoch', 25.0)])
+{'loss': 0.7217, 'learning_rate': 2.230769230769231e-05, 'epoch': 25.64}
+04/19/2022 00:56:01 - INFO - datasets.metric - Removing /home/ask9126/.cache/huggingface/metrics/super_glue/rte/default_experiment-1-0.arrow
+{'eval_loss': 0.7056835889816284, 'eval_accuracy': 0.49097472924187724, 'eval_runtime': 1.0099, 'eval_samples_per_second': 274.276, 'eval_steps_per_second': 34.656, 'epoch': 26.0}
+04/19/2022 00:56:01 - INFO - training.trainer_base - ***** Epoch 25: Best results *****
+04/19/2022 00:56:01 - INFO - training.trainer_base - best_epoch = 1
+04/19/2022 00:56:01 - INFO - training.trainer_base - best_eval_accuracy = 0.5054151624548736
+04/19/2022 00:56:01 - INFO - training.trainer_base - epoch = 25.0
+OrderedDict([('best_epoch', 1), ('best_eval_accuracy', 0.5054151624548736), ('epoch', 26.0)])
+04/19/2022 00:56:19 - INFO - datasets.metric - Removing /home/ask9126/.cache/huggingface/metrics/super_glue/rte/default_experiment-1-0.arrow
+{'eval_loss': 0.7056119441986084, 'eval_accuracy': 0.49097472924187724, 'eval_runtime': 1.0014, 'eval_samples_per_second': 276.624, 'eval_steps_per_second': 34.952, 'epoch': 27.0}
+04/19/2022 00:56:19 - INFO - training.trainer_base - ***** Epoch 26: Best results *****
+04/19/2022 00:56:19 - INFO - training.trainer_base - best_epoch = 1
+04/19/2022 00:56:19 - INFO - training.trainer_base - best_eval_accuracy = 0.5054151624548736
+04/19/2022 00:56:19 - INFO - training.trainer_base - epoch = 26.0
+OrderedDict([('best_epoch', 1), ('best_eval_accuracy', 0.5054151624548736), ('epoch', 27.0)])
+04/19/2022 00:56:37 - INFO - datasets.metric - Removing /home/ask9126/.cache/huggingface/metrics/super_glue/rte/default_experiment-1-0.arrow
+{'eval_loss': 0.7061327695846558, 'eval_accuracy': 0.47653429602888087, 'eval_runtime': 1.0238, 'eval_samples_per_second': 270.555, 'eval_steps_per_second': 34.186, 'epoch': 28.0}
+04/19/2022 00:56:37 - INFO - training.trainer_base - ***** Epoch 27: Best results *****
+04/19/2022 00:56:37 - INFO - training.trainer_base - best_epoch = 1
+04/19/2022 00:56:37 - INFO - training.trainer_base - best_eval_accuracy = 0.5054151624548736
+04/19/2022 00:56:37 - INFO - training.trainer_base - epoch = 27.0
+OrderedDict([('best_epoch', 1), ('best_eval_accuracy', 0.5054151624548736), ('epoch', 28.0)])
+04/19/2022 00:56:54 - INFO - datasets.metric - Removing /home/ask9126/.cache/huggingface/metrics/super_glue/rte/default_experiment-1-0.arrow
+{'eval_loss': 0.7059071063995361, 'eval_accuracy': 0.48014440433212996, 'eval_runtime': 1.0108, 'eval_samples_per_second': 274.046, 'eval_steps_per_second': 34.627, 'epoch': 29.0}
+04/19/2022 00:56:54 - INFO - training.trainer_base - ***** Epoch 28: Best results *****
+04/19/2022 00:56:54 - INFO - training.trainer_base - best_epoch = 1
+04/19/2022 00:56:54 - INFO - training.trainer_base - best_eval_accuracy = 0.5054151624548736
+04/19/2022 00:56:54 - INFO - training.trainer_base - epoch = 28.0
+OrderedDict([('best_epoch', 1), ('best_eval_accuracy', 0.5054151624548736), ('epoch', 29.0)])
+04/19/2022 00:57:12 - INFO - datasets.metric - Removing /home/ask9126/.cache/huggingface/metrics/super_glue/rte/default_experiment-1-0.arrow
+{'eval_loss': 0.7057284712791443, 'eval_accuracy': 0.48375451263537905, 'eval_runtime': 1.003, 'eval_samples_per_second': 276.165, 'eval_steps_per_second': 34.894, 'epoch': 30.0}
+04/19/2022 00:57:12 - INFO - training.trainer_base - ***** Epoch 29: Best results *****
+04/19/2022 00:57:12 - INFO - training.trainer_base - best_epoch = 1
+04/19/2022 00:57:12 - INFO - training.trainer_base - best_eval_accuracy = 0.5054151624548736
+04/19/2022 00:57:12 - INFO - training.trainer_base - epoch = 29.0
+OrderedDict([('best_epoch', 1), ('best_eval_accuracy', 0.5054151624548736), ('epoch', 30.0)])
+04/19/2022 00:57:30 - INFO - datasets.metric - Removing /home/ask9126/.cache/huggingface/metrics/super_glue/rte/default_experiment-1-0.arrow
+{'eval_loss': 0.7063144445419312, 'eval_accuracy': 0.4693140794223827, 'eval_runtime': 1.0022, 'eval_samples_per_second': 276.395, 'eval_steps_per_second': 34.924, 'epoch': 31.0}
+04/19/2022 00:57:30 - INFO - training.trainer_base - ***** Epoch 30: Best results *****
+04/19/2022 00:57:30 - INFO - training.trainer_base - best_epoch = 1
+04/19/2022 00:57:30 - INFO - training.trainer_base - best_eval_accuracy = 0.5054151624548736
+04/19/2022 00:57:30 - INFO - training.trainer_base - epoch = 30.0
+OrderedDict([('best_epoch', 1), ('best_eval_accuracy', 0.5054151624548736), ('epoch', 31.0)])
+04/19/2022 00:57:48 - INFO - datasets.metric - Removing /home/ask9126/.cache/huggingface/metrics/super_glue/rte/default_experiment-1-0.arrow
+{'eval_loss': 0.7063353061676025, 'eval_accuracy': 0.4693140794223827, 'eval_runtime': 1.0008, 'eval_samples_per_second': 276.774, 'eval_steps_per_second': 34.971, 'epoch': 32.0}
+04/19/2022 00:57:48 - INFO - training.trainer_base - ***** Epoch 31: Best results *****
+04/19/2022 00:57:48 - INFO - training.trainer_base - best_epoch = 1
+04/19/2022 00:57:48 - INFO - training.trainer_base - best_eval_accuracy = 0.5054151624548736
+04/19/2022 00:57:48 - INFO - training.trainer_base - epoch = 31.0
+OrderedDict([('best_epoch', 1), ('best_eval_accuracy', 0.5054151624548736), ('epoch', 32.0)])
+{'loss': 0.7212, 'learning_rate': 2.0384615384615387e-05, 'epoch': 32.05}
+04/19/2022 00:58:05 - INFO - datasets.metric - Removing /home/ask9126/.cache/huggingface/metrics/super_glue/rte/default_experiment-1-0.arrow
+{'eval_loss': 0.7062605023384094, 'eval_accuracy': 0.48014440433212996, 'eval_runtime': 1.0073, 'eval_samples_per_second': 275.0, 'eval_steps_per_second': 34.747, 'epoch': 33.0}
+04/19/2022 00:58:05 - INFO - training.trainer_base - ***** Epoch 32: Best results *****
+04/19/2022 00:58:05 - INFO - training.trainer_base - best_epoch = 1
+04/19/2022 00:58:05 - INFO - training.trainer_base - best_eval_accuracy = 0.5054151624548736
+04/19/2022 00:58:05 - INFO - training.trainer_base - epoch = 32.0
+OrderedDict([('best_epoch', 1), ('best_eval_accuracy', 0.5054151624548736), ('epoch', 33.0)])
+04/19/2022 00:58:23 - INFO - datasets.metric - Removing /home/ask9126/.cache/huggingface/metrics/super_glue/rte/default_experiment-1-0.arrow
+{'eval_loss': 0.7062057256698608, 'eval_accuracy': 0.48014440433212996, 'eval_runtime': 1.0081, 'eval_samples_per_second': 274.765, 'eval_steps_per_second': 34.718, 'epoch': 34.0}
+04/19/2022 00:58:23 - INFO - training.trainer_base - ***** Epoch 33: Best results *****
+04/19/2022 00:58:23 - INFO - training.trainer_base - best_epoch = 1
+04/19/2022 00:58:23 - INFO - training.trainer_base - best_eval_accuracy = 0.5054151624548736
+04/19/2022 00:58:23 - INFO - training.trainer_base - epoch = 33.0
+OrderedDict([('best_epoch', 1), ('best_eval_accuracy', 0.5054151624548736), ('epoch', 34.0)])
+04/19/2022 00:58:41 - INFO - datasets.metric - Removing /home/ask9126/.cache/huggingface/metrics/super_glue/rte/default_experiment-1-0.arrow
+{'eval_loss': 0.7063850164413452, 'eval_accuracy': 0.4729241877256318, 'eval_runtime': 1.0051, 'eval_samples_per_second': 275.583, 'eval_steps_per_second': 34.821, 'epoch': 35.0}
+04/19/2022 00:58:41 - INFO - training.trainer_base - ***** Epoch 34: Best results *****
+04/19/2022 00:58:41 - INFO - training.trainer_base - best_epoch = 1
+04/19/2022 00:58:41 - INFO - training.trainer_base - best_eval_accuracy = 0.5054151624548736
+04/19/2022 00:58:41 - INFO - training.trainer_base - epoch = 34.0
+OrderedDict([('best_epoch', 1), ('best_eval_accuracy', 0.5054151624548736), ('epoch', 35.0)])
+04/19/2022 00:58:59 - INFO - datasets.metric - Removing /home/ask9126/.cache/huggingface/metrics/super_glue/rte/default_experiment-1-0.arrow
+{'eval_loss': 0.706122636795044, 'eval_accuracy': 0.47653429602888087, 'eval_runtime': 1.0108, 'eval_samples_per_second': 274.039, 'eval_steps_per_second': 34.626, 'epoch': 36.0}
+04/19/2022 00:58:59 - INFO - training.trainer_base - ***** Epoch 35: Best results *****
+04/19/2022 00:58:59 - INFO - training.trainer_base - best_epoch = 1
+04/19/2022 00:58:59 - INFO - training.trainer_base - best_eval_accuracy = 0.5054151624548736
+04/19/2022 00:58:59 - INFO - training.trainer_base - epoch = 35.0
+OrderedDict([('best_epoch', 1), ('best_eval_accuracy', 0.5054151624548736), ('epoch', 36.0)])
+04/19/2022 00:59:16 - INFO - datasets.metric - Removing /home/ask9126/.cache/huggingface/metrics/super_glue/rte/default_experiment-1-0.arrow
+{'eval_loss': 0.7064932584762573, 'eval_accuracy': 0.4729241877256318, 'eval_runtime': 1.0029, 'eval_samples_per_second': 276.211, 'eval_steps_per_second': 34.9, 'epoch': 37.0}
+04/19/2022 00:59:16 - INFO - training.trainer_base - ***** Epoch 36: Best results *****
+04/19/2022 00:59:16 - INFO - training.trainer_base - best_epoch = 1
+04/19/2022 00:59:16 - INFO - training.trainer_base - best_eval_accuracy = 0.5054151624548736
+04/19/2022 00:59:16 - INFO - training.trainer_base - epoch = 36.0
+OrderedDict([('best_epoch', 1), ('best_eval_accuracy', 0.5054151624548736), ('epoch', 37.0)])
+04/19/2022 00:59:34 - INFO - datasets.metric - Removing /home/ask9126/.cache/huggingface/metrics/super_glue/rte/default_experiment-1-0.arrow
+{'eval_loss': 0.7066056132316589, 'eval_accuracy': 0.4693140794223827, 'eval_runtime': 1.0007, 'eval_samples_per_second': 276.796, 'eval_steps_per_second': 34.974, 'epoch': 38.0}
+04/19/2022 00:59:34 - INFO - training.trainer_base - ***** Epoch 37: Best results *****
+04/19/2022 00:59:34 - INFO - training.trainer_base - best_epoch = 1
+04/19/2022 00:59:34 - INFO - training.trainer_base - best_eval_accuracy = 0.5054151624548736
+04/19/2022 00:59:34 - INFO - training.trainer_base - epoch = 37.0
+OrderedDict([('best_epoch', 1), ('best_eval_accuracy', 0.5054151624548736), ('epoch', 38.0)])
+{'loss': 0.718, 'learning_rate': 1.8461538461538465e-05, 'epoch': 38.46}
+04/19/2022 00:59:52 - INFO - datasets.metric - Removing /home/ask9126/.cache/huggingface/metrics/super_glue/rte/default_experiment-1-0.arrow
+{'eval_loss': 0.7066038846969604, 'eval_accuracy': 0.4693140794223827, 'eval_runtime': 1.0024, 'eval_samples_per_second': 276.344, 'eval_steps_per_second': 34.917, 'epoch': 39.0}
+04/19/2022 00:59:52 - INFO - training.trainer_base - ***** Epoch 38: Best results *****
+04/19/2022 00:59:52 - INFO - training.trainer_base - best_epoch = 1
+04/19/2022 00:59:52 - INFO - training.trainer_base - best_eval_accuracy = 0.5054151624548736
+04/19/2022 00:59:52 - INFO - training.trainer_base - epoch = 38.0
+OrderedDict([('best_epoch', 1), ('best_eval_accuracy', 0.5054151624548736), ('epoch', 39.0)])
+04/19/2022 01:00:10 - INFO - datasets.metric - Removing /home/ask9126/.cache/huggingface/metrics/super_glue/rte/default_experiment-1-0.arrow
+{'eval_loss': 0.7062897682189941, 'eval_accuracy': 0.47653429602888087, 'eval_runtime': 1.0059, 'eval_samples_per_second': 275.383, 'eval_steps_per_second': 34.796, 'epoch': 40.0}
+04/19/2022 01:00:10 - INFO - training.trainer_base - ***** Epoch 39: Best results *****
+04/19/2022 01:00:10 - INFO - training.trainer_base - best_epoch = 1
+04/19/2022 01:00:10 - INFO - training.trainer_base - best_eval_accuracy = 0.5054151624548736
+04/19/2022 01:00:10 - INFO - training.trainer_base - epoch = 39.0
+OrderedDict([('best_epoch', 1), ('best_eval_accuracy', 0.5054151624548736), ('epoch', 40.0)])
+04/19/2022 01:00:27 - INFO - datasets.metric - Removing /home/ask9126/.cache/huggingface/metrics/super_glue/rte/default_experiment-1-0.arrow
+{'eval_loss': 0.7062690854072571, 'eval_accuracy': 0.47653429602888087, 'eval_runtime': 1.0131, 'eval_samples_per_second': 273.43, 'eval_steps_per_second': 34.549, 'epoch': 41.0}
+04/19/2022 01:00:27 - INFO - training.trainer_base - ***** Epoch 40: Best results *****
+04/19/2022 01:00:27 - INFO - training.trainer_base - best_epoch = 1
+04/19/2022 01:00:27 - INFO - training.trainer_base - best_eval_accuracy = 0.5054151624548736
+04/19/2022 01:00:27 - INFO - training.trainer_base - epoch = 40.0
+OrderedDict([('best_epoch', 1), ('best_eval_accuracy', 0.5054151624548736), ('epoch', 41.0)])
+04/19/2022 01:00:45 - INFO - datasets.metric - Removing /home/ask9126/.cache/huggingface/metrics/super_glue/rte/default_experiment-1-0.arrow
+{'eval_loss': 0.7065411806106567, 'eval_accuracy': 0.47653429602888087, 'eval_runtime': 0.997, 'eval_samples_per_second': 277.827, 'eval_steps_per_second': 35.105, 'epoch': 42.0}
+04/19/2022 01:00:45 - INFO - training.trainer_base - ***** Epoch 41: Best results *****
+04/19/2022 01:00:45 - INFO - training.trainer_base - best_epoch = 1
+04/19/2022 01:00:45 - INFO - training.trainer_base - best_eval_accuracy = 0.5054151624548736
+04/19/2022 01:00:45 - INFO - training.trainer_base - epoch = 41.0
+OrderedDict([('best_epoch', 1), ('best_eval_accuracy', 0.5054151624548736), ('epoch', 42.0)])
+04/19/2022 01:01:03 - INFO - datasets.metric - Removing /home/ask9126/.cache/huggingface/metrics/super_glue/rte/default_experiment-1-0.arrow
+{'eval_loss': 0.7065368890762329, 'eval_accuracy': 0.47653429602888087, 'eval_runtime': 0.9988, 'eval_samples_per_second': 277.33, 'eval_steps_per_second': 35.042, 'epoch': 43.0}
+04/19/2022 01:01:03 - INFO - training.trainer_base - ***** Epoch 42: Best results *****
+04/19/2022 01:01:03 - INFO - training.trainer_base - best_epoch = 1
+04/19/2022 01:01:03 - INFO - training.trainer_base - best_eval_accuracy = 0.5054151624548736
+04/19/2022 01:01:03 - INFO - training.trainer_base - epoch = 42.0
+OrderedDict([('best_epoch', 1), ('best_eval_accuracy', 0.5054151624548736), ('epoch', 43.0)])
+04/19/2022 01:01:20 - INFO - datasets.metric - Removing /home/ask9126/.cache/huggingface/metrics/super_glue/rte/default_experiment-1-0.arrow
+{'eval_loss': 0.7067581415176392, 'eval_accuracy': 0.4729241877256318, 'eval_runtime': 0.9981, 'eval_samples_per_second': 277.518, 'eval_steps_per_second': 35.065, 'epoch': 44.0}
+04/19/2022 01:01:21 - INFO - training.trainer_base - ***** Epoch 43: Best results *****
+04/19/2022 01:01:21 - INFO - training.trainer_base - best_epoch = 1
+04/19/2022 01:01:21 - INFO - training.trainer_base - best_eval_accuracy = 0.5054151624548736
+04/19/2022 01:01:21 - INFO - training.trainer_base - epoch = 43.0
+OrderedDict([('best_epoch', 1), ('best_eval_accuracy', 0.5054151624548736), ('epoch', 44.0)])
+{'loss': 0.7188, 'learning_rate': 1.653846153846154e-05, 'epoch': 44.87}
+04/19/2022 01:01:38 - INFO - datasets.metric - Removing /home/ask9126/.cache/huggingface/metrics/super_glue/rte/default_experiment-1-0.arrow
+{'eval_loss': 0.7066394090652466, 'eval_accuracy': 0.48375451263537905, 'eval_runtime': 1.0011, 'eval_samples_per_second': 276.696, 'eval_steps_per_second': 34.962, 'epoch': 45.0}
+04/19/2022 01:01:38 - INFO - training.trainer_base - ***** Epoch 44: Best results *****
+04/19/2022 01:01:38 - INFO - training.trainer_base - best_epoch = 1
+04/19/2022 01:01:38 - INFO - training.trainer_base - best_eval_accuracy = 0.5054151624548736
+04/19/2022 01:01:38 - INFO - training.trainer_base - epoch = 44.0
+OrderedDict([('best_epoch', 1), ('best_eval_accuracy', 0.5054151624548736), ('epoch', 45.0)])
+04/19/2022 01:01:56 - INFO - datasets.metric - Removing /home/ask9126/.cache/huggingface/metrics/super_glue/rte/default_experiment-1-0.arrow
+{'eval_loss': 0.7073622345924377, 'eval_accuracy': 0.49097472924187724, 'eval_runtime': 1.0124, 'eval_samples_per_second': 273.616, 'eval_steps_per_second': 34.572, 'epoch': 46.0}
+04/19/2022 01:01:56 - INFO - training.trainer_base - ***** Epoch 45: Best results *****
+04/19/2022 01:01:56 - INFO - training.trainer_base - best_epoch = 1
+04/19/2022 01:01:56 - INFO - training.trainer_base - best_eval_accuracy = 0.5054151624548736
+04/19/2022 01:01:56 - INFO - training.trainer_base - epoch = 45.0
+OrderedDict([('best_epoch', 1), ('best_eval_accuracy', 0.5054151624548736), ('epoch', 46.0)])
+04/19/2022 01:02:14 - INFO - datasets.metric - Removing /home/ask9126/.cache/huggingface/metrics/super_glue/rte/default_experiment-1-0.arrow
+{'eval_loss': 0.707396388053894, 'eval_accuracy': 0.49097472924187724, 'eval_runtime': 1.0116, 'eval_samples_per_second': 273.812, 'eval_steps_per_second': 34.597, 'epoch': 47.0}
+04/19/2022 01:02:14 - INFO - training.trainer_base - ***** Epoch 46: Best results *****
+04/19/2022 01:02:14 - INFO - training.trainer_base - best_epoch = 1
+04/19/2022 01:02:14 - INFO - training.trainer_base - best_eval_accuracy = 0.5054151624548736
+04/19/2022 01:02:14 - INFO - training.trainer_base - epoch = 46.0
+OrderedDict([('best_epoch', 1), ('best_eval_accuracy', 0.5054151624548736), ('epoch', 47.0)])
+04/19/2022 01:02:31 - INFO - datasets.metric - Removing /home/ask9126/.cache/huggingface/metrics/super_glue/rte/default_experiment-1-0.arrow
+{'eval_loss': 0.707091212272644, 'eval_accuracy': 0.48736462093862815, 'eval_runtime': 1.0026, 'eval_samples_per_second': 276.293, 'eval_steps_per_second': 34.911, 'epoch': 48.0}
+04/19/2022 01:02:31 - INFO - training.trainer_base - ***** Epoch 47: Best results *****
+04/19/2022 01:02:31 - INFO - training.trainer_base - best_epoch = 1
+04/19/2022 01:02:31 - INFO - training.trainer_base - best_eval_accuracy = 0.5054151624548736
+04/19/2022 01:02:31 - INFO - training.trainer_base - epoch = 47.0
+OrderedDict([('best_epoch', 1), ('best_eval_accuracy', 0.5054151624548736), ('epoch', 48.0)])
+04/19/2022 01:02:49 - INFO - datasets.metric - Removing /home/ask9126/.cache/huggingface/metrics/super_glue/rte/default_experiment-1-0.arrow
+{'eval_loss': 0.7069500088691711, 'eval_accuracy': 0.48736462093862815, 'eval_runtime': 1.0151, 'eval_samples_per_second': 272.892, 'eval_steps_per_second': 34.481, 'epoch': 49.0}
+04/19/2022 01:02:49 - INFO - training.trainer_base - ***** Epoch 48: Best results *****
+04/19/2022 01:02:49 - INFO - training.trainer_base - best_epoch = 1
+04/19/2022 01:02:49 - INFO - training.trainer_base - best_eval_accuracy = 0.5054151624548736
+04/19/2022 01:02:49 - INFO - training.trainer_base - epoch = 48.0
+OrderedDict([('best_epoch', 1), ('best_eval_accuracy', 0.5054151624548736), ('epoch', 49.0)])
+04/19/2022 01:03:07 - INFO - datasets.metric - Removing /home/ask9126/.cache/huggingface/metrics/super_glue/rte/default_experiment-1-0.arrow
+{'eval_loss': 0.7070791721343994, 'eval_accuracy': 0.48736462093862815, 'eval_runtime': 1.0044, 'eval_samples_per_second': 275.781, 'eval_steps_per_second': 34.846, 'epoch': 50.0}
+04/19/2022 01:03:07 - INFO - training.trainer_base - ***** Epoch 49: Best results *****
+04/19/2022 01:03:07 - INFO - training.trainer_base - best_epoch = 1
+04/19/2022 01:03:07 - INFO - training.trainer_base - best_eval_accuracy = 0.5054151624548736
+04/19/2022 01:03:07 - INFO - training.trainer_base - epoch = 49.0
+OrderedDict([('best_epoch', 1), ('best_eval_accuracy', 0.5054151624548736), ('epoch', 50.0)])
+04/19/2022 01:03:25 - INFO - datasets.metric - Removing /home/ask9126/.cache/huggingface/metrics/super_glue/rte/default_experiment-1-0.arrow
+{'eval_loss': 0.7069706916809082, 'eval_accuracy': 0.48736462093862815, 'eval_runtime': 1.0043, 'eval_samples_per_second': 275.811, 'eval_steps_per_second': 34.85, 'epoch': 51.0}
+04/19/2022 01:03:25 - INFO - training.trainer_base - ***** Epoch 50: Best results *****
+04/19/2022 01:03:25 - INFO - training.trainer_base - best_epoch = 1
+04/19/2022 01:03:25 - INFO - training.trainer_base - best_eval_accuracy = 0.5054151624548736
+04/19/2022 01:03:25 - INFO - training.trainer_base - epoch = 50.0
+OrderedDict([('best_epoch', 1), ('best_eval_accuracy', 0.5054151624548736), ('epoch', 51.0)])
+{'loss': 0.7219, 'learning_rate': 1.4615384615384615e-05, 'epoch': 51.28}
+04/19/2022 01:03:42 - INFO - datasets.metric - Removing /home/ask9126/.cache/huggingface/metrics/super_glue/rte/default_experiment-1-0.arrow
+{'eval_loss': 0.7072206735610962, 'eval_accuracy': 0.49097472924187724, 'eval_runtime': 0.9987, 'eval_samples_per_second': 277.354, 'eval_steps_per_second': 35.045, 'epoch': 52.0}
+04/19/2022 01:03:42 - INFO - training.trainer_base - ***** Epoch 51: Best results *****
+04/19/2022 01:03:42 - INFO - training.trainer_base - best_epoch = 1
+04/19/2022 01:03:42 - INFO - training.trainer_base - best_eval_accuracy = 0.5054151624548736
+04/19/2022 01:03:42 - INFO - training.trainer_base - epoch = 51.0
+OrderedDict([('best_epoch', 1), ('best_eval_accuracy', 0.5054151624548736), ('epoch', 52.0)])
+04/19/2022 01:04:00 - INFO - datasets.metric - Removing /home/ask9126/.cache/huggingface/metrics/super_glue/rte/default_experiment-1-0.arrow
+{'eval_loss': 0.7070965766906738, 'eval_accuracy': 0.49097472924187724, 'eval_runtime': 1.0024, 'eval_samples_per_second': 276.343, 'eval_steps_per_second': 34.917, 'epoch': 53.0}
+04/19/2022 01:04:00 - INFO - training.trainer_base - ***** Epoch 52: Best results *****
+04/19/2022 01:04:00 - INFO - training.trainer_base - best_epoch = 1
+04/19/2022 01:04:00 - INFO - training.trainer_base - best_eval_accuracy = 0.5054151624548736
+04/19/2022 01:04:00 - INFO - training.trainer_base - epoch = 52.0
+OrderedDict([('best_epoch', 1), ('best_eval_accuracy', 0.5054151624548736), ('epoch', 53.0)])
+04/19/2022 01:04:18 - INFO - datasets.metric - Removing /home/ask9126/.cache/huggingface/metrics/super_glue/rte/default_experiment-1-0.arrow
+{'eval_loss': 0.7071825861930847, 'eval_accuracy': 0.48736462093862815, 'eval_runtime': 1.0042, 'eval_samples_per_second': 275.848, 'eval_steps_per_second': 34.854, 'epoch': 54.0}
+04/19/2022 01:04:18 - INFO - training.trainer_base - ***** Epoch 53: Best results *****
+04/19/2022 01:04:18 - INFO - training.trainer_base - best_epoch = 1
+04/19/2022 01:04:18 - INFO - training.trainer_base - best_eval_accuracy = 0.5054151624548736
+04/19/2022 01:04:18 - INFO - training.trainer_base - epoch = 53.0
+OrderedDict([('best_epoch', 1), ('best_eval_accuracy', 0.5054151624548736), ('epoch', 54.0)])
+04/19/2022 01:04:36 - INFO - datasets.metric - Removing /home/ask9126/.cache/huggingface/metrics/super_glue/rte/default_experiment-1-0.arrow
+{'eval_loss': 0.706983745098114, 'eval_accuracy': 0.48014440433212996, 'eval_runtime': 1.0078, 'eval_samples_per_second': 274.858, 'eval_steps_per_second': 34.729, 'epoch': 55.0}
+04/19/2022 01:04:36 - INFO - training.trainer_base - ***** Epoch 54: Best results *****
+04/19/2022 01:04:36 - INFO - training.trainer_base - best_epoch = 1
+04/19/2022 01:04:36 - INFO - training.trainer_base - best_eval_accuracy = 0.5054151624548736
+04/19/2022 01:04:36 - INFO - training.trainer_base - epoch = 54.0
+OrderedDict([('best_epoch', 1), ('best_eval_accuracy', 0.5054151624548736), ('epoch', 55.0)])
+04/19/2022 01:04:53 - INFO - datasets.metric - Removing /home/ask9126/.cache/huggingface/metrics/super_glue/rte/default_experiment-1-0.arrow
+{'eval_loss': 0.7070529460906982, 'eval_accuracy': 0.48375451263537905, 'eval_runtime': 1.0122, 'eval_samples_per_second': 273.669, 'eval_steps_per_second': 34.579, 'epoch': 56.0}
+04/19/2022 01:04:53 - INFO - training.trainer_base - ***** Epoch 55: Best results *****
+04/19/2022 01:04:53 - INFO - training.trainer_base - best_epoch = 1
+04/19/2022 01:04:53 - INFO - training.trainer_base - best_eval_accuracy = 0.5054151624548736
+04/19/2022 01:04:53 - INFO - training.trainer_base - epoch = 55.0
+OrderedDict([('best_epoch', 1), ('best_eval_accuracy', 0.5054151624548736), ('epoch', 56.0)])
+04/19/2022 01:05:11 - INFO - datasets.metric - Removing /home/ask9126/.cache/huggingface/metrics/super_glue/rte/default_experiment-1-0.arrow
+{'eval_loss': 0.7071443796157837, 'eval_accuracy': 0.49097472924187724, 'eval_runtime': 1.0002, 'eval_samples_per_second': 276.943, 'eval_steps_per_second': 34.993, 'epoch': 57.0}
+04/19/2022 01:05:11 - INFO - training.trainer_base - ***** Epoch 56: Best results *****
+04/19/2022 01:05:11 - INFO - training.trainer_base - best_epoch = 1
+04/19/2022 01:05:11 - INFO - training.trainer_base - best_eval_accuracy = 0.5054151624548736
+04/19/2022 01:05:11 - INFO - training.trainer_base - epoch = 56.0
+OrderedDict([('best_epoch', 1), ('best_eval_accuracy', 0.5054151624548736), ('epoch', 57.0)])
+{'loss': 0.7199, 'learning_rate': 1.2692307692307693e-05, 'epoch': 57.69}
+04/19/2022 01:05:29 - INFO - datasets.metric - Removing /home/ask9126/.cache/huggingface/metrics/super_glue/rte/default_experiment-1-0.arrow
+{'eval_loss': 0.7068214416503906, 'eval_accuracy': 0.48014440433212996, 'eval_runtime': 0.9996, 'eval_samples_per_second': 277.113, 'eval_steps_per_second': 35.014, 'epoch': 58.0}
+04/19/2022 01:05:29 - INFO - training.trainer_base - ***** Epoch 57: Best results *****
+04/19/2022 01:05:29 - INFO - training.trainer_base - best_epoch = 1
+04/19/2022 01:05:29 - INFO - training.trainer_base - best_eval_accuracy = 0.5054151624548736
+04/19/2022 01:05:29 - INFO - training.trainer_base - epoch = 57.0
+OrderedDict([('best_epoch', 1), ('best_eval_accuracy', 0.5054151624548736), ('epoch', 58.0)])
+04/19/2022 01:05:47 - INFO - datasets.metric - Removing /home/ask9126/.cache/huggingface/metrics/super_glue/rte/default_experiment-1-0.arrow
+{'eval_loss': 0.7069786787033081, 'eval_accuracy': 0.48014440433212996, 'eval_runtime': 0.9941, 'eval_samples_per_second': 278.642, 'eval_steps_per_second': 35.207, 'epoch': 59.0}
+04/19/2022 01:05:47 - INFO - training.trainer_base - ***** Epoch 58: Best results *****
+04/19/2022 01:05:47 - INFO - training.trainer_base - best_epoch = 1
+04/19/2022 01:05:47 - INFO - training.trainer_base - best_eval_accuracy = 0.5054151624548736
+04/19/2022 01:05:47 - INFO - training.trainer_base - epoch = 58.0
+OrderedDict([('best_epoch', 1), ('best_eval_accuracy', 0.5054151624548736), ('epoch', 59.0)])
+04/19/2022 01:06:04 - INFO - datasets.metric - Removing /home/ask9126/.cache/huggingface/metrics/super_glue/rte/default_experiment-1-0.arrow
+{'eval_loss': 0.7070332169532776, 'eval_accuracy': 0.47653429602888087, 'eval_runtime': 1.0014, 'eval_samples_per_second': 276.603, 'eval_steps_per_second': 34.95, 'epoch': 60.0}
+04/19/2022 01:06:04 - INFO - training.trainer_base - ***** Epoch 59: Best results *****
+04/19/2022 01:06:04 - INFO - training.trainer_base - best_epoch = 1
+04/19/2022 01:06:04 - INFO - training.trainer_base - best_eval_accuracy = 0.5054151624548736
+04/19/2022 01:06:04 - INFO - training.trainer_base - epoch = 59.0
+OrderedDict([('best_epoch', 1), ('best_eval_accuracy', 0.5054151624548736), ('epoch', 60.0)])
+04/19/2022 01:06:22 - INFO - datasets.metric - Removing /home/ask9126/.cache/huggingface/metrics/super_glue/rte/default_experiment-1-0.arrow
+{'eval_loss': 0.7075368165969849, 'eval_accuracy': 0.48736462093862815, 'eval_runtime': 0.9968, 'eval_samples_per_second': 277.899, 'eval_steps_per_second': 35.114, 'epoch': 61.0}
+04/19/2022 01:06:22 - INFO - training.trainer_base - ***** Epoch 60: Best results *****
+04/19/2022 01:06:22 - INFO - training.trainer_base - best_epoch = 1
+04/19/2022 01:06:22 - INFO - training.trainer_base - best_eval_accuracy = 0.5054151624548736
+04/19/2022 01:06:22 - INFO - training.trainer_base - epoch = 60.0
+OrderedDict([('best_epoch', 1), ('best_eval_accuracy', 0.5054151624548736), ('epoch', 61.0)])
+04/19/2022 01:06:40 - INFO - datasets.metric - Removing /home/ask9126/.cache/huggingface/metrics/super_glue/rte/default_experiment-1-0.arrow
+{'eval_loss': 0.7072140574455261, 'eval_accuracy': 0.49097472924187724, 'eval_runtime': 1.0077, 'eval_samples_per_second': 274.884, 'eval_steps_per_second': 34.733, 'epoch': 62.0}
+04/19/2022 01:06:40 - INFO - training.trainer_base - ***** Epoch 61: Best results *****
+04/19/2022 01:06:40 - INFO - training.trainer_base - best_epoch = 1
+04/19/2022 01:06:40 - INFO - training.trainer_base - best_eval_accuracy = 0.5054151624548736
+04/19/2022 01:06:40 - INFO - training.trainer_base - epoch = 61.0
+OrderedDict([('best_epoch', 1), ('best_eval_accuracy', 0.5054151624548736), ('epoch', 62.0)])
+04/19/2022 01:06:58 - INFO - datasets.metric - Removing /home/ask9126/.cache/huggingface/metrics/super_glue/rte/default_experiment-1-0.arrow
+{'eval_loss': 0.7073379755020142, 'eval_accuracy': 0.48736462093862815, 'eval_runtime': 1.0166, 'eval_samples_per_second': 272.476, 'eval_steps_per_second': 34.428, 'epoch': 63.0}
+04/19/2022 01:06:58 - INFO - training.trainer_base - ***** Epoch 62: Best results *****
+04/19/2022 01:06:58 - INFO - training.trainer_base - best_epoch = 1
+04/19/2022 01:06:58 - INFO - training.trainer_base - best_eval_accuracy = 0.5054151624548736
+04/19/2022 01:06:58 - INFO - training.trainer_base - epoch = 62.0
+OrderedDict([('best_epoch', 1), ('best_eval_accuracy', 0.5054151624548736), ('epoch', 63.0)])
+04/19/2022 01:07:15 - INFO - datasets.metric - Removing /home/ask9126/.cache/huggingface/metrics/super_glue/rte/default_experiment-1-0.arrow
+{'eval_loss': 0.7076130509376526, 'eval_accuracy': 0.48375451263537905, 'eval_runtime': 0.9987, 'eval_samples_per_second': 277.349, 'eval_steps_per_second': 35.044, 'epoch': 64.0}
+04/19/2022 01:07:15 - INFO - training.trainer_base - ***** Epoch 63: Best results *****
+04/19/2022 01:07:15 - INFO - training.trainer_base - best_epoch = 1
+04/19/2022 01:07:15 - INFO - training.trainer_base - best_eval_accuracy = 0.5054151624548736
+04/19/2022 01:07:15 - INFO - training.trainer_base - epoch = 63.0
+OrderedDict([('best_epoch', 1), ('best_eval_accuracy', 0.5054151624548736), ('epoch', 64.0)])
+{'loss': 0.7181, 'learning_rate': 1.076923076923077e-05, 'epoch': 64.1}
+04/19/2022 01:07:33 - INFO - datasets.metric - Removing /home/ask9126/.cache/huggingface/metrics/super_glue/rte/default_experiment-1-0.arrow
+{'eval_loss': 0.7073423862457275, 'eval_accuracy': 0.49097472924187724, 'eval_runtime': 1.0148, 'eval_samples_per_second': 272.95, 'eval_steps_per_second': 34.488, 'epoch': 65.0}
+04/19/2022 01:07:33 - INFO - training.trainer_base - ***** Epoch 64: Best results *****
+04/19/2022 01:07:33 - INFO - training.trainer_base - best_epoch = 1
+04/19/2022 01:07:33 - INFO - training.trainer_base - best_eval_accuracy = 0.5054151624548736
+04/19/2022 01:07:33 - INFO - training.trainer_base - epoch = 64.0
+OrderedDict([('best_epoch', 1), ('best_eval_accuracy', 0.5054151624548736), ('epoch', 65.0)])
+04/19/2022 01:07:51 - INFO - datasets.metric - Removing /home/ask9126/.cache/huggingface/metrics/super_glue/rte/default_experiment-1-0.arrow
+{'eval_loss': 0.7074927091598511, 'eval_accuracy': 0.49097472924187724, 'eval_runtime': 1.0073, 'eval_samples_per_second': 274.987, 'eval_steps_per_second': 34.746, 'epoch': 66.0}
+04/19/2022 01:07:51 - INFO - training.trainer_base - ***** Epoch 65: Best results *****
+04/19/2022 01:07:51 - INFO - training.trainer_base - best_epoch = 1
+04/19/2022 01:07:51 - INFO - training.trainer_base - best_eval_accuracy = 0.5054151624548736
+04/19/2022 01:07:51 - INFO - training.trainer_base - epoch = 65.0
+OrderedDict([('best_epoch', 1), ('best_eval_accuracy', 0.5054151624548736), ('epoch', 66.0)])
+04/19/2022 01:08:09 - INFO - datasets.metric - Removing /home/ask9126/.cache/huggingface/metrics/super_glue/rte/default_experiment-1-0.arrow
+{'eval_loss': 0.7073622345924377, 'eval_accuracy': 0.48736462093862815, 'eval_runtime': 1.0031, 'eval_samples_per_second': 276.148, 'eval_steps_per_second': 34.892, 'epoch': 67.0}
+04/19/2022 01:08:09 - INFO - training.trainer_base - ***** Epoch 66: Best results *****
+04/19/2022 01:08:09 - INFO - training.trainer_base - best_epoch = 1
+04/19/2022 01:08:09 - INFO - training.trainer_base - best_eval_accuracy = 0.5054151624548736
+04/19/2022 01:08:09 - INFO - training.trainer_base - epoch = 66.0
+OrderedDict([('best_epoch', 1), ('best_eval_accuracy', 0.5054151624548736), ('epoch', 67.0)])
+04/19/2022 01:08:26 - INFO - datasets.metric - Removing /home/ask9126/.cache/huggingface/metrics/super_glue/rte/default_experiment-1-0.arrow
+{'eval_loss': 0.7074188590049744, 'eval_accuracy': 0.49097472924187724, 'eval_runtime': 1.0025, 'eval_samples_per_second': 276.299, 'eval_steps_per_second': 34.911, 'epoch': 68.0}
+04/19/2022 01:08:26 - INFO - training.trainer_base - ***** Epoch 67: Best results *****
+04/19/2022 01:08:26 - INFO - training.trainer_base - best_epoch = 1
+04/19/2022 01:08:26 - INFO - training.trainer_base - best_eval_accuracy = 0.5054151624548736
+04/19/2022 01:08:26 - INFO - training.trainer_base - epoch = 67.0
+OrderedDict([('best_epoch', 1), ('best_eval_accuracy', 0.5054151624548736), ('epoch', 68.0)])
+04/19/2022 01:08:44 - INFO - datasets.metric - Removing /home/ask9126/.cache/huggingface/metrics/super_glue/rte/default_experiment-1-0.arrow
+{'eval_loss': 0.7076097726821899, 'eval_accuracy': 0.48736462093862815, 'eval_runtime': 1.0044, 'eval_samples_per_second': 275.792, 'eval_steps_per_second': 34.847, 'epoch': 69.0}
+04/19/2022 01:08:44 - INFO - training.trainer_base - ***** Epoch 68: Best results *****
+04/19/2022 01:08:44 - INFO - training.trainer_base - best_epoch = 1
+04/19/2022 01:08:44 - INFO - training.trainer_base - best_eval_accuracy = 0.5054151624548736
+04/19/2022 01:08:44 - INFO - training.trainer_base - epoch = 68.0
+OrderedDict([('best_epoch', 1), ('best_eval_accuracy', 0.5054151624548736), ('epoch', 69.0)])
+04/19/2022 01:09:02 - INFO - datasets.metric - Removing /home/ask9126/.cache/huggingface/metrics/super_glue/rte/default_experiment-1-0.arrow
+{'eval_loss': 0.7074652910232544, 'eval_accuracy': 0.48736462093862815, 'eval_runtime': 1.0075, 'eval_samples_per_second': 274.943, 'eval_steps_per_second': 34.74, 'epoch': 70.0}
+04/19/2022 01:09:02 - INFO - training.trainer_base - ***** Epoch 69: Best results *****
+04/19/2022 01:09:02 - INFO - training.trainer_base - best_epoch = 1
+04/19/2022 01:09:02 - INFO - training.trainer_base - best_eval_accuracy = 0.5054151624548736
+04/19/2022 01:09:02 - INFO - training.trainer_base - epoch = 69.0
+OrderedDict([('best_epoch', 1), ('best_eval_accuracy', 0.5054151624548736), ('epoch', 70.0)])
+{'loss': 0.7179, 'learning_rate': 8.846153846153847e-06, 'epoch': 70.51}
+04/19/2022 01:09:19 - INFO - datasets.metric - Removing /home/ask9126/.cache/huggingface/metrics/super_glue/rte/default_experiment-1-0.arrow
+{'eval_loss': 0.7075768113136292, 'eval_accuracy': 0.48375451263537905, 'eval_runtime': 1.0004, 'eval_samples_per_second': 276.879, 'eval_steps_per_second': 34.985, 'epoch': 71.0}
+04/19/2022 01:09:19 - INFO - training.trainer_base - ***** Epoch 70: Best results *****
+04/19/2022 01:09:19 - INFO - training.trainer_base - best_epoch = 1
+04/19/2022 01:09:19 - INFO - training.trainer_base - best_eval_accuracy = 0.5054151624548736
+04/19/2022 01:09:19 - INFO - training.trainer_base - epoch = 70.0
+OrderedDict([('best_epoch', 1), ('best_eval_accuracy', 0.5054151624548736), ('epoch', 71.0)])
+04/19/2022 01:09:37 - INFO - datasets.metric - Removing /home/ask9126/.cache/huggingface/metrics/super_glue/rte/default_experiment-1-0.arrow
+{'eval_loss': 0.7075119614601135, 'eval_accuracy': 0.48375451263537905, 'eval_runtime': 1.0002, 'eval_samples_per_second': 276.953, 'eval_steps_per_second': 34.994, 'epoch': 72.0}
+04/19/2022 01:09:37 - INFO - training.trainer_base - ***** Epoch 71: Best results *****
+04/19/2022 01:09:37 - INFO - training.trainer_base - best_epoch = 1
+04/19/2022 01:09:37 - INFO - training.trainer_base - best_eval_accuracy = 0.5054151624548736
+04/19/2022 01:09:37 - INFO - training.trainer_base - epoch = 71.0
+OrderedDict([('best_epoch', 1), ('best_eval_accuracy', 0.5054151624548736), ('epoch', 72.0)])
+04/19/2022 01:09:55 - INFO - datasets.metric - Removing /home/ask9126/.cache/huggingface/metrics/super_glue/rte/default_experiment-1-0.arrow
+{'eval_loss': 0.7074451446533203, 'eval_accuracy': 0.48375451263537905, 'eval_runtime': 1.0056, 'eval_samples_per_second': 275.468, 'eval_steps_per_second': 34.806, 'epoch': 73.0}
+04/19/2022 01:09:55 - INFO - training.trainer_base - ***** Epoch 72: Best results *****
+04/19/2022 01:09:55 - INFO - training.trainer_base - best_epoch = 1
+04/19/2022 01:09:55 - INFO - training.trainer_base - best_eval_accuracy = 0.5054151624548736
+04/19/2022 01:09:55 - INFO - training.trainer_base - epoch = 72.0
+OrderedDict([('best_epoch', 1), ('best_eval_accuracy', 0.5054151624548736), ('epoch', 73.0)])
+04/19/2022 01:10:13 - INFO - datasets.metric - Removing /home/ask9126/.cache/huggingface/metrics/super_glue/rte/default_experiment-1-0.arrow
+{'eval_loss': 0.7073918581008911, 'eval_accuracy': 0.48736462093862815, 'eval_runtime': 1.0065, 'eval_samples_per_second': 275.219, 'eval_steps_per_second': 34.775, 'epoch': 74.0}
+04/19/2022 01:10:13 - INFO - training.trainer_base - ***** Epoch 73: Best results *****
+04/19/2022 01:10:13 - INFO - training.trainer_base - best_epoch = 1
+04/19/2022 01:10:13 - INFO - training.trainer_base - best_eval_accuracy = 0.5054151624548736
+04/19/2022 01:10:13 - INFO - training.trainer_base - epoch = 73.0
+OrderedDict([('best_epoch', 1), ('best_eval_accuracy', 0.5054151624548736), ('epoch', 74.0)])
+04/19/2022 01:10:30 - INFO - datasets.metric - Removing /home/ask9126/.cache/huggingface/metrics/super_glue/rte/default_experiment-1-0.arrow
+{'eval_loss': 0.7075541019439697, 'eval_accuracy': 0.48375451263537905, 'eval_runtime': 1.0113, 'eval_samples_per_second': 273.907, 'eval_steps_per_second': 34.609, 'epoch': 75.0}
+04/19/2022 01:10:30 - INFO - training.trainer_base - ***** Epoch 74: Best results *****
+04/19/2022 01:10:30 - INFO - training.trainer_base - best_epoch = 1
+04/19/2022 01:10:30 - INFO - training.trainer_base - best_eval_accuracy = 0.5054151624548736
+04/19/2022 01:10:30 - INFO - training.trainer_base - epoch = 74.0
+OrderedDict([('best_epoch', 1), ('best_eval_accuracy', 0.5054151624548736), ('epoch', 75.0)])
+04/19/2022 01:10:48 - INFO - datasets.metric - Removing /home/ask9126/.cache/huggingface/metrics/super_glue/rte/default_experiment-1-0.arrow
+{'eval_loss': 0.7075356245040894, 'eval_accuracy': 0.48375451263537905, 'eval_runtime': 1.0057, 'eval_samples_per_second': 275.426, 'eval_steps_per_second': 34.801, 'epoch': 76.0}
+04/19/2022 01:10:48 - INFO - training.trainer_base - ***** Epoch 75: Best results *****
+04/19/2022 01:10:48 - INFO - training.trainer_base - best_epoch = 1
+04/19/2022 01:10:48 - INFO - training.trainer_base - best_eval_accuracy = 0.5054151624548736
+04/19/2022 01:10:48 - INFO - training.trainer_base - epoch = 75.0
+OrderedDict([('best_epoch', 1), ('best_eval_accuracy', 0.5054151624548736), ('epoch', 76.0)])
+{'loss': 0.7186, 'learning_rate': 6.923076923076923e-06, 'epoch': 76.92}
+04/19/2022 01:11:06 - INFO - datasets.metric - Removing /home/ask9126/.cache/huggingface/metrics/super_glue/rte/default_experiment-1-0.arrow
+{'eval_loss': 0.7077579498291016, 'eval_accuracy': 0.48375451263537905, 'eval_runtime': 1.0064, 'eval_samples_per_second': 275.251, 'eval_steps_per_second': 34.779, 'epoch': 77.0}
+04/19/2022 01:11:06 - INFO - training.trainer_base - ***** Epoch 76: Best results *****
+04/19/2022 01:11:06 - INFO - training.trainer_base - best_epoch = 1
+04/19/2022 01:11:06 - INFO - training.trainer_base - best_eval_accuracy = 0.5054151624548736
+04/19/2022 01:11:06 - INFO - training.trainer_base - epoch = 76.0
+OrderedDict([('best_epoch', 1), ('best_eval_accuracy', 0.5054151624548736), ('epoch', 77.0)])
+04/19/2022 01:11:24 - INFO - datasets.metric - Removing /home/ask9126/.cache/huggingface/metrics/super_glue/rte/default_experiment-1-0.arrow
+{'eval_loss': 0.7076353430747986, 'eval_accuracy': 0.48736462093862815, 'eval_runtime': 0.9926, 'eval_samples_per_second': 279.065, 'eval_steps_per_second': 35.261, 'epoch': 78.0}
+04/19/2022 01:11:24 - INFO - training.trainer_base - ***** Epoch 77: Best results *****
+04/19/2022 01:11:24 - INFO - training.trainer_base - best_epoch = 1
+04/19/2022 01:11:24 - INFO - training.trainer_base - best_eval_accuracy = 0.5054151624548736
+04/19/2022 01:11:24 - INFO - training.trainer_base - epoch = 77.0
+OrderedDict([('best_epoch', 1), ('best_eval_accuracy', 0.5054151624548736), ('epoch', 78.0)])
+04/19/2022 01:11:41 - INFO - datasets.metric - Removing /home/ask9126/.cache/huggingface/metrics/super_glue/rte/default_experiment-1-0.arrow
+{'eval_loss': 0.7075313329696655, 'eval_accuracy': 0.48375451263537905, 'eval_runtime': 0.9988, 'eval_samples_per_second': 277.321, 'eval_steps_per_second': 35.041, 'epoch': 79.0}
+04/19/2022 01:11:41 - INFO - training.trainer_base - ***** Epoch 78: Best results *****
+04/19/2022 01:11:41 - INFO - training.trainer_base - best_epoch = 1
+04/19/2022 01:11:41 - INFO - training.trainer_base - best_eval_accuracy = 0.5054151624548736
+04/19/2022 01:11:41 - INFO - training.trainer_base - epoch = 78.0
+OrderedDict([('best_epoch', 1), ('best_eval_accuracy', 0.5054151624548736), ('epoch', 79.0)])
+04/19/2022 01:11:59 - INFO - datasets.metric - Removing /home/ask9126/.cache/huggingface/metrics/super_glue/rte/default_experiment-1-0.arrow
+{'eval_loss': 0.7076330184936523, 'eval_accuracy': 0.48736462093862815, 'eval_runtime': 1.0018, 'eval_samples_per_second': 276.493, 'eval_steps_per_second': 34.936, 'epoch': 80.0}
+04/19/2022 01:11:59 - INFO - training.trainer_base - ***** Epoch 79: Best results *****
+04/19/2022 01:11:59 - INFO - training.trainer_base - best_epoch = 1
+04/19/2022 01:11:59 - INFO - training.trainer_base - best_eval_accuracy = 0.5054151624548736
+04/19/2022 01:11:59 - INFO - training.trainer_base - epoch = 79.0
+OrderedDict([('best_epoch', 1), ('best_eval_accuracy', 0.5054151624548736), ('epoch', 80.0)])
+04/19/2022 01:12:17 - INFO - datasets.metric - Removing /home/ask9126/.cache/huggingface/metrics/super_glue/rte/default_experiment-1-0.arrow
+{'eval_loss': 0.7076492309570312, 'eval_accuracy': 0.48736462093862815, 'eval_runtime': 1.0084, 'eval_samples_per_second': 274.68, 'eval_steps_per_second': 34.707, 'epoch': 81.0}
+04/19/2022 01:12:17 - INFO - training.trainer_base - ***** Epoch 80: Best results *****
+04/19/2022 01:12:17 - INFO - training.trainer_base - best_epoch = 1
+04/19/2022 01:12:17 - INFO - training.trainer_base - best_eval_accuracy = 0.5054151624548736
+04/19/2022 01:12:17 - INFO - training.trainer_base - epoch = 80.0
+OrderedDict([('best_epoch', 1), ('best_eval_accuracy', 0.5054151624548736), ('epoch', 81.0)])
+04/19/2022 01:12:35 - INFO - datasets.metric - Removing /home/ask9126/.cache/huggingface/metrics/super_glue/rte/default_experiment-1-0.arrow
+{'eval_loss': 0.7076005339622498, 'eval_accuracy': 0.48736462093862815, 'eval_runtime': 0.9954, 'eval_samples_per_second': 278.278, 'eval_steps_per_second': 35.162, 'epoch': 82.0}
+04/19/2022 01:12:35 - INFO - training.trainer_base - ***** Epoch 81: Best results *****
+04/19/2022 01:12:35 - INFO - training.trainer_base - best_epoch = 1
+04/19/2022 01:12:35 - INFO - training.trainer_base - best_eval_accuracy = 0.5054151624548736
+04/19/2022 01:12:35 - INFO - training.trainer_base - epoch = 81.0
+OrderedDict([('best_epoch', 1), ('best_eval_accuracy', 0.5054151624548736), ('epoch', 82.0)])
+04/19/2022 01:12:52 - INFO - datasets.metric - Removing /home/ask9126/.cache/huggingface/metrics/super_glue/rte/default_experiment-1-0.arrow
+{'eval_loss': 0.7075963020324707, 'eval_accuracy': 0.48736462093862815, 'eval_runtime': 0.9965, 'eval_samples_per_second': 277.981, 'eval_steps_per_second': 35.124, 'epoch': 83.0}
+04/19/2022 01:12:52 - INFO - training.trainer_base - ***** Epoch 82: Best results *****
+04/19/2022 01:12:52 - INFO - training.trainer_base - best_epoch = 1
+04/19/2022 01:12:52 - INFO - training.trainer_base - best_eval_accuracy = 0.5054151624548736
+04/19/2022 01:12:52 - INFO - training.trainer_base - epoch = 82.0
+OrderedDict([('best_epoch', 1), ('best_eval_accuracy', 0.5054151624548736), ('epoch', 83.0)])
+{'loss': 0.7199, 'learning_rate': 4.9999999999999996e-06, 'epoch': 83.33}
+04/19/2022 01:13:10 - INFO - datasets.metric - Removing /home/ask9126/.cache/huggingface/metrics/super_glue/rte/default_experiment-1-0.arrow
+{'eval_loss': 0.7075555324554443, 'eval_accuracy': 0.48736462093862815, 'eval_runtime': 0.9938, 'eval_samples_per_second': 278.732, 'eval_steps_per_second': 35.219, 'epoch': 84.0}
+04/19/2022 01:13:10 - INFO - training.trainer_base - ***** Epoch 83: Best results *****
+04/19/2022 01:13:10 - INFO - training.trainer_base - best_epoch = 1
+04/19/2022 01:13:10 - INFO - training.trainer_base - best_eval_accuracy = 0.5054151624548736
+04/19/2022 01:13:10 - INFO - training.trainer_base - epoch = 83.0
+OrderedDict([('best_epoch', 1), ('best_eval_accuracy', 0.5054151624548736), ('epoch', 84.0)])
+04/19/2022 01:13:28 - INFO - datasets.metric - Removing /home/ask9126/.cache/huggingface/metrics/super_glue/rte/default_experiment-1-0.arrow
+{'eval_loss': 0.7074385285377502, 'eval_accuracy': 0.49097472924187724, 'eval_runtime': 1.0, 'eval_samples_per_second': 276.996, 'eval_steps_per_second': 35.0, 'epoch': 85.0}
+04/19/2022 01:13:28 - INFO - training.trainer_base - ***** Epoch 84: Best results *****
+04/19/2022 01:13:28 - INFO - training.trainer_base - best_epoch = 1
+04/19/2022 01:13:28 - INFO - training.trainer_base - best_eval_accuracy = 0.5054151624548736
+04/19/2022 01:13:28 - INFO - training.trainer_base - epoch = 84.0
+OrderedDict([('best_epoch', 1), ('best_eval_accuracy', 0.5054151624548736), ('epoch', 85.0)])
+04/19/2022 01:13:45 - INFO - datasets.metric - Removing /home/ask9126/.cache/huggingface/metrics/super_glue/rte/default_experiment-1-0.arrow
+{'eval_loss': 0.7074687480926514, 'eval_accuracy': 0.48736462093862815, 'eval_runtime': 1.001, 'eval_samples_per_second': 276.727, 'eval_steps_per_second': 34.965, 'epoch': 86.0}
+04/19/2022 01:13:46 - INFO - training.trainer_base - ***** Epoch 85: Best results *****
+04/19/2022 01:13:46 - INFO - training.trainer_base - best_epoch = 1
+04/19/2022 01:13:46 - INFO - training.trainer_base - best_eval_accuracy = 0.5054151624548736
+04/19/2022 01:13:46 - INFO - training.trainer_base - epoch = 85.0
+OrderedDict([('best_epoch', 1), ('best_eval_accuracy', 0.5054151624548736), ('epoch', 86.0)])
+04/19/2022 01:14:03 - INFO - datasets.metric - Removing /home/ask9126/.cache/huggingface/metrics/super_glue/rte/default_experiment-1-0.arrow
+{'eval_loss': 0.7075841426849365, 'eval_accuracy': 0.48375451263537905, 'eval_runtime': 1.001, 'eval_samples_per_second': 276.73, 'eval_steps_per_second': 34.966, 'epoch': 87.0}
+04/19/2022 01:14:03 - INFO - training.trainer_base - ***** Epoch 86: Best results *****
+04/19/2022 01:14:03 - INFO - training.trainer_base - best_epoch = 1
+04/19/2022 01:14:03 - INFO - training.trainer_base - best_eval_accuracy = 0.5054151624548736
+04/19/2022 01:14:03 - INFO - training.trainer_base - epoch = 86.0
+OrderedDict([('best_epoch', 1), ('best_eval_accuracy', 0.5054151624548736), ('epoch', 87.0)])
+04/19/2022 01:14:21 - INFO - datasets.metric - Removing /home/ask9126/.cache/huggingface/metrics/super_glue/rte/default_experiment-1-0.arrow
+{'eval_loss': 0.7075583934783936, 'eval_accuracy': 0.48736462093862815, 'eval_runtime': 1.0045, 'eval_samples_per_second': 275.746, 'eval_steps_per_second': 34.842, 'epoch': 88.0}
+04/19/2022 01:14:21 - INFO - training.trainer_base - ***** Epoch 87: Best results *****
+04/19/2022 01:14:21 - INFO - training.trainer_base - best_epoch = 1
+04/19/2022 01:14:21 - INFO - training.trainer_base - best_eval_accuracy = 0.5054151624548736
+04/19/2022 01:14:21 - INFO - training.trainer_base - epoch = 87.0
+OrderedDict([('best_epoch', 1), ('best_eval_accuracy', 0.5054151624548736), ('epoch', 88.0)])
+04/19/2022 01:14:39 - INFO - datasets.metric - Removing /home/ask9126/.cache/huggingface/metrics/super_glue/rte/default_experiment-1-0.arrow
+{'eval_loss': 0.707487940788269, 'eval_accuracy': 0.48736462093862815, 'eval_runtime': 1.0059, 'eval_samples_per_second': 275.365, 'eval_steps_per_second': 34.793, 'epoch': 89.0}
+04/19/2022 01:14:39 - INFO - training.trainer_base - ***** Epoch 88: Best results *****
+04/19/2022 01:14:39 - INFO - training.trainer_base - best_epoch = 1
+04/19/2022 01:14:39 - INFO - training.trainer_base - best_eval_accuracy = 0.5054151624548736
+04/19/2022 01:14:39 - INFO - training.trainer_base - epoch = 88.0
+OrderedDict([('best_epoch', 1), ('best_eval_accuracy', 0.5054151624548736), ('epoch', 89.0)])
+{'loss': 0.7189, 'learning_rate': 3.076923076923077e-06, 'epoch': 89.74}
+04/19/2022 01:14:56 - INFO - datasets.metric - Removing /home/ask9126/.cache/huggingface/metrics/super_glue/rte/default_experiment-1-0.arrow
+{'eval_loss': 0.7075150609016418, 'eval_accuracy': 0.48736462093862815, 'eval_runtime': 1.0155, 'eval_samples_per_second': 272.783, 'eval_steps_per_second': 34.467, 'epoch': 90.0}
+04/19/2022 01:14:57 - INFO - training.trainer_base - ***** Epoch 89: Best results *****
+04/19/2022 01:14:57 - INFO - training.trainer_base - best_epoch = 1
+04/19/2022 01:14:57 - INFO - training.trainer_base - best_eval_accuracy = 0.5054151624548736
+04/19/2022 01:14:57 - INFO - training.trainer_base - epoch = 89.0
+OrderedDict([('best_epoch', 1), ('best_eval_accuracy', 0.5054151624548736), ('epoch', 90.0)])
+04/19/2022 01:15:14 - INFO - datasets.metric - Removing /home/ask9126/.cache/huggingface/metrics/super_glue/rte/default_experiment-1-0.arrow
+{'eval_loss': 0.7075939178466797, 'eval_accuracy': 0.48375451263537905, 'eval_runtime': 0.9982, 'eval_samples_per_second': 277.508, 'eval_steps_per_second': 35.064, 'epoch': 91.0}
+04/19/2022 01:15:14 - INFO - training.trainer_base - ***** Epoch 90: Best results *****
+04/19/2022 01:15:14 - INFO - training.trainer_base - best_epoch = 1
+04/19/2022 01:15:14 - INFO - training.trainer_base - best_eval_accuracy = 0.5054151624548736
+04/19/2022 01:15:14 - INFO - training.trainer_base - epoch = 90.0
+OrderedDict([('best_epoch', 1), ('best_eval_accuracy', 0.5054151624548736), ('epoch', 91.0)])
+04/19/2022 01:15:32 - INFO - datasets.metric - Removing /home/ask9126/.cache/huggingface/metrics/super_glue/rte/default_experiment-1-0.arrow
+{'eval_loss': 0.7075427770614624, 'eval_accuracy': 0.48736462093862815, 'eval_runtime': 0.9975, 'eval_samples_per_second': 277.701, 'eval_steps_per_second': 35.089, 'epoch': 92.0}
+04/19/2022 01:15:32 - INFO - training.trainer_base - ***** Epoch 91: Best results *****
+04/19/2022 01:15:32 - INFO - training.trainer_base - best_epoch = 1
+04/19/2022 01:15:32 - INFO - training.trainer_base - best_eval_accuracy = 0.5054151624548736
+04/19/2022 01:15:32 - INFO - training.trainer_base - epoch = 91.0
+OrderedDict([('best_epoch', 1), ('best_eval_accuracy', 0.5054151624548736), ('epoch', 92.0)])
+04/19/2022 01:15:50 - INFO - datasets.metric - Removing /home/ask9126/.cache/huggingface/metrics/super_glue/rte/default_experiment-1-0.arrow
+{'eval_loss': 0.7075641751289368, 'eval_accuracy': 0.48736462093862815, 'eval_runtime': 1.0017, 'eval_samples_per_second': 276.529, 'eval_steps_per_second': 34.94, 'epoch': 93.0}
+04/19/2022 01:15:50 - INFO - training.trainer_base - ***** Epoch 92: Best results *****
+04/19/2022 01:15:50 - INFO - training.trainer_base - best_epoch = 1
+04/19/2022 01:15:50 - INFO - training.trainer_base - best_eval_accuracy = 0.5054151624548736
+04/19/2022 01:15:50 - INFO - training.trainer_base - epoch = 92.0
+OrderedDict([('best_epoch', 1), ('best_eval_accuracy', 0.5054151624548736), ('epoch', 93.0)])
+04/19/2022 01:16:07 - INFO - datasets.metric - Removing /home/ask9126/.cache/huggingface/metrics/super_glue/rte/default_experiment-1-0.arrow
+{'eval_loss': 0.7075026631355286, 'eval_accuracy': 0.48736462093862815, 'eval_runtime': 1.0, 'eval_samples_per_second': 276.994, 'eval_steps_per_second': 34.999, 'epoch': 94.0}
+04/19/2022 01:16:07 - INFO - training.trainer_base - ***** Epoch 93: Best results *****
+04/19/2022 01:16:07 - INFO - training.trainer_base - best_epoch = 1
+04/19/2022 01:16:07 - INFO - training.trainer_base - best_eval_accuracy = 0.5054151624548736
+04/19/2022 01:16:07 - INFO - training.trainer_base - epoch = 93.0
+OrderedDict([('best_epoch', 1), ('best_eval_accuracy', 0.5054151624548736), ('epoch', 94.0)])
+04/19/2022 01:16:25 - INFO - datasets.metric - Removing /home/ask9126/.cache/huggingface/metrics/super_glue/rte/default_experiment-1-0.arrow
+{'eval_loss': 0.7075053453445435, 'eval_accuracy': 0.49097472924187724, 'eval_runtime': 1.001, 'eval_samples_per_second': 276.735, 'eval_steps_per_second': 34.967, 'epoch': 95.0}
+04/19/2022 01:16:25 - INFO - training.trainer_base - ***** Epoch 94: Best results *****
+04/19/2022 01:16:25 - INFO - training.trainer_base - best_epoch = 1
+04/19/2022 01:16:25 - INFO - training.trainer_base - best_eval_accuracy = 0.5054151624548736
+04/19/2022 01:16:25 - INFO - training.trainer_base - epoch = 94.0
+OrderedDict([('best_epoch', 1), ('best_eval_accuracy', 0.5054151624548736), ('epoch', 95.0)])
+04/19/2022 01:16:43 - INFO - datasets.metric - Removing /home/ask9126/.cache/huggingface/metrics/super_glue/rte/default_experiment-1-0.arrow
+{'eval_loss': 0.7075381278991699, 'eval_accuracy': 0.48736462093862815, 'eval_runtime': 1.0088, 'eval_samples_per_second': 274.579, 'eval_steps_per_second': 34.694, 'epoch': 96.0}
+04/19/2022 01:16:43 - INFO - training.trainer_base - ***** Epoch 95: Best results *****
+04/19/2022 01:16:43 - INFO - training.trainer_base - best_epoch = 1
+04/19/2022 01:16:43 - INFO - training.trainer_base - best_eval_accuracy = 0.5054151624548736
+04/19/2022 01:16:43 - INFO - training.trainer_base - epoch = 95.0
+OrderedDict([('best_epoch', 1), ('best_eval_accuracy', 0.5054151624548736), ('epoch', 96.0)])
+{'loss': 0.7184, 'learning_rate': 1.153846153846154e-06, 'epoch': 96.15}
+04/19/2022 01:17:01 - INFO - datasets.metric - Removing /home/ask9126/.cache/huggingface/metrics/super_glue/rte/default_experiment-1-0.arrow
+{'eval_loss': 0.7075101137161255, 'eval_accuracy': 0.49097472924187724, 'eval_runtime': 1.004, 'eval_samples_per_second': 275.895, 'eval_steps_per_second': 34.86, 'epoch': 97.0}
+04/19/2022 01:17:01 - INFO - training.trainer_base - ***** Epoch 96: Best results *****
+04/19/2022 01:17:01 - INFO - training.trainer_base - best_epoch = 1
+04/19/2022 01:17:01 - INFO - training.trainer_base - best_eval_accuracy = 0.5054151624548736
+04/19/2022 01:17:01 - INFO - training.trainer_base - epoch = 96.0
+OrderedDict([('best_epoch', 1), ('best_eval_accuracy', 0.5054151624548736), ('epoch', 97.0)])
+04/19/2022 01:17:18 - INFO - datasets.metric - Removing /home/ask9126/.cache/huggingface/metrics/super_glue/rte/default_experiment-1-0.arrow
+{'eval_loss': 0.7075121402740479, 'eval_accuracy': 0.49097472924187724, 'eval_runtime': 1.0123, 'eval_samples_per_second': 273.634, 'eval_steps_per_second': 34.575, 'epoch': 98.0}
+04/19/2022 01:17:18 - INFO - training.trainer_base - ***** Epoch 97: Best results *****
+04/19/2022 01:17:18 - INFO - training.trainer_base - best_epoch = 1
+04/19/2022 01:17:18 - INFO - training.trainer_base - best_eval_accuracy = 0.5054151624548736
+04/19/2022 01:17:18 - INFO - training.trainer_base - epoch = 97.0
+OrderedDict([('best_epoch', 1), ('best_eval_accuracy', 0.5054151624548736), ('epoch', 98.0)])
+04/19/2022 01:17:36 - INFO - datasets.metric - Removing /home/ask9126/.cache/huggingface/metrics/super_glue/rte/default_experiment-1-0.arrow
+{'eval_loss': 0.7075221538543701, 'eval_accuracy': 0.48736462093862815, 'eval_runtime': 1.0014, 'eval_samples_per_second': 276.62, 'eval_steps_per_second': 34.952, 'epoch': 99.0}
+04/19/2022 01:17:36 - INFO - training.trainer_base - ***** Epoch 98: Best results *****
+04/19/2022 01:17:36 - INFO - training.trainer_base - best_epoch = 1
+04/19/2022 01:17:36 - INFO - training.trainer_base - best_eval_accuracy = 0.5054151624548736
+04/19/2022 01:17:36 - INFO - training.trainer_base - epoch = 98.0
+OrderedDict([('best_epoch', 1), ('best_eval_accuracy', 0.5054151624548736), ('epoch', 99.0)])
+04/19/2022 01:17:54 - INFO - datasets.metric - Removing /home/ask9126/.cache/huggingface/metrics/super_glue/rte/default_experiment-1-0.arrow
+{'eval_loss': 0.707524836063385, 'eval_accuracy': 0.48736462093862815, 'eval_runtime': 1.0042, 'eval_samples_per_second': 275.842, 'eval_steps_per_second': 34.854, 'epoch': 100.0}
+04/19/2022 01:17:54 - INFO - training.trainer_base - ***** Epoch 99: Best results *****
+04/19/2022 01:17:54 - INFO - training.trainer_base - best_epoch = 1
+04/19/2022 01:17:54 - INFO - training.trainer_base - best_eval_accuracy = 0.5054151624548736
+04/19/2022 01:17:54 - INFO - training.trainer_base - epoch = 99.0
+OrderedDict([('best_epoch', 1), ('best_eval_accuracy', 0.5054151624548736), ('epoch', 100.0)])
+{'train_runtime': 1776.9543, 'train_samples_per_second': 140.127, 'train_steps_per_second': 4.39, 'train_loss': 0.7211048673972106, 'epoch': 100.0}
+***** train metrics *****
+  epoch                    =      100.0
+  train_loss               =     0.7211
+  train_runtime            = 0:29:36.95
+  train_samples_per_second =    140.127
+  train_steps_per_second   =       4.39
+***** best metrics *****
+  best_epoch         =      1
+  best_eval_accuracy = 0.5054
+  epoch              =  100.0
