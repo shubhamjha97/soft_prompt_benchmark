@@ -5,7 +5,7 @@ import torch.nn.functional as F
 from torch import Tensor
 from torch.nn import CrossEntropyLoss, MSELoss, BCEWithLogitsLoss
 
-from transformers import BertModel, BertPreTrainedModel, T5PreTrainedModel, T5Model, T5EncoderModel, TFT5PreTrainedModel, TFT5EncoderModel, GPT2Model, GPT2ForSequenceClassification, GPT2PreTrainedModel
+from transformers import BertModel, BertPreTrainedModel, T5PreTrainedModel, T5Model, T5EncoderModel, T5ForConditionalGeneration, GPT2Model, GPT2ForSequenceClassification, GPT2PreTrainedModel
 from transformers import RobertaModel, RobertaPreTrainedModel
 from transformers.modeling_outputs import SequenceClassifierOutput, BaseModelOutput, Seq2SeqLMOutput
 
@@ -673,7 +673,7 @@ class T5BasePrefixForSequenceClassification(T5PreTrainedModel):
         super().__init__(config)
         self.num_labels = config.num_labels
         self.config = config
-        self.t5 = T5EncoderModel(config)
+        self.t5 = T5ForConditionalGeneration(config)
         self.model_parallel = False
         self.dropout = torch.nn.Dropout(config.hidden_dropout_prob)
         self.classifier = torch.nn.Linear(config.hidden_size, config.num_labels)
@@ -705,13 +705,28 @@ class T5BasePrefixForSequenceClassification(T5PreTrainedModel):
         past_key_values = past_key_values.view(
             batch_size,
             self.pre_seq_len,
-            self.n_layer * 2,
+            self.n_layer * 4,
             self.n_head,
             self.n_embd
         )
         past_key_values = self.dropout(past_key_values)
-        past_key_values = past_key_values.permute([2, 0, 3, 1, 4]).split(2)
+        past_key_values = past_key_values.permute([2, 0, 3, 1, 4]).split(4)
         return past_key_values
+
+
+    def _extend_labels(self, labels, ignore_index=-100) -> torch.Tensor:
+        if len(list(labels.shape)) == 1:
+            labels = labels.unsqueeze(1)
+
+        n_batches = labels.shape[0]
+        return torch.cat(
+            [
+                torch.full((n_batches, self.pre_seq_len), ignore_index).to(self.device),
+                labels,
+                torch.full((n_batches, 127), ignore_index).to(self.device),
+            ],
+            dim=1,
+        )
 
     def forward(
             self,
@@ -730,8 +745,9 @@ class T5BasePrefixForSequenceClassification(T5PreTrainedModel):
 
         batch_size = input_ids.shape[0]
         past_key_values = self.get_prompt(batch_size=batch_size)
-        prefix_attention_mask = torch.ones(batch_size, self.pre_seq_len).to(self.t5.device)
-        attention_mask = torch.cat((prefix_attention_mask, attention_mask), dim=1)
+        labels = self._extend_labels(labels)
+        # prefix_attention_mask = torch.ones(batch_size, self.pre_seq_len).to(self.t5.device)
+        # attention_mask = torch.cat((prefix_attention_mask, attention_mask), dim=1)
 
         outputs = self.t5(
             input_ids,
@@ -744,6 +760,7 @@ class T5BasePrefixForSequenceClassification(T5PreTrainedModel):
             output_hidden_states=output_hidden_states,
             return_dict=return_dict,
             past_key_values=past_key_values,
+            labels=labels
         )
 
         pooled_output = outputs[1]
