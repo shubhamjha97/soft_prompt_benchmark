@@ -98,7 +98,7 @@ torch==1.11.0
 tornado==6.1
 tqdm==4.64.0
 traitlets==5.1.1
-transformers==4.8.2
+transformers>=4.10.0
 typing-extensions==4.1.1
 urllib3==1.26.9
 wcwidth==0.2.5

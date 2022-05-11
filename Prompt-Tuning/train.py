@@ -1,4 +1,5 @@
 import hydra
+from opendelta import SoftPromptModel
 from transformers import (
     GPT2TokenizerFast,
     T5Tokenizer,
@@ -8,7 +9,7 @@ from transformers import (
     get_constant_schedule,
     Trainer,
     TrainingArguments,
-    default_data_collator
+    default_data_collator, T5ForConditionalGeneration, GPT2LMHeadModel
 )
 
 from dataset_loaders import DATASET_LOADERS, METRIC_LOADERS
@@ -47,19 +48,23 @@ def train(tokenizer, model, train_dataset, val_dataset, config, metrics):
     )
 
     # Only update soft prompt weights for prompt-tuning. ie, all weights in LM are set as `require_grad=False`.
+    # optimizer_grouped_parameters = [{
+    #         "params": [p for n, p in model.named_parameters() if n == "soft_prompt.weight"],
+    #         "weight_decay": config.weight_decay,
+    # }]
     optimizer_grouped_parameters = [{
-            "params": [p for n, p in model.named_parameters() if n == "soft_prompt.weight"],
-            "weight_decay": config.weight_decay,
+        "params": [p for n, p in model.named_parameters() if p.requires_grad],
+        "weight_decay": config.weight_decay,
     }]
     optimizer = AdamW(optimizer_grouped_parameters, lr=config.learning_rate)
-    # TODO: Check
-    # lr_scheduler = get_scheduler(
-    #     name=config.lr_scheduler_type,
-    #     optimizer=optimizer,
-    #     num_warmup_steps=config.num_warmup_steps,
-    #     num_training_steps=config.max_train_steps,
-    # )
-    lr_scheduler = get_constant_schedule(optimizer=optimizer)
+    # TODO:
+    lr_scheduler = get_scheduler(
+        name="linear", #config.lr_scheduler_type,
+        optimizer=optimizer,
+        num_warmup_steps=config.num_warmup_steps,
+        num_training_steps= config.max_train_steps,
+    )
+    # lr_scheduler = get_constant_schedule(optimizer=optimizer)
 
     trainer = Trainer(
         model=model,
@@ -74,9 +79,13 @@ def train(tokenizer, model, train_dataset, val_dataset, config, metrics):
 
     for epoch in range(config.num_train_epochs):
         trainer.train(resume_from_checkpoint=None) # TODO: sjha add ability to resume from checkpoint
-        computed_metrics = compute_metric_batched(trainer, metrics, tokenizer, val_dataset,
+
+        if epoch % 30 == 0: # TODO: remove
+            computed_metrics = compute_metric_batched(trainer, metrics, tokenizer, val_dataset, # TODO
                                                   eval_batch_size=config.eval_batch_size, config=config)
-        print(f'epoch: {epoch}, eval_metrics: {computed_metrics}')
+            print(f'epoch: {epoch}, eval_metrics: {computed_metrics}')
+        else:
+            print(f'epoch: {epoch}')
 
     # TODO: save model every n iterations
     save_dir_path = "."
@@ -140,6 +149,9 @@ def get_config(cfg):
     config.random_range = task_cfg.random_range
     config.eval_batch_size = cfg.eval_batch_size
 
+    config.num_warmup_steps = task_cfg.num_warmup_steps
+    config.num_training_steps = task_cfg.num_training_steps
+
     return config
 
 
@@ -147,7 +159,14 @@ def get_config(cfg):
 def main(cfg):
     config = get_config(cfg)
     tokenizer = get_tokenizer(config.tokenizer_name)
-    model = get_model(config.model_name, config.n_prompt_tokens, config.init_from_vocab)
+    # model = get_model(config.model_name, config.n_prompt_tokens, config.init_from_vocab) # TODO:
+
+    model = T5ForConditionalGeneration.from_pretrained(config.model_name) # TODO:
+    # model = GPT2LMHeadModel.from_pretrained(config.model_name)
+    delta_model = SoftPromptModel(backbone_model=model, soft_token_num=config.n_prompt_tokens, token_init=config.init_from_vocab)
+    delta_model.freeze_module(exclude=["deltas", "layernorm_embedding"], set_state_dict=True) # TODO
+    delta_model.log() # This will visualize the backbone after modification and other information.
+
     metrics = METRIC_LOADERS[config.task_name]()
 
     train_dataset, val_dataset = DATASET_LOADERS[config.task_name](
