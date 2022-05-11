@@ -25,7 +25,6 @@ class Config:
     learning_rate = 0.01
     lr_scheduler_type = "linear"
     num_warmup_steps = 0
-    max_train_steps = num_train_epochs
 
     # Prompt-tuning
     # number of prompt tokens
@@ -47,22 +46,18 @@ def train(tokenizer, model, train_dataset, val_dataset, config, metrics):
         prediction_loss_only=False
     )
 
-    # Only update soft prompt weights for prompt-tuning. ie, all weights in LM are set as `require_grad=False`.
-    # optimizer_grouped_parameters = [{
-    #         "params": [p for n, p in model.named_parameters() if n == "soft_prompt.weight"],
-    #         "weight_decay": config.weight_decay,
-    # }]
     optimizer_grouped_parameters = [{
         "params": [p for n, p in model.named_parameters() if p.requires_grad],
         "weight_decay": config.weight_decay,
     }]
     optimizer = AdamW(optimizer_grouped_parameters, lr=config.learning_rate)
+
     # TODO:
     lr_scheduler = get_scheduler(
         name="linear", #config.lr_scheduler_type,
         optimizer=optimizer,
         num_warmup_steps=config.num_warmup_steps,
-        num_training_steps= config.max_train_steps,
+        num_training_steps= config.num_train_epochs,
     )
     # lr_scheduler = get_constant_schedule(optimizer=optimizer)
 
@@ -77,15 +72,17 @@ def train(tokenizer, model, train_dataset, val_dataset, config, metrics):
         optimizers=(optimizer, lr_scheduler)
     )
 
+    max_accuracy = 0.0
     for epoch in range(config.num_train_epochs):
         trainer.train(resume_from_checkpoint=None) # TODO: sjha add ability to resume from checkpoint
 
         if epoch % 30 == 0: # TODO: remove
             computed_metrics = compute_metric_batched(trainer, metrics, tokenizer, val_dataset, # TODO
                                                   eval_batch_size=config.eval_batch_size, config=config)
-            print(f'epoch: {epoch}, eval_metrics: {computed_metrics}')
+            max_accuracy = max(max_accuracy, computed_metrics['accuracy'])
+            print(f'epoch: {epoch}, eval_metrics: {computed_metrics}, learning_rate: {lr_scheduler.get_lr()}, max_accuracy: {max_accuracy}')
         else:
-            print(f'epoch: {epoch}')
+            print(f'epoch: {epoch}, learning_rate: {lr_scheduler.get_lr()}')
 
     # TODO: save model every n iterations
     save_dir_path = "."
