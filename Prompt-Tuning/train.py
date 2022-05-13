@@ -1,6 +1,6 @@
 import hydra
 import torch
-from opendelta import SoftPromptModel
+from opendelta import SoftPromptModel, PrefixModel
 from transformers import (
     GPT2TokenizerFast,
     T5Tokenizer,
@@ -110,31 +110,49 @@ def get_tokenizer(tokenizer_name="gpt2"):
     return tokenizer
 
 
-def get_model(model_name="gpt2", n_prompt_tokens=20, init_from_vocab=True):
+def get_model(model_name="gpt2", method="prompt_tuning", n_prompt_tokens=20, init_from_vocab=True):
     if model_name.startswith("gpt2"):
-        model = GPT2PromptTuningLM.from_pretrained(
-            model_name,
-            n_tokens=n_prompt_tokens,
-            initialize_from_vocab=init_from_vocab)
+        if method == "prompt_tuning":
+            model = GPT2PromptTuningLM.from_pretrained(
+                model_name,
+                n_tokens=n_prompt_tokens,
+                initialize_from_vocab=init_from_vocab)
+        else:
+            model = get_plm(model_name)
+            delta_model = PrefixModel(backbone_model=model, prefix_token_num=20, reparameterize=True)
+            delta_model.freeze_module(exclude=["deltas", "layernorm_embedding"], set_state_dict=True)
+            delta_model.log()
     elif model_name.startswith("t5"):
-        model = get_plm(model_name)
-        delta_model = SoftPromptModel(backbone_model=model, soft_token_num=n_prompt_tokens,
-                                      token_init=init_from_vocab)
-        delta_model.freeze_module(exclude=["deltas", "layernorm_embedding"], set_state_dict=True)
-        delta_model.log()
+        if method == "prompt_tuning":
+            model = get_plm(model_name)
+            delta_model = SoftPromptModel(backbone_model=model, soft_token_num=n_prompt_tokens,
+                                          token_init=init_from_vocab)
+            delta_model.freeze_module(exclude=["deltas", "layernorm_embedding"], set_state_dict=True)
+            delta_model.log()
+        else:
+            model = get_plm(model_name)
+            delta_model = PrefixModel(backbone_model=model, prefix_token_num=20, reparameterize=True)
+            delta_model.freeze_module(exclude=["deltas", "layernorm_embedding"], set_state_dict=True)
+            delta_model.log()
         # model = T5PromptTuningLM.from_pretrained(
         #     model_name,
         #     n_tokens=n_prompt_tokens,
         #     initialize_from_vocab=init_from_vocab
         # )
     elif model_name.startswith("roberta"):
-        model = RobertaPromptTuningLM.from_pretrained(
-            model_name,
-            n_tokens=n_prompt_tokens,
-            initialize_from_vocab=init_from_vocab
-        )
+        if method == "prompt_tuning":
+            model = RobertaPromptTuningLM.from_pretrained(
+                model_name,
+                n_tokens=n_prompt_tokens,
+                initialize_from_vocab=init_from_vocab
+            )
+        else:
+            model = get_plm(model_name)
+            delta_model = PrefixModel(backbone_model=model, prefix_token_num=20, reparameterize=True)
+            delta_model.freeze_module(exclude=["deltas", "layernorm_embedding"], set_state_dict=True)
+            delta_model.log()
     else:
-        raise ValueError("Tokenizer not supported")
+        raise ValueError("Model not supported")
     return model
 
 
@@ -156,6 +174,7 @@ def get_config(cfg):
     task_name, method, plm = cfg.task_name, cfg.method, cfg.plm
     task_cfg = cfg[task_name][method][plm]
 
+    config.method = method
     config.model_name = plm
     config.dataset = task_name
     config.task_name = task_name
@@ -180,9 +199,8 @@ def get_config(cfg):
 def main(cfg):
     config = get_config(cfg)
     tokenizer = get_tokenizer(config.tokenizer_name)
-    # model = get_model(config.model_name, config.n_prompt_tokens, config.init_from_vocab) # TODO:
 
-    model = get_model(config.model_name, config.n_prompt_tokens, config.init_from_vocab) # TODO:
+    model = get_model(config.model_name, config.method, config.n_prompt_tokens, config.init_from_vocab)
     metrics = METRIC_LOADERS[config.task_name]()
 
     train_dataset, val_dataset = DATASET_LOADERS[config.task_name](
