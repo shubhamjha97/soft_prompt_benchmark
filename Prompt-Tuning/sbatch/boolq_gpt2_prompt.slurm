@@ -18,5 +18,5 @@ conda create -n pt2 python=3.8.5
 conda activate pt2
 cd /scratch/ask9126/soft_prompt_benchmark/Prompt-Tuning
 pip install -r requirements.txt
-python3 -u train.py 'task_name=boolq' 'plm=gpt2' 'method=prompt_tuning'
+python3 -u train.py 'task_name=boolq' 'plm=gpt2-medium' 'method=prompt_tuning'
 "

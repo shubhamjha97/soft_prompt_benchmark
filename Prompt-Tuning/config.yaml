@@ -16,6 +16,14 @@ boolq:
       n_prompt_tokens: 20
       init_from_vocab: true
       random_range: 0.5
+    gpt2-medium:
+      tokenizer_name: gpt2
+      learning_rate: 0.01
+      num_train_epochs: 100
+      max_seq_length: 128
+      n_prompt_tokens: 20
+      init_from_vocab: true
+      random_range: 0.5
     t5-base:
       tokenizer_name: t5-base
       learning_rate: 0.01
@@ -27,6 +35,16 @@ boolq:
       num_warmup_steps: 0
       num_training_steps: 500
     roberta-base:
+      tokenizer_name: roberta-base
+      learning_rate: 0.001
+      num_train_epochs: 1000
+      max_seq_length: 128
+      n_prompt_tokens: 20
+      init_from_vocab: true
+      random_range: 0.5
+      num_warmup_steps: 0
+      num_training_steps: 500
+    roberta-large:
       tokenizer_name: roberta-base
       learning_rate: 0.001
       num_train_epochs: 1000
@@ -58,6 +76,14 @@ rte:
       random_range: 0.5
       num_warmup_steps: 0
       num_training_steps: 500
+    gpt2-medium:
+      tokenizer_name: gpt2
+      learning_rate: 0.01
+      num_train_epochs: 100
+      max_seq_length: 128
+      n_prompt_tokens: 20
+      init_from_vocab: true
+      random_range: 0.5
     t5-base:
       tokenizer_name: t5-base
       learning_rate: 0.005
@@ -69,6 +95,16 @@ rte:
       num_warmup_steps: 0
       num_training_steps: 500
     roberta-base:
+      tokenizer_name: roberta-base
+      learning_rate: 0.001
+      num_train_epochs: 1000
+      max_seq_length: 128
+      n_prompt_tokens: 20
+      init_from_vocab: true
+      random_range: 0.5
+      num_warmup_steps: 0
+      num_training_steps: 500
+    roberta-large:
       tokenizer_name: roberta-base
       learning_rate: 0.001
       num_train_epochs: 1000
@@ -99,6 +135,14 @@ copa:
       random_range: 0.5
       num_warmup_steps: 0
       num_training_steps: 500
+    gpt2-medium:
+      tokenizer_name: gpt2
+      learning_rate: 0.01
+      num_train_epochs: 100
+      max_seq_length: 128
+      n_prompt_tokens: 20
+      init_from_vocab: true
+      random_range: 0.5
     t5-base:
       tokenizer_name: t5-base
       learning_rate: 0.005
@@ -110,6 +154,16 @@ copa:
       num_warmup_steps: 0
       num_training_steps: 500
     roberta-base:
+      tokenizer_name: roberta-base
+      learning_rate: 0.001
+      num_train_epochs: 1000
+      max_seq_length: 128
+      n_prompt_tokens: 20
+      init_from_vocab: true
+      random_range: 0.5
+      num_warmup_steps: 0
+      num_training_steps: 500
+    roberta-large:
       tokenizer_name: roberta-base
       learning_rate: 0.001
       num_train_epochs: 1000

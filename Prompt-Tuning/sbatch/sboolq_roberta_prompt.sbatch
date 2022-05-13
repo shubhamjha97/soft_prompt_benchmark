@@ -13,5 +13,5 @@ singularity exec --nv --bind /scratch --overlay /scratch/sj3549/nlu-overlay.ext3
 source /ext3/miniconda3/bin/activate
 conda activate project_env
 cd /scratch/sj3549/soft_prompt_benchmark/Prompt-Tuning
-python3 -u train.py 'task_name=boolq' 'plm=roberta-base' 'method=prompt_tuning'
+python3 -u train.py 'task_name=boolq' 'plm=roberta-large' 'method=prompt_tuning'
 "
