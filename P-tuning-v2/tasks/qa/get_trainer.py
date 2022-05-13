@@ -8,7 +8,7 @@ from transformers import (
     AutoTokenizer,
 )
 
-from tasks.qa.dataset import SQuAD
+from tasks.qa.dataset import SQuAD, HotpotQA
 from training.trainer_qa import QuestionAnsweringTrainer
 from model.utils import get_model, TaskType
 
@@ -31,7 +31,8 @@ def get_trainer(args):
 
     model = get_model(model_args, TaskType.QUESTION_ANSWERING, config, fix_bert=True)
     
-    dataset = SQuAD(tokenizer, data_args, training_args, qa_args)
+    # dataset = SQuAD(tokenizer, data_args, training_args, qa_args)
+    dataset = HotpotQA(tokenizer, data_args, training_args, qa_args)
 
     trainer = QuestionAnsweringTrainer(
         model=model,

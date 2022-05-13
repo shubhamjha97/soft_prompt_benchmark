@@ -5,7 +5,7 @@ GLUE_DATASETS = list(glue_tasks.keys())
 SUPERGLUE_DATASETS = list(superglue_tasks.keys())
 NER_DATASETS = ["conll2003", "conll2004", "ontonotes"]
 SRL_DATASETS = ["conll2005", "conll2012"]
-QA_DATASETS = ["squad", "squad_v2"]
+QA_DATASETS = ["squad", "squad_v2", "hotpot_qa"]
 
 
 TASKS = ["glue", "superglue", "ner", "srl", "qa"]

@@ -78,17 +78,22 @@ def train(tokenizer, model, train_dataset, val_dataset, config, metrics):
     for epoch in range(config.num_train_epochs):
         trainer.train(resume_from_checkpoint=None) # TODO: sjha add ability to resume from checkpoint
 
-        if epoch % 30 == 0: # TODO: remove
+        if epoch % 1 == 0: # TODO: remove
             computed_metrics = compute_metric_batched(trainer, metrics, tokenizer, val_dataset, # TODO
                                                   eval_batch_size=config.eval_batch_size, config=config)
+            if max_accuracy < computed_metrics['accuracy']:
+                save_dir_path = "./outputs"
+                model.save_pretrained(save_dir_path)
+                try:
+                    model.save_soft_prompt(save_dir_path)
+                except:
+                    pass
             max_accuracy = max(max_accuracy, computed_metrics['accuracy'])
             print(f'epoch: {epoch}, eval_metrics: {computed_metrics}, learning_rate: {lr_scheduler.get_lr()}, max_accuracy: {max_accuracy}')
         else:
             print(f'epoch: {epoch}, learning_rate: {lr_scheduler.get_lr()}')
 
     # TODO: save model every n iterations
-    save_dir_path = "."
-    model.save_soft_prompt(save_dir_path)
 
 
 def get_tokenizer(tokenizer_name="gpt2"):
@@ -175,6 +180,7 @@ def get_config(cfg):
 def main(cfg):
     config = get_config(cfg)
     tokenizer = get_tokenizer(config.tokenizer_name)
+    # model = get_model(config.model_name, config.n_prompt_tokens, config.init_from_vocab) # TODO:
 
     model = get_model(config.model_name, config.n_prompt_tokens, config.init_from_vocab) # TODO:
     metrics = METRIC_LOADERS[config.task_name]()

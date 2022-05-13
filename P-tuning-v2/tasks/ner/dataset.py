@@ -10,7 +10,8 @@ import numpy as np
 class NERDataset():
     def __init__(self, tokenizer: AutoTokenizer, data_args, training_args) -> None:
         super().__init__()
-        raw_datasets = load_dataset(f'tasks/ner/datasets/{data_args.dataset_name}.py')
+        # raw_datasets = load_dataset(f'tasks/ner/datasets/{data_args.dataset_name}.py')
+        raw_datasets = load_dataset("conll2012_ontonotesv5", 'english_v4')
         self.tokenizer = tokenizer
 
         if training_args.do_train:
@@ -20,10 +21,10 @@ class NERDataset():
             column_names = raw_datasets["validation"].column_names
             features = raw_datasets["validation"].features
 
-        self.label_column_name = f"{data_args.task_name}_tags"
-        self.label_list = features[self.label_column_name].feature.names
-        self.label_to_id = {l: i for i, l in enumerate(self.label_list)}
-        self.num_labels = len(self.label_list)
+        self.label_column_name = 'sentences'
+        self.label_list = features['sentences'][0]['named_entities']
+        self.label_to_id = {l: i for i, l in enumerate(self.label_list.feature.names)}
+        self.num_labels = len(self.label_list.feature.names)
 
         if training_args.do_train:
             train_dataset = raw_datasets['train']
@@ -84,18 +85,17 @@ class NERDataset():
         }
 
     def tokenize_and_align_labels(self, examples):
-        tokenized_inputs = self.tokenizer(
-            examples['tokens'],
-            padding=False,
-            truncation=True,
-            # We use this argument because the texts in our dataset are lists of words (with a label for each word).
-            is_split_into_words=True,
-        )
-
+        # tokenized_inputs = self.tokenizer(
+        #     examples['sentences'],
+        #     padding=False,
+        #     truncation=True,
+        #     # We use this argument because the texts in our dataset are lists of words (with a label for each word).
+        #     is_split_into_words=True,
+        # )
         labels = []
         for i, label in enumerate(examples[self.label_column_name]):
             word_ids = [None]
-            for j, word in enumerate(examples['tokens'][i]):
+            for j, word in enumerate(examples[self.label_column_name][i]):
                 token = self.tokenizer.encode(word, add_special_tokens=False)
                 # print(token)
                 word_ids += [j] * len(token)
