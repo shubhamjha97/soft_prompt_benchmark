@@ -9,7 +9,7 @@ from transformers import (
     get_constant_schedule,
     Trainer,
     TrainingArguments,
-    default_data_collator, T5ForConditionalGeneration, GPT2LMHeadModel
+    default_data_collator, T5ForConditionalGeneration, GPT2LMHeadModel, RobertaForCausalLM
 )
 
 from dataset_loaders import DATASET_LOADERS, METRIC_LOADERS
@@ -110,17 +110,34 @@ def get_model(model_name="gpt2", n_prompt_tokens=20, init_from_vocab=True):
             n_tokens=n_prompt_tokens,
             initialize_from_vocab=init_from_vocab)
     elif model_name.startswith("t5"):
-        model = T5PromptTuningLM.from_pretrained(
-            model_name,
-            n_tokens=n_prompt_tokens,
-            initialize_from_vocab=init_from_vocab
-        )
+        model = get_plm(model_name)
+        delta_model = SoftPromptModel(backbone_model=model, soft_token_num=n_prompt_tokens,
+                                      token_init=init_from_vocab)
+        delta_model.freeze_module(exclude=["deltas", "layernorm_embedding"], set_state_dict=True)
+        delta_model.log()
+        # model = T5PromptTuningLM.from_pretrained(
+        #     model_name,
+        #     n_tokens=n_prompt_tokens,
+        #     initialize_from_vocab=init_from_vocab
+        # )
     elif model_name.startswith("roberta"):
         model = RobertaPromptTuningLM.from_pretrained(
             model_name,
             n_tokens=n_prompt_tokens,
             initialize_from_vocab=init_from_vocab
         )
+    else:
+        raise ValueError("Tokenizer not supported")
+    return model
+
+
+def get_plm(model_name="gpt2"):
+    if model_name.startswith("t5"):
+        model = T5ForConditionalGeneration.from_pretrained(model_name)
+    elif model_name.startswith("gpt2"):
+        model = GPT2LMHeadModel.from_pretrained(model_name)
+    elif model_name.startswith("roberta"):
+        model = RobertaForCausalLM.from_pretrained(model_name)
     else:
         raise ValueError("Tokenizer not supported")
     return model
@@ -156,14 +173,8 @@ def get_config(cfg):
 def main(cfg):
     config = get_config(cfg)
     tokenizer = get_tokenizer(config.tokenizer_name)
-    # model = get_model(config.model_name, config.n_prompt_tokens, config.init_from_vocab) # TODO:
 
-    model = T5ForConditionalGeneration.from_pretrained(config.model_name) # TODO:
-    # model = GPT2LMHeadModel.from_pretrained(config.model_name)
-    delta_model = SoftPromptModel(backbone_model=model, soft_token_num=config.n_prompt_tokens, token_init=config.init_from_vocab)
-    delta_model.freeze_module(exclude=["deltas", "layernorm_embedding"], set_state_dict=True) # TODO
-    delta_model.log() # This will visualize the backbone after modification and other information.
-
+    model = get_model(config.model_name, config.n_prompt_tokens, config.init_from_vocab) # TODO:
     metrics = METRIC_LOADERS[config.task_name]()
 
     train_dataset, val_dataset = DATASET_LOADERS[config.task_name](
