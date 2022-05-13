@@ -1,4 +1,4 @@
-task_name: rte
+task_name: boolq
 method: prompt_tuning
 plm: t5-base
 
@@ -47,6 +47,130 @@ boolq:
 
 
 rte:
+  prompt_tuning:
+    gpt2:
+      tokenizer_name: gpt2
+      learning_rate: 0.01
+      num_train_epochs: 1000
+      max_seq_length: 128
+      n_prompt_tokens: 20
+      init_from_vocab: true
+      random_range: 0.5
+      num_warmup_steps: 0
+      num_training_steps: 500
+    t5-base:
+      tokenizer_name: t5-base
+      learning_rate: 0.005
+      num_train_epochs: 1000
+      max_seq_length: 128
+      n_prompt_tokens: 100
+      init_from_vocab: false
+      random_range: 0.5
+      num_warmup_steps: 0
+      num_training_steps: 500
+    roberta-base:
+      tokenizer_name: roberta-base
+      learning_rate: 0.001
+      num_train_epochs: 1000
+      max_seq_length: 128
+      n_prompt_tokens: 20
+      init_from_vocab: true
+      random_range: 0.5
+      num_warmup_steps: 0
+      num_training_steps: 500
+    t5-large:
+      tokenizer_name: t5-base
+      learning_rate: 0.001
+      num_train_epochs: 1000
+      max_seq_length: 128
+      n_prompt_tokens: 20
+      init_from_vocab: true
+      random_range: 0.5
+
+copa:
+  prompt_tuning:
+    gpt2:
+      tokenizer_name: gpt2
+      learning_rate: 0.01
+      num_train_epochs: 1000
+      max_seq_length: 128
+      n_prompt_tokens: 20
+      init_from_vocab: true
+      random_range: 0.5
+      num_warmup_steps: 0
+      num_training_steps: 500
+    t5-base:
+      tokenizer_name: t5-base
+      learning_rate: 0.005
+      num_train_epochs: 1000
+      max_seq_length: 128
+      n_prompt_tokens: 100
+      init_from_vocab: false
+      random_range: 0.5
+      num_warmup_steps: 0
+      num_training_steps: 500
+    roberta-base:
+      tokenizer_name: roberta-base
+      learning_rate: 0.001
+      num_train_epochs: 1000
+      max_seq_length: 128
+      n_prompt_tokens: 20
+      init_from_vocab: true
+      random_range: 0.5
+      num_warmup_steps: 0
+      num_training_steps: 500
+    t5-large:
+      tokenizer_name: t5-base
+      learning_rate: 0.001
+      num_train_epochs: 1000
+      max_seq_length: 128
+      n_prompt_tokens: 20
+      init_from_vocab: true
+      random_range: 0.5
+
+
+wsc:
+  prompt_tuning:
+    gpt2:
+      tokenizer_name: gpt2
+      learning_rate: 0.01
+      num_train_epochs: 1000
+      max_seq_length: 128
+      n_prompt_tokens: 20
+      init_from_vocab: true
+      random_range: 0.5
+      num_warmup_steps: 0
+      num_training_steps: 500
+    t5-base:
+      tokenizer_name: t5-base
+      learning_rate: 0.005
+      num_train_epochs: 1000
+      max_seq_length: 128
+      n_prompt_tokens: 100
+      init_from_vocab: false
+      random_range: 0.5
+      num_warmup_steps: 0
+      num_training_steps: 500
+    roberta-base:
+      tokenizer_name: roberta-base
+      learning_rate: 0.001
+      num_train_epochs: 1000
+      max_seq_length: 128
+      n_prompt_tokens: 20
+      init_from_vocab: true
+      random_range: 0.5
+      num_warmup_steps: 0
+      num_training_steps: 500
+    t5-large:
+      tokenizer_name: t5-base
+      learning_rate: 0.001
+      num_train_epochs: 1000
+      max_seq_length: 128
+      n_prompt_tokens: 20
+      init_from_vocab: true
+      random_range: 0.5
+
+wic:
   prompt_tuning:
     gpt2:
       tokenizer_name: gpt2

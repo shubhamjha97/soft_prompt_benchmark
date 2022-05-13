@@ -25,10 +25,12 @@ def compute_metric_batched(trainer, metric_, tokenizer, test_data, eval_batch_si
         test_batch = Dataset.from_dict(test_data[ix:ix+eval_batch_size])
 
         if config.model_name.startswith("t5"):
-             predictions_ids = trainer.model.generate(torch.tensor(test_batch['input_ids']).to(torch.device('cuda')))
+             predictions_ids = trainer.model.generate(torch.tensor(test_batch['input_ids']))
+             # predictions_ids = trainer.model.generate(torch.tensor(test_batch['input_ids']).to(torch.device('cuda')))
              decoded_predictions = tokenizer.batch_decode(predictions_ids, skip_special_tokens=True)
         else:
-             predictions_ids = trainer.model(torch.tensor(test_batch['input_ids']).to(torch.device('cuda')))
+             predictions_ids = trainer.model(torch.tensor(test_batch['input_ids']))
+             # predictions_ids = trainer.model(torch.tensor(test_batch['input_ids']).to(torch.device('cuda')))
              decoded_predictions = tokenizer.batch_decode(predictions_ids.logits.argmax(dim=2), skip_special_tokens=False)
 
         #try:
