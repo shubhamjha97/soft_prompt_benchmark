@@ -21,6 +21,11 @@ def tokenize_dataset(dataset, tokenizer, max_source_length, max_target_length, p
 def boolq_metric_loader():
     return load_metric('super_glue', 'boolq', experiment_id=str(uuid.uuid1()))
 
+
+def rte_metric_loader():
+    return load_metric('super_glue', 'rte', experiment_id=str(uuid.uuid1()))
+
+
 def boolq_loader(tokenizer, soft_prompt_length=0, max_seq_length=128):
 
     def boolq_preprocessor(x, eval=False):
@@ -31,7 +36,7 @@ def boolq_loader(tokenizer, soft_prompt_length=0, max_seq_length=128):
         return x
 
     raw_dataset = load_dataset('super_glue', 'boolq', split=['train', 'validation']) # TODO
-    # raw_dataset = load_dataset('super_glue', 'boolq', split=['train[0:8]', 'validation[0:8]']) # TODO:
+    #raw_dataset = load_dataset('super_glue', 'boolq', split=['train[0:8]', 'validation[0:8]']) # TODO:
     train_dataset, val_dataset = raw_dataset[0], raw_dataset[1]
 
     # Preprocess dataset
@@ -52,10 +57,43 @@ def boolq_loader(tokenizer, soft_prompt_length=0, max_seq_length=128):
     return train_dataset, val_dataset
 
 
+def rte_loader(tokenizer, soft_prompt_length=0, max_seq_length=128):
+
+    def rte_preprocessor(x, eval=False):
+        src_texts = ["premise:", x["premise"], "hypothesis:", x["hypothesis"]]
+        x['source'] = ' '.join(src_texts)
+        if not eval:
+            x['target'] = 'entailment' if x['label']==1 else 'not_entailment'
+        return x
+
+    raw_dataset = load_dataset('super_glue', 'rte', split=['train', 'validation']) # TODO
+    #raw_dataset = load_dataset('super_glue', 'rte', split=['train[0:8]', 'validation[0:8]']) # TODO:
+    train_dataset, val_dataset = raw_dataset[0], raw_dataset[1]
+
+    # Preprocess dataset
+    train_dataset = train_dataset.map(lambda x: rte_preprocessor(x), batched=False)
+    val_dataset = val_dataset.map(lambda x: rte_preprocessor(x), batched=False)
+
+    # Tokenize dataset
+    train_dataset = tokenize_dataset(train_dataset, tokenizer, max_seq_length - soft_prompt_length, max_seq_length - soft_prompt_length, 'max_length', eval=False)
+    train_dataset.set_format(type='torch', columns=['input_ids', 'attention_mask', 'labels', 'raw_labels'])
+
+    val_dataset = tokenize_dataset(val_dataset, tokenizer, max_seq_length - soft_prompt_length, max_seq_length - soft_prompt_length, 'max_length', eval=False)
+    val_dataset.set_format(type='torch', columns=['input_ids', 'attention_mask', 'labels', 'raw_labels'])
+
+    columns_to_remove = ['premise', 'hypothesis', 'idx', 'label', 'source', 'target']
+    train_dataset = train_dataset.remove_columns(columns_to_remove)
+    val_dataset = val_dataset.remove_columns(columns_to_remove)
+
+    return train_dataset, val_dataset
+
+
 DATASET_LOADERS = {
-    'boolq': boolq_loader
+    'boolq': boolq_loader,
+    'rte': rte_loader
 }
 
 METRIC_LOADERS = {
-    'boolq': boolq_metric_loader
+    'boolq': boolq_metric_loader,
+    'rte': rte_metric_loader
 }

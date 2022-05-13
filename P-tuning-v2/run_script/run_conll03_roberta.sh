@@ -24,6 +24,6 @@ python3 run.py \
   --overwrite_output_dir \
   --hidden_dropout_prob $dropout \
   --seed 11 \
-  --save_strategy no \
+  --save_strategy epoch \
   --evaluation_strategy epoch \
   --prefix

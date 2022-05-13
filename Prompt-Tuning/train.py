@@ -1,4 +1,5 @@
 import hydra
+import torch
 from opendelta import SoftPromptModel
 from transformers import (
     GPT2TokenizerFast,
@@ -39,6 +40,7 @@ def train(tokenizer, model, train_dataset, val_dataset, config, metrics):
     training_args = TrainingArguments(
         output_dir="test_trainer",
         evaluation_strategy="no",
+        per_device_train_batch_size=8,
         logging_steps=config.logging_steps,
         eval_steps=config.eval_steps,
         eval_accumulation_steps=5,
@@ -53,13 +55,13 @@ def train(tokenizer, model, train_dataset, val_dataset, config, metrics):
     optimizer = AdamW(optimizer_grouped_parameters, lr=config.learning_rate)
 
     # TODO:
-    lr_scheduler = get_scheduler(
-        name="linear", #config.lr_scheduler_type,
-        optimizer=optimizer,
-        num_warmup_steps=config.num_warmup_steps,
-        num_training_steps= config.num_train_epochs,
-    )
-    # lr_scheduler = get_constant_schedule(optimizer=optimizer)
+    #lr_scheduler = get_scheduler(
+    #    name="linear", #config.lr_scheduler_type,
+    #    optimizer=optimizer,
+    #    num_warmup_steps=config.num_warmup_steps,
+    #    num_training_steps= config.num_train_epochs,
+    #)
+    lr_scheduler = get_constant_schedule(optimizer=optimizer)
 
     trainer = Trainer(
         model=model,
