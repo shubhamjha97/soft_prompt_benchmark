@@ -21,7 +21,6 @@ def tokenize_dataset(dataset, tokenizer, max_source_length, max_target_length, p
 def boolq_metric_loader():
     return load_metric('super_glue', 'boolq', experiment_id=str(uuid.uuid1()))
 
-
 def rte_metric_loader():
     return load_metric('super_glue', 'rte')
 
@@ -44,8 +43,7 @@ def boolq_loader(tokenizer, soft_prompt_length=0, max_seq_length=128):
             x['target'] = 'yes' if x['label']==1 else 'no'
         return x
 
-    raw_dataset = load_dataset('super_glue', 'boolq', split=['train', 'validation']) # TODO
-    # raw_dataset = load_dataset('super_glue', 'boolq', split=['train[0:8]', 'validation[0:8]']) # TODO:
+    raw_dataset = load_dataset('super_glue', 'boolq', split=['train', 'validation'])
     train_dataset, val_dataset = raw_dataset[0], raw_dataset[1]
 
     # Preprocess dataset
@@ -76,8 +74,7 @@ def rte_loader(tokenizer, soft_prompt_length=0, max_seq_length=128):
 
         return x
 
-    raw_dataset = load_dataset('super_glue', 'rte', split=['train', 'validation']) # TODO
-    #raw_dataset = load_dataset('super_glue', 'rte', split=['train[0:8]', 'validation[0:8]']) # TODO:
+    raw_dataset = load_dataset('super_glue', 'rte', split=['train', 'validation'])
     train_dataset, val_dataset = raw_dataset[0], raw_dataset[1]
 
     # Preprocess dataset
@@ -108,8 +105,7 @@ def wsc_loader(tokenizer, soft_prompt_length=0, max_seq_length=128):
         new_examples = examples.add_column("span2_word_text", new_column)
         return new_examples
 
-    #raw_dataset = load_dataset('super_glue', 'wsc', split=['train', 'validation']) # TODO
-    raw_dataset = load_dataset('super_glue', 'wsc', split=['train[0:8]', 'validation[0:8]']) # TODO:
+    raw_dataset = load_dataset('super_glue', 'wsc', split=['train', 'validation'])
     train_dataset, val_dataset = raw_dataset[0], raw_dataset[1]
 
     # Preprocess dataset
@@ -156,8 +152,7 @@ def wic_loader(tokenizer, soft_prompt_length=0, max_seq_length=128):
         ne2 = ne1.add_column("processed_sentence2", nc2)
         return ne2
 
-    raw_dataset = load_dataset('super_glue', 'wic', split=['train', 'validation']) # TODO
-    #raw_dataset = load_dataset('super_glue', 'wsc', split=['train[0:8]', 'validation[0:8]']) # TODO:
+    raw_dataset = load_dataset('super_glue', 'wic', split=['train', 'validation'])
     train_dataset, val_dataset = raw_dataset[0], raw_dataset[1]
 
     # Preprocess dataset
@@ -212,8 +207,7 @@ def copa_loader(tokenizer, soft_prompt_length=0, max_seq_length=128):
                         result[key].append([value1, value2])
             return result
 
-    raw_dataset = load_dataset('super_glue', 'copa', split=['train', 'validation']) # TODO
-    #raw_dataset = load_dataset('super_glue', 'copa', split=['train[0:8]', 'validation[0:8]']) # TODO:
+    raw_dataset = load_dataset('super_glue', 'copa', split=['train', 'validation'])
     train_dataset, val_dataset = raw_dataset[0], raw_dataset[1]
 
     # Preprocess dataset
