@@ -44,8 +44,8 @@ def boolq_loader(tokenizer, soft_prompt_length=0, max_seq_length=128):
             x['target'] = 'yes' if x['label']==1 else 'no'
         return x
 
-    #raw_dataset = load_dataset('super_glue', 'boolq', split=['train', 'validation']) # TODO
-    raw_dataset = load_dataset('super_glue', 'boolq', split=['train[0:8]', 'validation[0:8]']) # TODO:
+    raw_dataset = load_dataset('super_glue', 'boolq', split=['train', 'validation']) # TODO
+    # raw_dataset = load_dataset('super_glue', 'boolq', split=['train[0:8]', 'validation[0:8]']) # TODO:
     train_dataset, val_dataset = raw_dataset[0], raw_dataset[1]
 
     # Preprocess dataset
