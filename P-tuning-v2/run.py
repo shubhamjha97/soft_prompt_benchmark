@@ -24,7 +24,8 @@ def train(trainer, resume_from_checkpoint=None, last_checkpoint=None):
     elif last_checkpoint is not None:
         checkpoint = last_checkpoint
     train_result = trainer.train(resume_from_checkpoint=checkpoint)
-    # trainer.save_model()
+    print("Saving the model now:!!!")
+    trainer.save_model()
 
     metrics = train_result.metrics
 
@@ -138,10 +139,10 @@ if __name__ == '__main__':
     if training_args.do_train:
         train(trainer, training_args.resume_from_checkpoint, last_checkpoint)
     
-    # if training_args.do_eval:
-    #     evaluate(trainer)
+    if training_args.do_eval:
+         evaluate(trainer)
 
-    # if training_args.do_predict:
-    #     predict(trainer, predict_dataset)
+    if training_args.do_predict:
+         predict(trainer, predict_dataset)
 
    

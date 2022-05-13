@@ -1,5 +1,6 @@
 import hydra
-from opendelta import SoftPromptModel
+import torch
+from opendelta import SoftPromptModel, PrefixModel
 from transformers import (
     GPT2TokenizerFast,
     T5Tokenizer,
@@ -39,6 +40,7 @@ def train(tokenizer, model, train_dataset, val_dataset, config, metrics):
     training_args = TrainingArguments(
         output_dir="test_trainer",
         evaluation_strategy="no",
+        per_device_train_batch_size=8,
         logging_steps=config.logging_steps,
         eval_steps=config.eval_steps,
         eval_accumulation_steps=5,
@@ -53,13 +55,13 @@ def train(tokenizer, model, train_dataset, val_dataset, config, metrics):
     optimizer = AdamW(optimizer_grouped_parameters, lr=config.learning_rate)
 
     # TODO:
-    lr_scheduler = get_scheduler(
-        name="linear", #config.lr_scheduler_type,
-        optimizer=optimizer,
-        num_warmup_steps=config.num_warmup_steps,
-        num_training_steps= config.num_train_epochs,
-    )
-    # lr_scheduler = get_constant_schedule(optimizer=optimizer)
+    #lr_scheduler = get_scheduler(
+    #    name="linear", #config.lr_scheduler_type,
+    #    optimizer=optimizer,
+    #    num_warmup_steps=config.num_warmup_steps,
+    #    num_training_steps= config.num_train_epochs,
+    #)
+    lr_scheduler = get_constant_schedule(optimizer=optimizer)
 
     trainer = Trainer(
         model=model,
@@ -76,17 +78,22 @@ def train(tokenizer, model, train_dataset, val_dataset, config, metrics):
     for epoch in range(config.num_train_epochs):
         trainer.train(resume_from_checkpoint=None) # TODO: sjha add ability to resume from checkpoint
 
-        if epoch % 30 == 0: # TODO: remove
+        if epoch % 1 == 0: # TODO: remove
             computed_metrics = compute_metric_batched(trainer, metrics, tokenizer, val_dataset, # TODO
                                                   eval_batch_size=config.eval_batch_size, config=config)
+            if max_accuracy < computed_metrics['accuracy']:
+                save_dir_path = "./outputs"
+                model.save_pretrained(save_dir_path)
+                try:
+                    model.save_soft_prompt(save_dir_path)
+                except:
+                    pass
             max_accuracy = max(max_accuracy, computed_metrics['accuracy'])
             print(f'epoch: {epoch}, eval_metrics: {computed_metrics}, learning_rate: {lr_scheduler.get_lr()}, max_accuracy: {max_accuracy}')
         else:
             print(f'epoch: {epoch}, learning_rate: {lr_scheduler.get_lr()}')
 
     # TODO: save model every n iterations
-    save_dir_path = "."
-    model.save_soft_prompt(save_dir_path)
 
 
 def get_tokenizer(tokenizer_name="gpt2"):
@@ -103,31 +110,49 @@ def get_tokenizer(tokenizer_name="gpt2"):
     return tokenizer
 
 
-def get_model(model_name="gpt2", n_prompt_tokens=20, init_from_vocab=True):
+def get_model(model_name="gpt2", method="prompt_tuning", n_prompt_tokens=20, init_from_vocab=True):
     if model_name.startswith("gpt2"):
-        model = GPT2PromptTuningLM.from_pretrained(
-            model_name,
-            n_tokens=n_prompt_tokens,
-            initialize_from_vocab=init_from_vocab)
+        if method == "prompt_tuning":
+            model = GPT2PromptTuningLM.from_pretrained(
+                model_name,
+                n_tokens=n_prompt_tokens,
+                initialize_from_vocab=init_from_vocab)
+        else:
+            model = get_plm(model_name)
+            delta_model = PrefixModel(backbone_model=model, prefix_token_num=20, reparameterize=True)
+            delta_model.freeze_module(exclude=["deltas", "layernorm_embedding"], set_state_dict=True)
+            delta_model.log()
     elif model_name.startswith("t5"):
-        model = get_plm(model_name)
-        delta_model = SoftPromptModel(backbone_model=model, soft_token_num=n_prompt_tokens,
-                                      token_init=init_from_vocab)
-        delta_model.freeze_module(exclude=["deltas", "layernorm_embedding"], set_state_dict=True)
-        delta_model.log()
+        if method == "prompt_tuning":
+            model = get_plm(model_name)
+            delta_model = SoftPromptModel(backbone_model=model, soft_token_num=n_prompt_tokens,
+                                          token_init=init_from_vocab)
+            delta_model.freeze_module(exclude=["deltas", "layernorm_embedding"], set_state_dict=True)
+            delta_model.log()
+        else:
+            model = get_plm(model_name)
+            delta_model = PrefixModel(backbone_model=model, prefix_token_num=20, reparameterize=True)
+            delta_model.freeze_module(exclude=["deltas", "layernorm_embedding"], set_state_dict=True)
+            delta_model.log()
         # model = T5PromptTuningLM.from_pretrained(
         #     model_name,
         #     n_tokens=n_prompt_tokens,
         #     initialize_from_vocab=init_from_vocab
         # )
     elif model_name.startswith("roberta"):
-        model = RobertaPromptTuningLM.from_pretrained(
-            model_name,
-            n_tokens=n_prompt_tokens,
-            initialize_from_vocab=init_from_vocab
-        )
+        if method == "prompt_tuning":
+            model = RobertaPromptTuningLM.from_pretrained(
+                model_name,
+                n_tokens=n_prompt_tokens,
+                initialize_from_vocab=init_from_vocab
+            )
+        else:
+            model = get_plm(model_name)
+            delta_model = PrefixModel(backbone_model=model, prefix_token_num=20, reparameterize=True)
+            delta_model.freeze_module(exclude=["deltas", "layernorm_embedding"], set_state_dict=True)
+            delta_model.log()
     else:
-        raise ValueError("Tokenizer not supported")
+        raise ValueError("Model not supported")
     return model
 
 
@@ -149,6 +174,7 @@ def get_config(cfg):
     task_name, method, plm = cfg.task_name, cfg.method, cfg.plm
     task_cfg = cfg[task_name][method][plm]
 
+    config.method = method
     config.model_name = plm
     config.dataset = task_name
     config.task_name = task_name
@@ -174,7 +200,7 @@ def main(cfg):
     config = get_config(cfg)
     tokenizer = get_tokenizer(config.tokenizer_name)
 
-    model = get_model(config.model_name, config.n_prompt_tokens, config.init_from_vocab) # TODO:
+    model = get_model(config.model_name, config.method, config.n_prompt_tokens, config.init_from_vocab)
     metrics = METRIC_LOADERS[config.task_name]()
 
     train_dataset, val_dataset = DATASET_LOADERS[config.task_name](
